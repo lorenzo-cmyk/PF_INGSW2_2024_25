@@ -128,3 +128,54 @@ their skills, while helping companies discover potential candidates that match t
         \hline
     \end{longtable}
 \end{table}
+
+\subsection{Shared Phenomena}
+\label{subsec:shared-phenomena}%
+
+\begin{longtable}{|l|p{0.6\textwidth}|l|l|}
+    \hline
+    \textbf{Phenomena} & \textbf{Description}                                                                                                                                                                                                                                  & Controller & Observer \\
+    \hline \hline
+    SP01               & STs upload or modify their CVs on the platform.                                                                                                                                                                                                       & ST         & S\&C     \\
+    \hline
+    SP02               & Each CV uploaded to S\&C is saved and processed by the CV analyzer, which will perform a feature extraction analysis. After the inspection, the owner of the document can see some suggestions on how to improve it.                                  & S\&C       & ST       \\
+    \hline
+    SP03               & STs look for interesting internships on the platform.                                                                                                                                                                                                 & ST         & S\&C     \\
+    \hline
+    SP04               & The machine informs the users about relevant internships by sending a notification via email.                                                                                                                                                         & S\&C       & ST       \\
+    \hline
+    SP05               & STs apply for internships on the platform.                                                                                                                                                                                                            & ST         & S\&C     \\
+    \hline
+    SP06               & STs complete the questionnaire for an internship.                                                                                                                                                                                                     & ST         & S\&C     \\
+    \hline
+    SP07               & The machine assesses the questionnaire responses according to specified CO-provided criteria.                                                                                                                                                         & S\&C       & CO       \\
+    \hline
+    SP08               & If any problems occur during the internship, the STs can send a feedback report.                                                                                                                                                                      & ST         & S\&C     \\
+    \hline
+    SP09               & The platform will forward internship feedback to the UN: a notification will be sent via email, and the UN can review them on S\&C.                                                                                                                   & S\&C       & UN       \\
+    \hline
+    SP10               & The S\&C sales team enrolls a CO on the platform. A set of unique credentials is created.                                                                                                                                                             & S\&C       & CO       \\
+    \hline
+    SP11               & COs edit their public profiles on S\&C.                                                                                                                                                                                                               & CO         & S\&C     \\
+    \hline
+    SP12               & COs publish internship ads on S\&C.                                                                                                                                                                                                                   & CO         & S\&C     \\
+    \hline
+    SP13               & Each internship post is analyzed and indexed. After the analysis, the CO can see suggestions on how to improve the copy.                                                                                                                              & S\&C       & CO       \\
+    \hline
+    SP14               & The machine sends to the COs CVs of relevant STs (matching the requirements of published internship ads or keywords on the matching CO profile). The notification is sent via email, and the CV is visible in a section of the platform.              & S\&C       & CO       \\
+    \hline
+    SP15               & COs can request that STs who have applied to an internship to fill out the questionnaire.                                                                                                                                                             & CO         & S\&C     \\
+    \hline
+    SP16               & COs update the internship status on S\&C during the progression (e.g., “waiting for applications”, “ongoing,”, “closed,”, “suspended,”, etc.).                                                                                                        & CO         & S\&C     \\
+    \hline
+    SP17               & COs can send feedbacks on the internship if they require it.                                                                                                                                                                                          & CO         & S\&C     \\
+    \hline
+    SP18               & The platform will forward internship feedback to the UN: a notification will be sent via email, and the UN can review them on S\&C.                                                                                                                   & S\&C       & UN       \\
+    \hline
+    SP19               & S\&C sales team enrolls a UN on S\&C. The organization's Active Directory system is linked to the platform. The machine contacts the UN's credentials directory, allowing STs and relevant personnel to log in using their institutional credentials. & S\&C       & UN       \\
+    \hline
+    SP20               & UNs respond to the feedbacks received on the platform by STs and/or COs.                                                                                                                                                                              & UN         & S\&C     \\
+    \hline
+    SP21               & UNs see past and present internships on the platform and their status.                                                                                                                                                                                & UN         & S\&C     \\
+    \hline
+\end{longtable}
