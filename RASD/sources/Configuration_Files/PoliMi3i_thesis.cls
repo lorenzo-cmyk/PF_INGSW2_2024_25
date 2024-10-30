@@ -87,14 +87,13 @@
 
 % Define keys for title pages
 \newif\if@cosupervisorexist\@cosupervisorexistfalse
-\define@key[OIST]{title}{title}{\def\thesistitle{#1}}
+\define@key[OIST]{title}{documentTitle}{\def\documentTitle{#1}}
 \define@key[OIST]{title}{course}{\def\course{#1}}
-\define@key[OIST]{title}{name}{\def\name{#1}}
-\define@key[OIST]{title}{ID}{\def\ID{#1}}
+\define@key[OIST]{title}{authorOne}{\def\authorOne{#1}}
+\define@key[OIST]{title}{authorTwo}{\def\authorTwo{#1}}
+\define@key[OIST]{title}{authorThree}{\def\authorThree{#1}}
 \define@key[OIST]{title}{advisor}{\def\advisor{#1}}
-\define@key[OIST]{title}{coadvisor}{\def\coadvisor{#1}\@cosupervisorexisttrue}
-\define@key[OIST]{title}{academicyear}{\def\academicyear{#1}}
-\define@key[OIST]{title}{course}{\def\course{#1}}
+\define@key[OIST]{title}{academicYear}{\def\academicYear{#1}}
 
 \providecommand{\puttitle}{}
 \renewcommand{\puttitle}[1]{
@@ -108,31 +107,32 @@
 	\begin{titlepage}
 		\AddToShipoutPicture*{\BackgroundPicTR}
 		\vfill
-		%\begin{minipage}{0.95\textwidth}
 		\begin{minipage}{0.95\textwidth}
 			\includegraphics[trim={1.2cm 0 0 0},clip, width=0.7\textwidth]{Images/02_ING_IND_INFORMAZIONE_COL_POSITIVO.eps}
 			\hfill
 			\\
 			\vspace{2.5cm}
 			\\
-			{{\color{bluepoli} \singlespacing \huge \bfseries \thesistitle \par}}
+			{{\color{bluepoli} \huge \bfseries \documentTitle \par}}
 			\vspace{1.5cm}
-			{\color{bluepoli} \bfseries \large{\textsc{Tesi di Laurea Magistrale in\\ \course}}\par}
+			{\color{bluepoli} \bfseries \large{\textsc{\course}}\par}
 			\vspace{1.5 cm}
-			{\color{black} \Large {Author:} \bfseries{\name}}
 		\end{minipage}
 		\\
 		\vspace*{\fill}
 		\\
 		\begin{minipage}{0.85\textwidth}
 			\normalsize{
-			Student ID: {\ID}
-			\\
-			Advisor: {\advisor}
-			\\
-			Co-advisors: {\coadvisor}
-			\\
-			Academic Year: {\academicyear}
+				Advisor: \advisor
+				\\
+				Academic Year: \academicYear
+				\\
+				Students:
+				\begin{itemize}
+					\item \authorOne
+					\item \authorTwo
+					\item \authorThree
+				\end{itemize}
 			}
 		\end{minipage}
 	\end{titlepage}
