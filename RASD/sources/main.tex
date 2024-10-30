@@ -92,7 +92,6 @@
 %----------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------
-
 \pagestyle{empty} % No page numbers
 \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the preamble pages
 
@@ -105,6 +104,21 @@
     advisor= Prof.ssa. Elisabetta Di Nitto,
     academicYear= 2024-2025
 }
+
+%----------------------------------------------------------------------------
+%	LIST OF CONTENTS/FIGURES/TABLES/SYMBOLS
+%----------------------------------------------------------------------------
+\setcounter{page}{1} % Set page counter to 1
+\thispagestyle{empty} % No page numbers on this page
+\tableofcontents % Write out the Table of Contents
+\thispagestyle{empty} % No page numbers on this page
+\cleardoublepage % Start the document on a right-hand page
+
+%-------------------------------------------------------------------------
+%	DOCUMENT MAIN TEXT
+%-------------------------------------------------------------------------
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+\mainmatter % Begin numeric (1,2,3...) page numbering
 
 \include{./chapters/1-Introduction.tex}
 
