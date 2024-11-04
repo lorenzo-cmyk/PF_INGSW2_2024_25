@@ -1,0 +1,86 @@
+\chapter{Overall Description}
+\label{chap:overall_description}%
+
+\section{Product Perspective}
+\label{sec:product_perspective}%
+
+\subsection{Scenarios}
+\label{sub:scenarios}%
+
+\par{\textbf{Scenario 1: ST Login and CV Upload}} Walter W. is a chemical engineering student that wants to take part
+in an internship to gain more experience and insight into the field before his graduation. Having heard of S\&C he
+decides to give it a shot. First, he opens the S\&C website, where he clicks on the "Student Login" button. He is
+prompted to enter his university-provided email and — after that — the platform redirects him to the SSO portal of this
+institution (e.g., OpenID/OAuth…) where Walter can grant S\&C the permission to retrieve his information
+(name, surname, birthdate, …) directly from his school. As soon as he grants our platform the required privileges, the
+user is redirected to S\&C and his profile is created successfully. Now Walter has joined S\&C successfully, but he needs
+to upload his CV; to do so he goes to the "My Profile" section where he can find the "My CV" subsection. Here, the user
+can load his CV by uploading a PDF — preferably in a standard format (e.g., Europass, …) — version of it. Once uploaded,
+the CV is indexed, and Walter can see a bullet list of possible improvements that he can make. The user is free to fix
+his CV and re-upload an updated version iteratively once he is satisfied.
+
+\par{\textbf{Scenario 2: ST Recruitment}} Saul G. is a freshly graduated law student, before starting his doctorate
+he wants to gain some work experience before his research project starts. He joined S\&C but never found anything of his
+linking; one day he receives an email from our platform regarding a possible internship: it is a law firm B.C.S. S.p.A.
+looking for some intern to offload some work. Saul clicks on the link in the email and sees the internship details;
+interested, the user clicks on "Apply." Some days later, Saul receives another email: it is S\&C informing him that the
+company is interested in his profile and wants him to compile a survey to know him better. The user clicks on the link
+and fills out the requested form. A week later, Saul receives a phone call from a lawyer, Kim, informing him that they
+will work together: HR has found Saul as the idea candidate for the internship. During all the time of the selection
+the user could see the internship status (when he has applied, if there are some forms to submit, …) from the
+"My Internship" section so that no information is lost in case of accidental email deletion. Unread messages from S\&C
+to the user can be seen on the "My Notification" section.
+
+\par{\textbf{Scenario 3: ST Sends a Feedback on the Internship}} Marie S. is an intern at a pharmaceutical company,
+and she is starting to feel mistreated in her workplace: her boss yells at her for no reason all the time and she is
+forced to do work outside what she agreed on. Marie goes to S\&C, finds her internship in the "My Internship" section
+and clicks on "Submit feedback" and describes the situation. The next day, Marie receives a phone call from her
+university: the internship is cancelled, and appropriate actions will be taken against the corporation. The change in
+the internship status is also visible in S\&C.
+
+\par{\textbf{Scenario 4: CO Registration}} Tim I. is the CEO of a telecom company, TLC S.p.A. Having heard the
+complaints from his VP of HR regarding the urgency of new workers, decides to enroll his company to S\&C hoping to find
+skillful interns to then hire into the workforce. After a negotiation with the platform sales department, they agreed
+to a fair contract between the parties. Then, a set of credentials is created to be used by an HR referent
+– Tyrell W. — in TCL S.p.A.
+
+\par{\textbf{Scenario 5: CO Publishes an Internship}} Tyrell W. — the HR referent for S\&C in TCL S.p.A. — log onto the
+platform, using the "Company login" button, for the first time with the provided credentials. He is asked to build the
+company’s profile on the platform by providing all necessary information (e.g., logo, mission, …); this profile will be
+seen by the students that clicks on the company name on the various internship’s ads. The user now can go to the
+"My Internship" section where he can create a new job posting; after all necessary information is provided the listing
+is scanned and indexed. The company can see some suggestions on how to improve the ads copy: Tyrell is free to
+iteratively adjust the ads until he is satisfied with the result.
+
+\par{\textbf{Scenario 6: CO Recruitment}} After the registration deadline – having lots of applicants - Tyrell decides
+to ask the students to fill out a questionnaire. He could have chosen to send it to a specific subset of applicants
+– therefore rejecting students in the first phase of the recruitment process - but he decided to submit it to all of
+them. S\&C automatically evaluates the response given by the students using the criteria provided by the company. After
+the submission deadline Tyrell looks at the top 20 CV – ranked by the points gained in the questionnaire – and choose
+the ten students to hire rejecting the unfit candidates. If Tyrell wanted, S\&C had recommended him directly some CVs
+of students that were considered a good fit for the internship. These curricula were available in the "My Internship"
+section and were properly anonymized to prevent any kind of bias. Tyrell, if he wanted, could have asked these students
+to apply for the internship therefore increasing the number of total applicants. S\&C would have taken care of
+notifying the students of the company's interest but the final decision on applying was left to the students.
+
+\par{\textbf{Scenario 7: CO Sends a Feedback on the Internship}} During the internship, the students were tasked with
+creating the engine that – given an address – returns the services TLC can offer at that location. The students,
+however, failed in doing such: the tool-built returns lots of covered locations as unreachable by TCL network causing
+serious economic damage for the company. Tyrell decides to go the "My Internship" section and send feedback to the
+university. The next day the university calls TLC: the internship is suspended and the students fired.
+
+\par{\textbf{Scenario 8: UN Registration}} PoliPo – Polytechnic University of Pordenone – is a well-known Italian
+university. Their rector has decided that they are going to join S\&C to allow their students to gain some work
+experience and to boost the "student employability" ranking of the university. After a negotiation with the platform
+sales department, they agreed to a fair contract between the parties. The IT team of the university sent the details of
+the authentication gateway to S\&C dev team: the platform now allows students and pre-designed university personnel to
+login using the organization credentials.
+
+\par{\textbf{Scenario 9: UN Deals with a Feedback}} Luca S., the project referent for S\&C in the school log onto the
+platform using his PoliPo credentials. In the "My Internship" section he can see all ongoing and past internships
+concerning only his students. In the "My Feedback" section he can see all the opened feedback by companies and
+students. In this section he can reply to the message creator to further discuss the situation; a link here redirects
+Luca on the proper internship in the "My Internship" section where he can suspend the internship.
+Moreover, if necessary, Luca can prevent his students from seeing and applying for internship from a specific company
+if he feels that these enterprises are mistreating his students. All blocked companies and the contracts between S\&C
+and the university are available in the "My Contracts" section.
