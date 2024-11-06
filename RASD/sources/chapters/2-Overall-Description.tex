@@ -85,29 +85,33 @@ Moreover, if necessary, Luca can prevent his students from seeing and applying f
 if he feels that these enterprises are mistreating his students. All blocked companies and the contracts between S\&C
 and the university are available in the "My Contracts" section.
 
-
 \subsection{Class Diagram}
+\label{sub:class_diagram}%
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{Images/UML.png}
-    \caption{High Level Class Diagram}
-    \label{fig:class_diagram}
+      \centering
+      % TODO: Replace the PNG file with a PDF exported from draw.io.
+      \includegraphics[width=1.0\textwidth]{Images/UML.png}
+      \caption{High Level Class Diagram}
+      \label{fig:class_diagram}
 \end{figure}
 
-The class diagram in Figure \ref{fig:class_diagram} shows the high-level structure of the system.
-The classes of the system actors, that are Student, Company, and University, are an extension of the User class, which 
-is the base class for all the users of the system, because all of them share some common attributes, the only difference is
-that the password for the students is not set because they do the login through the university SSO.\\
-The Student can upload a CV, that is stored in the system. The company can create an internship called InternshipAd, which is stored in the system with a specific ID.
-The University can access all the internships and the feedback of all the students that have it's university id.\\
-Another important class is the questionnaire, which is an abstract class that is then extended into the selection process questionnaire and feedback questionnaire, which 
-are the two types of questionnaires that the system manages. The first one is created by a CO to select the students for the internship, the second one is created 
-by the system at the end of the internship to collect feedback from both the student and the company.
-In this diagram are also represented the subsystems that will do the analysis of the CVs and the internship ads, to create 
-suggestions to improve the CVs and the internship ads, and the one that is responsible for the recommendation that the students and
-the companies receive by email.
+\par The class diagram in figure \ref{fig:class_diagram} shows the high-level structure of the system. The classes of
+the system actors, that are Student, Company, and University, are an extension of the User class, which is the base
+class for all the users of the system, because all of them share some common attributes, the only difference is that
+the password for the students is not set because they do the login through the university SSO.
 
+\par The Student can upload a CV, that is stored in the system. The company can create an internship called
+InternshipAd, which is stored in the system with a specific ID. The University can access all the internships and the
+feedback of all the students that have it's university id.
+
+\par Another important class is the questionnaire, which is an abstract class that is then extended into the selection
+process questionnaire and feedback questionnaire, which are the two types of questionnaires that the system manages.
+The first one is created by a CO to select the students for the internship, the second one is created by the system at
+the end of the internship to collect feedback from both the student and the company. In this diagram are also
+represented the subsystems that will do the analysis of the CVs and the internship ads, to create suggestions to
+improve the CVs and the internship ads, and the one that is responsible for the recommendation that the students and
+the companies receive by email.
 
 \subsection{Product Functions}
 \label{sec:product_functions}%
