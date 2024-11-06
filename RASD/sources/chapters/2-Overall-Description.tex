@@ -116,58 +116,92 @@ the companies receive by email.
 \subsection{Product Functions}
 \label{sec:product_functions}%
 
-The following section describes the main functions of the system. 
-The system is divided into three main actors: the Student, the Company, and the University. 
-Each of them has different functions that they can perform on the system.\\
+\par The following section describes the main functions of the system. The system is divided into three main actors:
+the Student, the Company, and the University. Each of them has different functions that they can perform on the system.
 
 \par\textbf{Generic Functionalities}
 
 \begin{itemize}
-    \item \textbf{Account creation with verification:}
-    We think that given the context in which S\&C will work there are ways improve on the creation of the accounts compared to the standard username, mail and password registration.
-    Our idea is that S\&C will sell to both universities and companies the possibility of using the application and creating the accounts internally based on sales.
-    For universities, when one university buys the S\&C service it will link its Active Directory to the S\&C database. This allows the student to access to S\&C with the university credentials.
-    For companies, the account creation is handled internally, and the credentials are given to them after the contract is signed.
-    With this mechanism we aim to make the platform more attractive for both parties because of the extra guarantees, in terms of verified users, that the account creation holds.
-     
-    \item \textbf{Account improvements suggestions:}
-    S\&C offers an improvement guide by providing to both students and companies ideas on how to improve their profile / the internships offers to make them more appealing.
+      \item \textbf{Account creation with verification}:
+            We think that given the context in which S\&C will work there are ways improve on the creation of the
+            accounts compared to the standard username, mail and password registration. Our idea is that S\&C will sell
+            to both universities and companies the possibility of using the application and creating the accounts
+            internally based on sales. For universities, when one university buys the S\&C service it will link its
+            Active Directory to the S\&C database. This allows the student to access to S\&C with the university
+            credentials. For companies, the account creation is handled internally, and the credentials are given to
+            them after the contract is signed. With this mechanism we aim to make the platform more attractive for both
+            parties because of the extra guarantees, in terms of verified users, that the account creation holds.
+      \item \textbf{Account improvements suggestions}:
+            S\&C offers an improvement guide by providing to both students and companies ideas on how to improve their
+            profile / the internships offers to make them more appealing.
 \end{itemize}
 
-\par\textbf{Student POV functionalities:}
+\par\textbf{Student POV Functionalities}
 
 \begin{itemize}
-    \item \textbf{Edit personal data and add extra information:} This includes the possibility to upload/modify the CV at any time. An important aspect of this function is the possibility to set privacy settings and decide what infos are available to the companies.
-    \item \textbf{Search and apply for internship on the app:} This can be conducted by simple keyword search, but there are also more advanced search functionalities to better refine the results. This includes advanced search filters, and suggestions based on recent searches. Applying for an internship will also activate notifications to the user whenever the application gets accepted/rejected and whenever the questionnaire (see next point) from the company is available.
-    \item \textbf{Compilation of the questionnaire:} The process of selecting students for an internship is carried out through questionnaires. S\&C allows students to compile such questionnaire inside the app and maintain partial answers between sessions. Whenever the company has gathered all the results and published them a notification will alert the user.
-    \item \textbf{Profiling/Recommendation:} This is an advanced functionality that allows students to run an algorithm on their personal data and extract structured data regarding their user profile. This data allows S\&C to find internships that might interest the student with a Data Driven approach. Student will also get notifications from S\&C whenever a new internship that might interest the student gets published.
-    \item \textbf{Communication:} If a student gets selected for a position, S\&C offers a direct communication channel between the student and the company. This can be used for different purposes, like discussing terms, feedback and complaints.
+      \item \textbf{Edit personal data and add extra information}: This includes the possibility to upload/modify the
+            CV at any time. An important aspect of this function is the possibility to set privacy settings and decide
+            what infos are available to the companies.
+      \item \textbf{Search and apply for internship on the app}: This can be conducted by simple keyword search, but
+            there are also more advanced search functionalities to better refine the results. This includes advanced
+            search filters, and suggestions based on recent searches. Applying for an internship will also activate
+            notifications to the user whenever the application gets accepted/rejected and whenever the questionnaire
+            (see next point) from the company is available.
+      \item \textbf{Compilation of the questionnaire}: The process of selecting students for an internship is carried
+            out through questionnaires. S\&C allows students to compile such questionnaire inside the app and maintain
+            partial answers between sessions. Whenever the company has gathered all the results and published them a
+            notification will alert the user.
+      \item \textbf{Profiling/Recommendation}: This is an advanced functionality that allows students to run an
+            algorithm on their personal data and extract structured data regarding their user profile. This data allows
+            S\&C to find internships that might interest the student with a Data Driven approach. Student will also get
+            notifications from S\&C whenever a new internship that might interest the student gets published.
+      \item \textbf{Communication}: If a student gets selected for a position, S\&C offers a direct communication
+            channel between the student and the company. This can be used for different purposes, like discussing
+            terms, feedback and complaints.
 \end{itemize}
 
-\par\textbf{Company POV functionalities:}
+\par\textbf{Company POV Functionalities}
 
 \begin{itemize}
-    \item \textbf{Edit the company profile:} The company can edit the profile by adding extra descriptive data. The aim of this is to allow students to decide where to apply based on the available data. This data also supports the suggestion mechanism of S\&C.
-    
-    \item \textbf{Open an internship position:} The main feature of S\&C is the possibility for the company to publish information about open positions and advertise them. Interested students are free to apply to them. To publish a position the company needs to provide a comprehensive description of the position to guide decisions. This is referred to students but also the recommendation system that will try to match internships with students. The company also needs to specify a deadline for applications.
-    
-    \item \textbf{Search suitable students:} The recommendation system previously described in the student section works also for companies but with some differences. For privacy reasons companies will see the matched students data in an anonymous way. With this feature, companies can invite suitable students to take part in the selection process. To gain access to more information about the student, including contact information, the selection process must go through, this means the student must take the questionnaire and get selected.
-    
-    \item \textbf{Create and post personalized questionnaires for the selection phase:} S\&C allows creating and customizing questionnaires inside the application to later give them to students as part of the selection process. The S\&C application also gathers the answers provided by the students and allows viewing them in a structured manner so that the company can easily filter/sort/analyze them and choose the candidates.
-    
-    \item \textbf{Contact the selected students:} After the selection phase, the selected student can proceed with the internship, S\&C offers the possibility to exchange information inside the app to support this phase.
-    
-    \item \textbf{Monitoring:} This functionality is used by the company to keep track of all the internships currently active and monitor how they are going (e.g., if there were complaints, etc.), but also see all the past internships for historical data.
-
+      \item \textbf{Edit the company profile}: The company can edit the profile by adding extra descriptive data. The
+            aim of this is to allow students to decide where to apply based on the available data. This data also
+            supports the suggestion mechanism of S\&C.
+      \item \textbf{Open an internship position}: The main feature of S\&C is the possibility for the company to
+            publish information about open positions and advertise them. Interested students are free to apply to them.
+            To publish a position the company needs to provide a comprehensive description of the position to guide
+            decisions. This is referred to students but also the recommendation system that will try to match
+            internships with students. The company also needs to specify a deadline for applications.
+      \item \textbf{Search suitable students}: The recommendation system previously described in the student section
+            works also for companies but with some differences. For privacy reasons companies will see the matched
+            students data in an anonymous way. With this feature, companies can invite suitable students to take part
+            in the selection process. To gain access to more information about the student, including contact
+            information, the selection process must go through, this means the student must take the questionnaire and
+            get selected.
+      \item \textbf{Create and post personalized questionnaires for the selection phase}: S\&C allows creating and
+            customizing questionnaires inside the application to later give them to students as part of the selection
+            process. The S\&C application also gathers the answers provided by the students and allows viewing them in
+            a structured manner so that the company can easily filter/sort/analyze them and choose the candidates.
+      \item \textbf{Contact the selected students}: After the selection phase, the selected student can proceed with
+            the internship, S\&C offers the possibility to exchange information inside the app to support this phase.
+      \item \textbf{Monitoring}: This functionality is used by the company to keep track of all the internships
+            currently active and monitor how they are going (e.g., if there were complaints, etc.), but also see all
+            the past internships for historical data.
 \end{itemize}
 
-\par\textbf{University POV functionalities:}
-
+\par\textbf{University POV Functionalities}
 
 \begin{itemize}
-        \item \textbf{Monitoring:} S\&C keeps track of all the interactions between students and companies (applications and internships). The universities can access the portion of this data regarding their own students for analysis.
-        \item \textbf{Complaint handling:} Universities play an important role in the interaction between students and companies during the internship period. If any problem arises during such a period, a student can open a complaint ticket. The university steps in to handle the problem by acting as a third party. In the worst-case scenario, the suspension or cancellation of the internship is an available option to the university.
-        \item \textbf{Blacklisting:} If the university deems a company untrustworthy or has been subject to multiple complaints, it can blacklist it. This ensures that students at such university can’t see the company and vice versa, the company can’t see the university students. 
+      \item \textbf{Monitoring}: S\&C keeps track of all the interactions between students and companies (applications
+            and internships). The universities can access the portion of this data regarding their own students for
+            analysis.
+      \item \textbf{Complaint handling}: Universities play an important role in the interaction between students and
+            companies during the internship period. If any problem arises during such a period, a student can open a
+            complaint ticket. The university steps in to handle the problem by acting as a third party. In the
+            worst-case scenario, the suspension or cancellation of the internship is an available option to the
+            university.
+      \item \textbf{Blacklisting}: If the university deems a company untrustworthy or has been subject to multiple
+            complaints, it can blacklist it. This ensures that students at such university can’t see the company and
+            vice versa, the company can’t see the university students.
 \end{itemize}
 
 \subsection{User Characteristics}
