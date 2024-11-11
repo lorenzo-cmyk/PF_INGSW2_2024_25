@@ -26,7 +26,7 @@
 
 ## Whitelist:
 !RASD/sources/Images/UML.pdf
-!RASD/sources/Images/BPMN_[0-9]*.pdf
+!RASD/sources/Images/BPMN_[0-9]*[A-Z].pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
