@@ -123,6 +123,7 @@ the Student, the Company, and the University. Each of them has different functio
 \par\textbf{Generic Functionalities}
 
 \begin{itemize}
+      % F. 1
       \item \textbf{Account creation with verification}:
             We think that given the context in which S\&C will work there are ways improve on the creation of the
             accounts compared to the standard username, mail and password registration. Our idea is that S\&C will sell
@@ -132,6 +133,29 @@ the Student, the Company, and the University. Each of them has different functio
             credentials. For companies, the account creation is handled internally, and the credentials are given to
             them after the contract is signed. With this mechanism we aim to make the platform more attractive for both
             parties because of the extra guarantees, in terms of verified users, that the account creation holds.
+
+            \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=1.0\textwidth]{Images/BPMN_1C.pdf}
+                  \caption{UN Enrollment Diagram}
+                  \label{fig:un_enrollment_diagram}
+            \end{figure}
+
+            \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=1.0\textwidth]{Images/BPMN_1B.pdf}
+                  \caption{CO Enrollment Diagram}
+                  \label{fig:co_enrollment_diagram}
+            \end{figure}
+
+            \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=1.0\textwidth]{Images/BPMN_1A.pdf}
+                  \caption{ST Enrollment Diagram}
+                  \label{fig:st_enrollment_diagram}
+            \end{figure}
+
+      % F. 2
       \item \textbf{Account improvements suggestions}:
             S\&C offers an improvement guide by providing to both students and companies ideas on how to improve their
             profile / the internships offers to make them more appealing.
@@ -147,6 +171,7 @@ the Student, the Company, and the University. Each of them has different functio
 \par\textbf{Student POV Functionalities}
 
 \begin{itemize}
+      % F. 3
       \item \textbf{Edit personal data and add extra information}: This includes the possibility to upload/modify the
             CV at any time.
 
@@ -157,6 +182,7 @@ the Student, the Company, and the University. Each of them has different functio
                   \label{fig:edit_personal_data_diagram}
             \end{figure}
 
+      % F. 4
       \item \textbf{Search and apply for internship on the app}: This can be conducted by simple keyword search, but
             there are also more advanced search functionalities to better refine the results. This includes advanced
             search filters, and suggestions based on recent searches. Applying for an internship will also activate
@@ -170,25 +196,26 @@ the Student, the Company, and the University. Each of them has different functio
                   \label{fig:search_and_apply_for_internship_diagram}
             \end{figure}
 
+      % F. 5
       \item \textbf{Compilation of the questionnaire}: The process of selecting students for an internship is carried
             out through questionnaires. S\&C allows students to compile such questionnaire inside the app and maintain
             partial answers between sessions. Whenever the company has gathered all the results and published them a
             notification will alert the user.
+      % F. 6
       \item \textbf{Profiling/Recommendation}: This is an advanced functionality that allows students to run an
             algorithm on their personal data and extract structured data regarding their user profile. This data allows
             S\&C to find internships that might interest the student with a Data Driven approach. Student will also get
             notifications from S\&C whenever a new internship that might interest the student gets published.
-      \item \textbf{Communication}: If a student gets selected for a position, S\&C offers a direct communication
-            channel between the student and the company. This can be used for different purposes, like discussing
-            terms, feedback and complaints.
 \end{itemize}
 
 \par\textbf{Company POV Functionalities}
 
 \begin{itemize}
+      % F. 8
       \item \textbf{Edit the company profile}: The company can edit the profile by adding extra descriptive data. The
             aim of this is to allow students to decide where to apply based on the available data. This data also
             supports the suggestion mechanism of S\&C.
+      % F. 9
       \item \textbf{Open an internship position}: The main feature of S\&C is the possibility for the company to
             publish information about open positions and advertise them. Interested students are free to apply to them.
             To publish a position the company needs to provide a comprehensive description of the position to guide
@@ -202,6 +229,7 @@ the Student, the Company, and the University. Each of them has different functio
                   \label{fig:open_an_internship_position_diagram}
             \end{figure}
 
+      % F. 10
       \item \textbf{Search suitable students}: The recommendation system previously described in the student section
             works also for companies but with some differences. For privacy reasons companies will see the matched
             students data in an anonymous way. With this feature, companies can invite suitable students to take part
@@ -216,28 +244,47 @@ the Student, the Company, and the University. Each of them has different functio
                   \label{fig:search_suitable_students_diagram}
             \end{figure}
             
+      % F. 11
       \item \textbf{Create and post personalized questionnaires for the selection phase}: S\&C allows creating and
             customizing questionnaires inside the application to later give them to students as part of the selection
             process. The S\&C application also gathers the answers provided by the students and allows viewing them in
             a structured manner so that the company can easily filter/sort/analyze them and choose the candidates.
-      \item \textbf{Contact the selected students}: After the selection phase, the selected student can proceed with
-            the internship, S\&C offers the possibility to exchange information inside the app to support this phase.
+      % F. 13
       \item \textbf{Monitoring}: This functionality is used by the company to keep track of all the internships
             currently active and monitor how they are going (e.g., if there were complaints, etc.), but also see all
             the past internships for historical data.
+
+            \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=1.0\textwidth]{Images/BPMN_13.pdf}
+                  \caption{CO Monitoring Diagram}
+                  \label{fig:co_monitoring_diagram}
+            \end{figure}
+
 \end{itemize}
 
 \par\textbf{University POV Functionalities}
 
 \begin{itemize}
+      % F. 14
       \item \textbf{Monitoring}: S\&C keeps track of all the interactions between students and companies (applications
             and internships). The universities can access the portion of this data regarding their own students for
             analysis.
+      % F. 15
       \item \textbf{Complaint handling}: Universities play an important role in the interaction between students and
             companies during the internship period. If any problem arises during such a period, a student can open a
             complaint ticket. The university steps in to handle the problem by acting as a third party. In the
             worst-case scenario, the suspension or cancellation of the internship is an available option to the
             university.
+
+            \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=1.0\textwidth]{Images/BPMN_15.pdf}
+                  \caption{UN Complaint Handling Diagram}
+                  \label{fig:un_complaint_handling_diagram}
+            \end{figure}
+
+      % F. 16
       \item \textbf{Blacklisting}: If the university deems a company untrustworthy or has been subject to multiple
             complaints, it can blacklist it. This ensures that students at such university can’t see the company and
             vice versa, the company can’t see the university students.
