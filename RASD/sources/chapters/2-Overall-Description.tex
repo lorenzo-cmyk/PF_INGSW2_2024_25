@@ -155,7 +155,7 @@ the Student, the Company, and the University. Each of them has different functio
                   \label{fig:st_enrollment_diagram}
             \end{figure}
 
-      % F. 2
+            % F. 2
       \item \textbf{Account improvements suggestions}:
             S\&C offers an improvement guide by providing to both students and companies ideas on how to improve their
             profile / the internships offers to make them more appealing.
@@ -182,7 +182,7 @@ the Student, the Company, and the University. Each of them has different functio
                   \label{fig:edit_personal_data_diagram}
             \end{figure}
 
-      % F. 4
+            % F. 4
       \item \textbf{Search and apply for internship on the app}: This can be conducted by simple keyword search, but
             there are also more advanced search functionalities to better refine the results. This includes advanced
             search filters, and suggestions based on recent searches. Applying for an internship will also activate
@@ -196,16 +196,31 @@ the Student, the Company, and the University. Each of them has different functio
                   \label{fig:search_and_apply_for_internship_diagram}
             \end{figure}
 
-      % F. 5
+            % F. 5
       \item \textbf{Compilation of the questionnaire}: The process of selecting students for an internship is carried
             out through questionnaires. S\&C allows students to compile such questionnaire inside the app and maintain
             partial answers between sessions. Whenever the company has gathered all the results and published them a
             notification will alert the user.
-      % F. 6
+
+            \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=1.0\textwidth]{Images/BPMN_5.pdf}
+                  \caption{Compilation of the questionnaire diagram}
+                  \label{fig:compilation_of_the_questionnaire_diagram}
+            \end{figure}
+            % F. 6
       \item \textbf{Profiling/Recommendation}: This is an advanced functionality that allows students to run an
             algorithm on their personal data and extract structured data regarding their user profile. This data allows
             S\&C to find internships that might interest the student with a Data Driven approach. Student will also get
             notifications from S\&C whenever a new internship that might interest the student gets published.
+
+            \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=1.0\textwidth]{Images/BPMN_6.pdf}
+                  \caption{Profiling/Recommendation diagram}
+                  \label{fig:profiling_recommendation_diagram}
+            \end{figure}
+
 \end{itemize}
 
 \par\textbf{Company POV Functionalities}
@@ -215,7 +230,15 @@ the Student, the Company, and the University. Each of them has different functio
       \item \textbf{Edit the company profile}: The company can edit the profile by adding extra descriptive data. The
             aim of this is to allow students to decide where to apply based on the available data. This data also
             supports the suggestion mechanism of S\&C.
-      % F. 9
+
+            \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=1.0\textwidth]{Images/BPMN_8.pdf}
+                  \caption{Edit the company profile diagram}
+                  \label{fig:edit_the_company_profile_diagram}
+            \end{figure}
+
+            % F. 9
       \item \textbf{Open an internship position}: The main feature of S\&C is the possibility for the company to
             publish information about open positions and advertise them. Interested students are free to apply to them.
             To publish a position the company needs to provide a comprehensive description of the position to guide
@@ -229,7 +252,7 @@ the Student, the Company, and the University. Each of them has different functio
                   \label{fig:open_an_internship_position_diagram}
             \end{figure}
 
-      % F. 10
+            % F. 10
       \item \textbf{Search suitable students}: The recommendation system previously described in the student section
             works also for companies but with some differences. For privacy reasons companies will see the matched
             students data in an anonymous way. With this feature, companies can invite suitable students to take part
@@ -243,13 +266,21 @@ the Student, the Company, and the University. Each of them has different functio
                   \caption{Search suitable students diagram}
                   \label{fig:search_suitable_students_diagram}
             \end{figure}
-            
-      % F. 11
+
+            % F. 11
       \item \textbf{Create and post personalized questionnaires for the selection phase}: S\&C allows creating and
             customizing questionnaires inside the application to later give them to students as part of the selection
             process. The S\&C application also gathers the answers provided by the students and allows viewing them in
             a structured manner so that the company can easily filter/sort/analyze them and choose the candidates.
-      % F. 13
+
+            \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=1.0\textwidth]{Images/BPMN_11.pdf}
+                  \caption{Create and post personalized questionnaires for the selection phase diagram}
+                  \label{fig:create_and_post_personalized_questionnaires_for_the_selection_phase_diagram}
+            \end{figure}
+
+            % F. 13
       \item \textbf{Monitoring}: This functionality is used by the company to keep track of all the internships
             currently active and monitor how they are going (e.g., if there were complaints, etc.), but also see all
             the past internships for historical data.
@@ -270,7 +301,14 @@ the Student, the Company, and the University. Each of them has different functio
       \item \textbf{Monitoring}: S\&C keeps track of all the interactions between students and companies (applications
             and internships). The universities can access the portion of this data regarding their own students for
             analysis.
-      % F. 15
+
+            \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=1.0\textwidth]{Images/BPMN_14.pdf}
+                  \caption{UN Monitoring Diagram}
+                  \label{fig:un_monitoring_diagram}
+            \end{figure}
+            % F. 15
       \item \textbf{Complaint handling}: Universities play an important role in the interaction between students and
             companies during the internship period. If any problem arises during such a period, a student can open a
             complaint ticket. The university steps in to handle the problem by acting as a third party. In the
@@ -284,7 +322,7 @@ the Student, the Company, and the University. Each of them has different functio
                   \label{fig:un_complaint_handling_diagram}
             \end{figure}
 
-      % F. 16
+            % F. 16
       \item \textbf{Blacklisting}: If the university deems a company untrustworthy or has been subject to multiple
             complaints, it can blacklist it. This ensures that students at such university can’t see the company and
             vice versa, the company can’t see the university students.
