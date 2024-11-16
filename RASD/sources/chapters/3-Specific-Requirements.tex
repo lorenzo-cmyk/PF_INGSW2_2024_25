@@ -1,0 +1,36 @@
+\chapter{Specific Requirements}
+\label{chap:specific-requirements}
+
+\par This chapter provides detailed specifications for the requirements previously mentioned that may require
+additional clarification for the development team's implementation.
+
+\section{External Interface Requirements}
+\label{sec:external-interface-requirements}
+
+\subsection{User Interfaces}
+\label{subsec:user-interfaces}
+
+\par The user interface of S\&C is implemented as a web-based application, making it accessible through standard web
+browsers. No specialized software installation is required - users only need a web browser and an internet connection
+to access all platform features.
+
+\subsection{Hardware Interfaces}
+\label{subsec:hardware-interfaces}
+
+\par S\&C – being a web application – will be available on all devices, connected to the internet, capable of running a
+modern browser. Users can use S\&C on laptops, desktops, smartphones, tablets, ...
+
+\subsection{Software Interfaces}
+\label{subsec:software-interfaces}
+
+\par The system will primarily function as a standalone application. The only external dependency is the SSO portals of
+the various UN organizations that have requested enrollment in S\&C, which will provide access to UN personnel and STs.
+
+\subsection{Communication Interfaces}
+\label{subsec:communication-interfaces}
+
+\par The system primarily relies on HTTPS for secure communication. This includes communication between users and the
+frontend, as well as between the frontend and backend, and between the backend and the various SSO portals.
+
+\par The SMTP protocol is also used to send notifications to the user's email address when necessary.
+
