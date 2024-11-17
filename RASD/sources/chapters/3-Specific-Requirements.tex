@@ -1,0 +1,131 @@
+\chapter{Specific Requirements}
+\label{chap:specific-requirements}
+
+\par This chapter provides detailed specifications for the requirements previously mentioned that may require
+additional clarification for the development team's implementation.
+
+\section{External Interface Requirements}
+\label{sec:external-interface-requirements}
+
+\subsection{User Interfaces}
+\label{subsec:user-interfaces}
+
+\par The user interface of S\&C is implemented as a web-based application, making it accessible through standard web
+browsers. No specialized software installation is required - users only need a web browser and an internet connection
+to access all platform features.
+
+\subsection{Hardware Interfaces}
+\label{subsec:hardware-interfaces}
+
+\par S\&C – being a web application – will be available on all devices, connected to the internet, capable of running a
+modern browser. Users can use S\&C on laptops, desktops, smartphones, tablets, ...
+
+\subsection{Software Interfaces}
+\label{subsec:software-interfaces}
+
+\par The system will primarily function as a standalone application. The only external dependency is the SSO portals of
+the various UN organizations that have requested enrollment in S\&C, which will provide access to UN personnel and STs.
+
+\subsection{Communication Interfaces}
+\label{subsec:communication-interfaces}
+
+\par The system primarily relies on HTTPS for secure communication. This includes communication between users and the
+frontend, as well as between the frontend and backend, and between the backend and the various SSO portals.
+
+\par The SMTP protocol is also used to send notifications to the user's email address when necessary.
+
+\section{Functional Requirements}
+\label{sec:functional-requirements}
+
+\subsection{Requirements List}
+\label{subsec:requirements-list}
+
+% Define a new counter to add an unique ID to each requirement.
+\newcounter{requirementCounter}
+\setcounter{requirementCounter}{0}
+% Define a new command to increment the counter and return the ID (R01, R02, ...).
+\newcommand{\nextRequirementID}{
+    \stepcounter{requirementCounter}R\ifnum\value{requirementCounter}<10 0\fi\arabic{requirementCounter}
+}
+
+\begin{longtable}{|l|p{0.9\textwidth}|}
+    \hline
+    \textbf{ID}        & \textbf{Requirement}                                                                                             \\
+    \hline \hline
+    \nextRequirementID & S\&C integrates with UN single sign-on (SSO) systems for authentication.                                         \\
+    \hline
+    \nextRequirementID & S\&C enables authorized internal staff to register users as UN representatives.                                  \\
+    \hline
+    \nextRequirementID & S\&C enables authorized internal staff to create login credentials for CO representatives.                       \\
+    \hline
+    \nextRequirementID & S\&C supports new ST registration through their UN's SSO system.                                                 \\
+    \hline
+    \nextRequirementID & S\&C enables existing ST users to log in through their UN's SSO system.                                          \\
+    \hline
+    \nextRequirementID & S\&C enables registered CO representatives to log in using their assigned credentials.                           \\
+    \hline
+    \nextRequirementID & S\&C enables registered UN representatives to log in through their UN's SSO system.                              \\
+    \hline
+    \nextRequirementID & S\&C enables STs to upload and store their CVs on the platform.                                                  \\
+    \hline
+    \nextRequirementID & S\&C provides automated CV feedback and improvement suggestions to STs.                                          \\
+    \hline
+    \nextRequirementID & S\&C allows STs to browse all publicly available internship opportunities.                                       \\
+    \hline
+    \nextRequirementID & S\&C provides filtering capabilities (by keyword, company, etc.) for internship searches.                        \\
+    \hline
+    \nextRequirementID & S\&C implements a recommendation system to suggest relevant internships to STs.                                  \\
+    \hline
+    \nextRequirementID & S\&C sends email notifications to STs about recommended internships.                                             \\
+    \hline
+    \nextRequirementID & S\&C displays comprehensive internship information for each listing.                                             \\
+    \hline
+    \nextRequirementID & S\&C integrates CO profiles within internship listing details.                                                   \\
+    \hline
+    \nextRequirementID & S\&C enables STs to submit internship applications before posted deadlines.                                      \\
+    \hline
+    \nextRequirementID & S\&C notifies STs when COs request questionnaire completion.                                                     \\
+    \hline
+    \nextRequirementID & S\&C allows STs to complete CO-specific questionnaires when requested.                                           \\
+    \hline
+    \nextRequirementID & S\&C provides a system for STs to submit concerns or complaints during their internship.                         \\
+    \hline
+    \nextRequirementID & S\&C notifies STs of any resolution or changes resulting from their submitted complaints.                        \\
+    \hline
+    \nextRequirementID & S\&C facilitates post-internship feedback collection from STs.                                                   \\
+    \hline
+    \nextRequirementID & S\&C enables COs to create and publish internship listings.                                                      \\
+    \hline
+    \nextRequirementID & S\&C allows COs to specify application deadlines for internship positions.                                       \\
+    \hline
+    \nextRequirementID & S\&C provides automated suggestions to improve internship listing content.                                       \\
+    \hline
+    \nextRequirementID & S\&C displays internship applications with anonymized CV access for COs.                                         \\
+    \hline
+    \nextRequirementID & S\&C enables COs to create evaluation questionnaires for applicants.                                             \\
+    \hline
+    \nextRequirementID & S\&C allows COs to distribute questionnaires to selected candidates.                                             \\
+    \hline
+    \nextRequirementID & S\&C provides COs access to completed questionnaire responses.                                                   \\
+    \hline
+    \nextRequirementID & S\&C enables COs to update the status of their internship listings.                                              \\
+    \hline
+    \nextRequirementID & S\&C provides a system for COs to submit concerns or complaints during internships.                              \\
+    \hline
+    \nextRequirementID & S\&C notifies COs of any resolution or changes resulting from their submitted complaints.                        \\
+    \hline
+    \nextRequirementID & S\&C facilitates post-internship feedback collection from COs.                                                   \\
+    \hline
+    \nextRequirementID & S\&C enables UNs to monitor the status of all its STs internships.                                               \\
+    \hline
+    \nextRequirementID & S\&C provides UNs access to feedback of their STs internship from both COs and STs, including submitted details. \\
+    \hline
+    \nextRequirementID & S\&C notifies UNs when new feedback is submitted by any party.                                                   \\
+    \hline
+    \nextRequirementID & S\&C allows UNs to block COs that violate platform guidelines or trust.                                          \\
+    \hline
+    \nextRequirementID & S\&C enables UNs to modify the status of internship positions.                                                   \\
+    \hline
+    \caption{Requirements Table}
+    \label{tab:requirements-table}
+\end{longtable}
