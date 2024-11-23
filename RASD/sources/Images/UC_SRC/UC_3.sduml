@@ -1,0 +1,17 @@
+title Student Internship Advertisement Search
+
+Student->S&C Server: openInternshipsPage()
+S&C Server->Database: getInternshipsList(SQLFilters: SQLPreparedStatement)
+Database-->S&C Server: return internshipsList
+S&C Server-->Student: return internshipsPage
+note left of Student: By default the list is sorted by \nthe most recent internships and \nshows only the ones that are still \nopen for applications. And for which \nthe student is considered eligible by the \nrecommendation system. But the student \ncan apply filters to see past \ninternships or use other criteria.
+Student->S&C Server: applyFilters(options: Object)
+S&C Server->Database: getInternshipsList(SQLFilters: SQLPreparedStatement)
+Database-->S&C Server: return internshipsList
+S&C Server-->Student: return internshipsPage
+alt The Student need to see the details of an internship.
+Student->S&C Server: openInternshipPage(internshipId: String)
+S&C Server->Database: getInternshipDetails(internshipId: String)
+Database-->S&C Server: return internshipDetails
+S&C Server-->Student: return internshipPage
+end

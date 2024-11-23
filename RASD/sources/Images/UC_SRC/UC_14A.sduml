@@ -1,0 +1,35 @@
+title Company Decides Who to Hire for an Internship
+
+participant Company
+participant S&C Server
+participant Database
+
+Company->S&C Server: openInternshipPage()
+S&C Server->Database: getInternshipDetails(internshipId: String)
+Database-->S&C Server: return internshipDetails
+S&C Server-->Company: return internshipPage
+Company->S&C Server: openApplicantsPage(internshipId: String)
+S&C Server->Database: getApplicantsList(internshipId: String)
+Database-->S&C Server: return applicantsList
+S&C Server-->Company: return applicantsPage
+Company->S&C Server: openQuestionnaireResultsPage(questionnaireId: String)
+S&C Server->Database: getQuestionnaireResults(questionnaireId: String)
+Database-->S&C Server: return questionnaireResults
+S&C Server-->Company: return questionnaireResultsPage
+note left of Company: The company sees a list of applicants and their \nquestionnaire results. The list is sorted by the \nevaluation of the questionnaire. A filter is available \nto limit the list up to a certain number of applicants.
+loop For each notable applicant.
+    Company->S&C Server: openApplicantProfile(applicantId: String)
+    S&C Server->Database: getApplicantDetails(applicantId: String)
+    Database-->S&C Server: return applicantDetails
+    S&C Server->Database: getApplicantQuestionnaireAnswers(applicantId: String)
+    Database-->S&C Server: return applicantQuestionnaireAnswers
+    S&C Server-->Company: return applicantProfile
+end
+note left of Company: The company sees an overview of the applicant's \nprofile and the answers to the questionnaire. The \ncompany can now decide who to hire after an interview.
+alt The company has decided to hire the applicant after the interview.
+    Company->S&C Server: hireApplicant(applicantId: String)
+    S&C Server->Database: saveApplicantHiring(applicantId: String)
+    Database-->S&C Server: -
+    S&C Server-->Company: return applicantHired
+end
+note left of Company: The company has hired the applicant and the \ninternship is now closed. The status of the \ninternship is updated to "ongoing".

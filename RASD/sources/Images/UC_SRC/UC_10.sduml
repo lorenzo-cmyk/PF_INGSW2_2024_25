@@ -1,0 +1,39 @@
+title Company Looks for Extra Potential Candidates through the Recommendation System
+
+Company->S&C Server: openInternshipPage(internshipId: String)
+S&C Server->Database: getInternshipDetails(internshipId: String)
+Database-->S&C Server: return internshipDetails
+S&C Server-->Company: return internshipPage
+Company->S&C Server: openApplicantsPage(internshipId: String)
+S&C Server->Database: getApplicantsList(internshipId: String)
+Database-->S&C Server: returns applicantsList
+S&C Server-->Company: return applicantsPage
+alt The list of recommended applicants needs to be updated.
+Recommendation System->Database: getInternshipDetails(internshipId: String)
+Database-->Recommendation System: return internshipDetails
+Recommendation System->Recommendation System: computeStudentFiltes(internshipDetails: Object)
+Recommendation System->Database: getStudentsWithFilters(queryFilters: SQLPreparedStatement)
+Database-->Recommendation System: return matchingStudents
+Recommendation System->Database: setMatchingStudentsForInternship(internshipId: String, matchingStudents: Array<String>)
+Database-->Recommendation System: -
+end
+Company->S&C Server: openRecommendedApplicantsPage(internshipId: String)
+S&C Server->Database: getRecommendedApplicantsList(internshipId: String)
+Database-->S&C Server: return recommendedApplicantsList
+S&C Server-->Company: return recommendedApplicantsPage
+note left of Company: Yes, the RS maybe will propose \nthe internship to a student automatically \nbut now the company is actively showing \ninterest in a possible candidate. \nThe student can see that a company is interested \nin them after having read their CV not \njust the "random" recommendation \nof an algorithm!
+Company->S&C Server: openApplicantCVPage(studentId: String)
+S&C Server->Database: getStudentCV(studentId: String)
+Database-->S&C Server: return studentCV
+S&C Server-->Company: return applicantCVPage
+Company->S&C Server: showInterestInST(studentId: String)
+S&C Server->Email Service: generateEmailNotification(studentId: String, internshipId: String)
+Email Service->Student: deliverEmail(mail: Object)
+Email Service-->S&C Server: -
+S&C Server->Database: logCOInterestForST(studentId: String, internshipId: String)
+Database-->S&C Server: -
+S&C Server-->Company: return notificationSent
+alt The Student, if it wants, can apply to the internship manually.
+Student->S&C Server: __Student_Internship_Apply_Sequence (see other diagrams)
+S&C Server-->Student: -
+end

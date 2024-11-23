@@ -1,0 +1,11 @@
+title University Blocks a Malicious Company
+
+note left of University: The university has received a serious complaint \nfrom a student about a company. The university has \nto block the company from the system.
+University->S&C Server: openContractsPage()
+S&C Server->Database: getUNContract(universityId: String)
+Database-->S&C Server: return contract
+S&C Server-->University: return contractsPage
+University->S&C Server: blockCO(coId: String, universityId: String)
+S&C Server->Database: blacklistCO(coId: String)
+Database-->S&C Server: -
+S&C Server-->University: return COBlocked

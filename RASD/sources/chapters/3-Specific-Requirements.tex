@@ -162,7 +162,7 @@ frontend, as well as between the frontend and backend, and between the backend a
     \item The Emailing system sends the email to the UN.
     \item S\&C notifies the ST that the complaint was successfully submitted.
 
-    Executed When UN respond:
+          Executed When UN respond:
     \item UN acknowledges the complaint.
     \item S\&C change the status of the complaint to "Acknowledged".
 \end{enumerate}
@@ -196,7 +196,7 @@ frontend, as well as between the frontend and backend, and between the backend a
 
 \par \textbf{Exit Condition:} CO is redirected to the CO dashboard.
 
-\par \textbf{Exceptions:}  
+\par \textbf{Exceptions:}
 \begin{itemize}
     \item The credentials are wrong.
     \item The CO is was blocked by the S\&C staff after a violation of the platform guidelines.
@@ -233,7 +233,7 @@ CO has already loaded the questionnaire for the STs.
 
 \par \textbf{Exceptions:} S\&C generated an internal error.
 
-\par 
+\par
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Images/UC_12.pdf}
@@ -258,7 +258,7 @@ CO has already loaded the questionnaire for the STs.
     \item The Emailing system sends the email to the UN.
     \item S\&C notifies the CO that the complaint was successfully submitted.
 
-    Executed When UN respond:
+          Executed When UN respond:
     \item UN acknowledges the complaint.
     \item S\&C change the status of the complaint to "Acknowledged".
 \end{enumerate}
@@ -289,7 +289,7 @@ CO has already loaded the questionnaire for the STs.
     \item CO fills each question and submits it.
     \item S\&C stores the questionnaire in the database.
     \item S\&C notifies the UN that the questionnaire was successfully submitted.
-    \item S\&C feeds the answers of the questionnaire to the suggestion system to improve it's answare on how to improve a CV or an internship advertisement.
+    \item S\&C feeds the answers of the questionnaire to the suggestion system to improve it's response on how to improve a CV or an internship advertisement.
 \end{enumerate}
 
 \par \textbf{Exit Condition:} CO receive the confirmation of the questionnaire being saved correctly
@@ -334,4 +334,315 @@ CO has already loaded the questionnaire for the STs.
     \includegraphics[width=1.0\textwidth]{Images/UC_16.pdf}
     \caption{University reviews and handles complaint use case diagram}
     \label{fig:use-case-diagram-16}
+\end{figure}
+
+% 3
+
+\subsubsection{UCXX: Student Internship Advertisement Search}
+\label{subsubsec:student-internship-advertisement-search}
+
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & ST                                                        \\
+        \hline
+        \textbf{Entry Conditions:} & ST is correctly logged in.                                \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+                                         \item ST visits the "Internships" page.
+                                         \item S\&C fetch the internships from the database.
+                                         \item S\&C shows the internships to the ST.
+                                         \item ST filters the internships by keyword, company, etc.
+                                         \item S\&C shows the filtered internships to the ST.
+                                         \item ST selects an internship to view the details.
+                                         \item S\&C fetch the internship details from the database.
+                                         \item S\&C shows the internship details to the ST.
+                                     \end{enumerate} \\
+        \hline
+        \textbf{Exit Conditions:}  & ST has successfully viewed the internships.               \\
+        \hline
+        \textbf{Exceptions:}       & S\&C generated an internal error.                         \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_3.pdf}
+    \caption{Student Internship Advertisement Search - Use Case Diagram}
+    \label{fig:use-case-diagram-3}
+\end{figure}
+
+% 4
+
+\subsubsection{UCXX: Student Applies to an Internship}
+\label{subsubsec:student-applies-to-an-internship}
+
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & ST, CO                                                               \\
+        \hline
+        \textbf{Entry Conditions:} & ST is correctly logged in.                                           \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+                                         \item ST visits the "Internships" page.
+                                         \item S\&C fetch the internships from the database.
+                                         \item S\&C shows the internships to the ST.
+                                         \item ST selects an internship to view the details.
+                                         \item S\&C fetch the internship details from the database.
+                                         \item S\&C shows the internship details to the ST.
+                                         \item ST clicks on the "Apply" button.
+                                         \item S\&C stores the application in the database.
+                                         \item S\&C notifies the CO that the ST has applied to the internship.
+                                     \end{enumerate} \\
+        \hline
+        \textbf{Exit Conditions:}  & ST has successfully applied to the internship.                       \\
+        \hline
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                    \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_4.pdf}
+    \caption{Student Applies to an Internship - Use Case Diagram}
+    \label{fig:use-case-diagram-4}
+\end{figure}
+
+% 5
+
+\subsubsection{UCXX: Student Answers a Company Questionnaire}
+\label{subsubsec:student-answers-a-company-questionnaire}
+
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & ST, CO                                                                             \\
+        \hline
+        \textbf{Entry Conditions:} & CO has requested ST to fill a questionnaire.                                       \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{itemize}
+                                         \item (opt. 1) ST uses the link sent by S\&C via email to access the questionnaire.
+                                               \begin{enumerate}
+                      \item S\&C verify if the link is valid.
+                            \begin{itemize}
+                                \item Link valid and not expired: the flow continues.
+                                \item Link invalid or expired: ST is redirected to the questionnaire page.
+                            \end{itemize}
+                  \end{enumerate}
+                                         \item (opt. 2) ST finds the questionnaire directly on the S\&C platform.
+                                               \begin{enumerate}
+                      \item ST visits the "My Internships" page.
+                      \item S\&C fetch the internships from the database.
+                      \item S\&C shows the internships to the ST.
+                      \item ST selects an internship to view the details.
+                      \item S\&C fetch the internship details from the database.
+                      \item S\&C shows the internship details to the ST.
+                      \item ST clicks on the "Compile the Questionnaire" button.
+                      \item ST is redirected to the questionnaire page.
+                  \end{enumerate}
+                                         \item S\&C fetch the questionnaire from the database.
+                                         \item S\&C shows the questionnaire to the ST.
+                                         \item ST starts to fill the questionnaire. For each question:
+                                               \begin{enumerate}
+                      \item ST gives an answer.
+                      \item S\&C stores the answer in the database.
+                  \end{enumerate}
+                                         \item ST ends its job and submits the questionnaire.
+                                         \item S\&C stores that the questionnaire was submitted.
+                                         \item S\&C notifies the CO that the questionnaire was successfully submitted.
+                                         \item S\&C sends a notification email to the CO about the questionnaire submission.
+                                         \item S\&C evaluates the answers and compute the final score.
+                                         \item S\&C the final score is stored to be consulted by the CO later.
+                                     \end{itemize} \\
+        \hline
+        \textbf{Exit Conditions:}  & ST has successfully filled the questionnaire.                                      \\
+        \hline
+        \textbf{Exceptions:}       & S\&C generated an internal error. The link is invalid or expired.                  \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_5.pdf}
+    \caption{Student Answers a Company Questionnaire - Use Case Diagram}
+    \label{fig:use-case-diagram-5}
+\end{figure}
+
+% 10
+
+\subsubsection{UCXX: Company Looks for Extra Potential Candidates through the Recommendation System}
+\label{subsubsec:company-looks-for-extra-potential-candidates-through-the-recommendation-system}
+
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & CO, ST                                                                                                                \\
+        \hline
+        \textbf{Entry Conditions:} & CO is correctly logged in. CO has published an internship listing.                                                    \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+                                         \item CO visits the "My Internships" page.
+                                         \item S\&C fetch the internships from the database.
+                                         \item S\&C shows the internships to the CO.
+                                         \item CO selects an internship to view the details.
+                                         \item S\&C fetch the internship details from the database.
+                                         \item S\&C shows the internship details to the CO.
+                                         \item CO clicks on the "Applicants" button.
+                                         \item S\&C fetch the applicants from the database.
+                                         \item S\&C shows the applicants to the CO.
+                                         \item CO clicks on "Recommended Candidates" button.
+                                         \item (opt. 1) S\&C fetch the recommended candidates from the database.
+                                         \item (opt. 2) The list of recommended candidates must be updated.
+                                               \begin{enumerate}
+                      \item The recommendation system fetches information about the internship.
+                      \item The recommendation system computes a set of filters used to find the best candidates.
+                      \item The recommendation system fetches the candidates from the database using the filters.
+                      \item The recommendation system stores the list of "preferred" candidates in the database.
+                  \end{enumerate}
+                                         \item S\&C shows the recommended candidates to the CO.
+                                         \item CO selects a candidate to view the details of.
+                                         \item S\&C fetch the candidate details from the database.
+                                         \item S\&C shows the candidate details to the CO.
+                                         \item CO, if interested, can "suggests" the internship to the ST by clicking on the "Suggests this Internship" button.
+                                         \item S\&C sends the ST a notification email about the internship suggestion.
+                                         \item S\&C stores the CO interest for this particular ST.
+                                     \end{enumerate} \\
+        \hline
+        \textbf{Exit Conditions:}  & CO has increased the number of potential candidates for the internship.                                               \\
+        \hline
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                     \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_10.pdf}
+    \caption{Company Looks for Extra Potential Candidates through the Recommendation System - Use Case Diagram}
+    \label{fig:use-case-diagram-10}
+\end{figure}
+
+% 14A
+
+\subsubsection{UCXX: Company Decides Who to Hire for an Internship}
+\label{subsubsec:company-decides-who-to-hire-for-an-internship}
+
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & CO, ST                                                                                  \\
+        \hline
+        \textbf{Entry Conditions:} & CO is correctly logged in. CO has published an internship listing.                      \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+                                         \item CO selects an internship to view the details of.
+                                         \item S\&C fetch the internship details from the database.
+                                         \item S\&C shows the internship details to the CO.
+                                         \item CO clicks on the "Applicants" button.
+                                         \item S\&C fetch the applicants from the database.
+                                         \item S\&C shows the applicants to the CO.
+                                         \item CO selects "Show Questionnaires Results" button.
+                                         \item S\&C fetch the questionnaires results from the database.
+                                         \item S\&C shows the questionnaires results to the CO.
+                                         \item CO evaluates the candidates profiles:
+                                               \begin{enumerate}
+                      \item CO clicks on the "Details" button next to a candidate.
+                      \item S\&C fetch the candidate details from the database.
+                      \item S\&C fetch the candidate questionnaire answers from the database.
+                      \item S\&C shows the candidate details and questionnaire answers to the CO.
+                  \end{enumerate}
+                                         \item CO decides who to interview and contacts them. At the end, CO decides who to hire.
+                                         \item CO clicks on the "Hire" button next to the candidate.
+                                         \item S\&C stores the hiring decision in the database.
+                                         \item S\&C changes the status of the internship to "On-Going".
+                                     \end{enumerate} \\
+        \hline
+        \textbf{Exit Conditions:}  & CO has successfully hired a candidate for the internship.                               \\
+        \hline
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                                       \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_14A.pdf}
+    \caption{Company Decides Who to Hire for an Internship - Use Case Diagram}
+    \label{fig:use-case-diagram-14A}
+\end{figure}
+
+% 15
+
+\subsubsection{UCXX: University Views the Status of the Internships}
+\label{subsubsec:university-views-the-status-of-the-internships}
+
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & UN                                                          \\
+        \hline
+        \textbf{Entry Conditions:} & UN is correctly logged in.                                  \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+                                         \item UN visits the "My Internships" page.
+                                         \item S\&C fetches the internships from the database.
+                                         \item S\&C shows the internships to the UN.
+                                         \item UN filters the internships by keyword, company, etc.
+                                         \item S\&C shows the filtered internships to the UN.
+                                         \item UN selects an internship to view the details.
+                                         \item S\&C fetches the internship details from the database.
+                                         \item S\&C shows the internship details to the UN.
+                                     \end{enumerate} \\
+        \hline
+        \textbf{Exit Conditions:}  & UN has successfully viewed the internships of its STs.      \\
+        \hline
+        \textbf{Exceptions:}       & S\&C generated an internal error.                           \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_15.pdf}
+    \caption{University Views the Status of the Internships - Use Case Diagram}
+    \label{fig:use-case-diagram-15}
+\end{figure}
+
+% 17
+
+\subsubsection{UCXX: University Blocks a Malicious Company}
+\label{subsubsec:university-blocks-a-malicious-company}
+
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & UN                                                                                                            \\
+        \hline
+        \textbf{Entry Conditions:} & UN is correctly logged in and it has received a serious complaint that requires the blocks of a malicious CO. \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+                                         \item UN visits the "My Contract" page.
+                                         \item S\&C fetches the agreement between UN and corporate.
+                                         \item S\&C shows the legal documents currently effective between UN and S\&C corp.
+                                         \item UN clicks on "Block a Company" and enters the CO id (ex. P.IVA) of the malicious company.
+                                         \item S\&C updates the UN's blacklist adding the specified CO.
+                                         \item S\&C shows the user a confirmation.
+                                     \end{enumerate}                \\
+        \hline
+        \textbf{Exit Conditions:}  & UN has now successfully "burnt all the bridges" between its STs and the affected CO.                          \\
+        \hline
+        \textbf{Exceptions:}       & S\&C generated an internal error. Invalid CO's identifier.                                                    \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_17.pdf}
+    \caption{University Blocks a Malicious Company - Use Case Diagram}
+    \label{fig:use-case-diagram-17}
 \end{figure}

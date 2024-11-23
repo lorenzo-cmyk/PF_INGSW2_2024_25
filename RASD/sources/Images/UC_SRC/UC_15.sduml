@@ -1,0 +1,17 @@
+title University Views the Status of the Internships
+
+University->S&C Server: openInternshipsPage()
+S&C Server->Database: getInternshipsList(SQLFilters: SQLPreparedStatement)
+Database-->S&C Server: return internshipsList
+S&C Server-->University: return internshipsPage
+note left of University: By default the list is sorted by \nthe most recent internships \nbut the university can apply filters \nto see past internships or \nuse other criteria.
+University->S&C Server: applyFilters(options: Object)
+S&C Server->Database: getInternshipsList(SQLFilters: SQLPreparedStatement)
+Database-->S&C Server: return internshipsList
+S&C Server-->University: return internshipsPage
+alt The university need to see the details of an internship.
+University->S&C Server: openInternshipPage(internshipId: String)
+S&C Server->Database: getInternshipDetails(internshipId: String)
+Database-->S&C Server: return internshipDetails
+S&C Server-->University: return internshipPage
+end
