@@ -1,0 +1,23 @@
+title Student Uploading CV with Suggestions in S&C
+
+participant Student
+participant "S&C App" as App
+participant Database
+participant "Suggestion system" as Backend
+
+Student -> App: uploadCV(cvFile: File, studentId: String)
+App -> Database: saveCV(cvFile: File, studentId: String)
+Database -> App: confirmSave(studentId: String)
+note over Database, Backend: Triggered by Insert/Update on the Database
+Database -> Backend: AnalyzeCV(CVs : list<File>)
+Backend->Database: returnSuggestions(suggestions :Dictionary<File,Suggestion>)
+
+Student->App:getSuggestions(studentId:String)
+App->Database:fetchSuggestions(studentId:String)
+alt suggestions are ready
+  Database->App:  returnSuggestions(suggestion Suggestions)
+  App->Student: sendSuggestions(suggestion : Suggestions)
+  else suggestions aren't ready
+  Database->App: suggestionNotReadyException()
+  App->Student :sendErrorMessage("suggestion not available right now")
+end

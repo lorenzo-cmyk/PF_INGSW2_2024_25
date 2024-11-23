@@ -1,0 +1,27 @@
+title Company Select Applicant Student For His Internship
+
+participant "Company" as Company
+participant "S&C Server" as Server
+participant "Database" as Database
+participant "Email Service" as EmailService
+participant "Student" as Student
+
+Company->Server: openApplicantsPage(internshipId: String)
+Server->Database: fetchApplicants(internshipId: String)
+Database->Server: returnApplicantsList()
+Server->Company: sendApplicantsPage(applicantsList List<String>)
+
+Company->Server: selectStudents(studentIds: List<String>)
+Server->Database: updateSelectedStudents(studentIds: List<String>, internshipId: String)
+Database->Server: confirmSelections()
+
+Company->Server: confirmQuestionnaireForStudents()
+Server->Database: fetchQuestionnaireDetails(internshipId: String)
+Database->Server: returnQuestionnaireDetails()
+
+loop For each selected student
+    Server->EmailService: generateEmail(studentId: String, "Questionnaire Notification")
+    EmailService->Student: sendEmail("A questionnaire has been assigned for your internship")
+end
+
+Server->Company: confirmNotificationSent()

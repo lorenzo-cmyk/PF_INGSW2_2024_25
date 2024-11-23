@@ -1,0 +1,24 @@
+title Company Login
+
+participant "Company" as Company
+participant "S&C Server" as Server
+participant "Database" as Database
+
+Company->Server: openLoginPage()
+Server->Company: sendLoginPage()
+
+Company->Server: submitCredentials(username: String, password: String)
+Server->Database: validateCredentials(username: String, passwordHash: String)
+Database->Server: returnValidationResult(isValid: boolean, errorType: String)
+
+alt isValid == true
+    Server->Company: loginSuccess(sessionToken)
+else isValid == false
+    alt errorType == "InvalidCredentials"
+        Server->Company: loginFailure("Invalid username or password")
+    else errorType == "AccountLocked"
+        Server->Company: loginFailure("Account is locked. Contact support.")
+    else errorType == "SystemError"
+        Server->Company: loginFailure("An error occurred. Please try again later.")
+    end
+end

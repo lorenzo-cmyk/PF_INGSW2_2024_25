@@ -1,0 +1,20 @@
+title Student Answers Questionnaire at Internship Completion
+
+participant Student
+participant "S&C Server" as Server
+participant Database
+participant "Suggestion System" as SuggestionSystem
+
+Student -> Server: openQuestionnairePage(internshipId: String)
+Server -> Database: fetchQuestionnaire(internshipId: String)
+Database -> Server: returnQuestionnaire(questions: List<Question>)
+Server -> Student: sendQuestionnairePage(questions: List<Question>)
+
+loop [For each question]
+    Student -> Server: submitAnswer(questionId: String, answer)
+    Server -> Database: saveAnswer(internshipId: String, questionId: String, answer: String)
+end
+
+Student -> Server: notifyCompletion()
+Server -> SuggestionSystem: feedAnswers(internshipId: String, answers: List<String>)
+SuggestionSystem -> Server: confirmProcessing()

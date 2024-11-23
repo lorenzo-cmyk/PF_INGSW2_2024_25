@@ -1,0 +1,27 @@
+title University Reviews and Handles Complaint
+
+participant "University" as University
+participant "S&C Server" as Server
+participant "Database" as Database
+
+University->Server: openComplaintsPage()
+Server->Database: fetchComplaintsList(universityId: String)
+Database->Server: returnComplaintsList()
+Server->University: sendComplaintsPage(complaintsList: List<Complaint>)
+
+University->Server: selectComplaint(complaintId: String)
+Server->Database: fetchComplaintDetails(complaintId: String)
+Database->Server: returnComplaintDetails()
+Server->University: sendComplaintDetails(complaintDetails: ComplaintDetails)
+
+University->Server: reviewComplaint(response: UnResponse, requestSuspension: boolean)
+Server->Database: updateComplaintStatus(complaintId: String, response: UnResponse)
+
+alt requestSuspension == true
+    Server->Database: suspendInternship(complaintId: String)
+    Database->Server: confirmSuspension()
+else requestSuspension == false
+    note over Server: No suspension requested
+end
+
+Server->University: notifyReviewCompletion()

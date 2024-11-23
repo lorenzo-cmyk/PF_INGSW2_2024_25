@@ -1,0 +1,32 @@
+title Company Create Complaint
+
+participant "Company" as Student
+participant "S&C Server" as Server
+participant "Database" as Database
+participant "Email Service" as EmailService
+participant "University" as University
+
+Student->Server: requestComplaintPage()
+
+Server->Student: sendComplaintPage()
+
+Student->Server: fileComplaint(reason, isSuspensionRequired)
+Server->Database: saveComplaint(reason, isSuspensionRequired)
+Database->Server: confirmSave(complaintId)
+
+alt isSuspensionRequired == true
+    Server->University: notifySuspensionRequired(complaintId)
+end
+
+Server->EmailService: generateEmailNotification(complaintId)
+EmailService->University: sendEmail(complaintDetails)
+
+opt University acknowledgment
+    University->EmailService: acknowledgeComplaint(complaintId)
+    EmailService->Server: logAcknowledgment(complaintId)
+    Server->Database: updateComplaintStatus(complaintId, "Acknowledged")
+end
+
+note over Server: Complaint tracking enabled
+
+Server->Student: complaintRequestSubmitted()
