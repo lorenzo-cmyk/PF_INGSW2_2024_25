@@ -1,0 +1,24 @@
+participant "Student" as Student
+participant "S&C" as SC
+participant "Uni" as Uni
+participant "Database" as DB
+
+Student -> SC: openLoginPage()
+SC -> Student: sendLoginPage()
+Student -> SC: submitCredentials(username: String, password: String)
+SC -> Uni: forwardCredentials(username: String, password: String)
+Uni -> DB: validateCredentials(username: String, passwordHash: String)
+DB -> Uni: returnValidationResult(isValid: Boolean, errorType: String)
+Uni -> SC: forwardValidationResult(isValid: Boolean, errorType: String)
+
+alt isValid = True
+    SC -> Student: loginSuccess(sessionToken)
+else isValid = False
+    alt errorType = InvalidCredentials
+        SC -> Student: loginFailure("invalid username or password")
+    else errorType = AccountLocked
+        SC -> Student: loginFailure("your account is blocked. Contact support")
+    else errorType = SystemError
+        SC -> Student: loginFailure("An error occurred, try again later")
+    end
+end
