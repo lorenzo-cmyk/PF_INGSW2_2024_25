@@ -133,208 +133,13 @@ frontend, as well as between the frontend and backend, and between the backend a
 \subsection{Use Case Diagrams}
 \label{subsec:use-case-diagrams}
 
-% Define a new counter to add an unique ID to each requirement.
-\newcounter{useCaseCounter}
-\setcounter{useCaseCounter}{0}
-% Define a new command to increment the counter and return the ID (R01, R02, ...).
-\newcommand{\nextUseCaseID}{
-    \stepcounter{useCaseCounter}UC\ifnum\value{useCaseCounter}<10 0\fi\arabic{useCaseCounter}
-}
+% 1
+\subsubsection{UCXX: }
+\label{subsubsec:UC_01_TO_MODIFY}
 
-
-% Don't now if it's better to how to format the "title" for the use case diagrams.
-% Format to fix, but it's a start.
-
-\nextUseCaseID: Student Create A Complaints
-
-\par \textbf{Actors:} Student
-
-\par \textbf{Entry Condition:} The ST is correctly logged in. The ST had decided to create a complaint about the internship he's doing.
-
-\par \textbf{Flow of Events:}
-
-\begin{enumerate}
-    \item ST clicks on the "Create Complaint" button.
-    \item S\&C send to the ST a form to fill with the complaint details.
-    \item ST fills the form and submits it.
-    \item S\&C stores the complaint in the database.
-    \item S\&C request to the Emailing system to send an email to the UN about a new complaint about an internship of one of it's ST.
-    \item The Emailing system sends the email to the UN.
-    \item S\&C notifies the ST that the complaint was successfully submitted.
-
-          Executed When UN respond:
-    \item UN acknowledges the complaint.
-    \item S\&C change the status of the complaint to "Acknowledged".
-\end{enumerate}
-
-\par \textbf{Exit Condition:} ST receive the confirmation of the complaint being saved correctly
-
-\par \textbf{Exceptions:}  S\&C generated an internal error.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{Images/UC_6.pdf}
-    \caption{Student creates a complaint use case diagram}
-    \label{fig:use-case-diagram-6}
-\end{figure}
-
-
-\nextUseCaseID: Company Login
-
-\par \textbf{Actors:} Company
-\par \textbf{Entry Condition:} CO has received the credentials by S\&C staff after the payment for the usage of the Website
-
-\par \textbf{Flow of Events:}
-
-\begin{enumerate}
-    \item CO search the URL of S\&C login page.
-    \item S\&C send to CO the login web page.
-    \item CO inserts the username and password received.
-    \item S\&C validates the credentials.
-    \item S\&C sends the CO to the CO dashboard.
-\end{enumerate}
-
-\par \textbf{Exit Condition:} CO is redirected to the CO dashboard.
-
-\par \textbf{Exceptions:}
-\begin{itemize}
-    \item The credentials are wrong.
-    \item The CO is was blocked by the S\&C staff after a violation of the platform guidelines.
-    \item S\&C generated an internal error.
-\end{itemize}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Images/UC_8.pdf}
-    \caption{Company login use case diagram}
-    \label{fig:use-case-diagram-8}
-\end{figure}
-
-\nextUseCaseID: Company Select Applicant Student For His Internship
-
-\par \textbf{Actors:} Company
-
-\par \textbf{Entry Condition:} CO is correctly logged in, has already created an internship listing, and has received applications from STs.
-CO has already loaded the questionnaire for the STs.
-
-\par \textbf{Flow of Events:}
-
-\begin{enumerate}
-    \item CO request the page that shows the applications for his internship.
-    \item S\&C fetches the applications from the database.
-    \item S\&C shows the applications to the CO.
-    \item CO selects the STs he wants to send the questionnaire.
-    \item S\&C store the selection of STs linked to the internship.
-    \item CO confirm the questionnaire to be sent to the selected STs.
-    \item S\&C notifies the selected STs that they have a questionnaire to fill, inherent to the CO's internship, via email.
-\end{enumerate}
-
-\par \textbf{Exit Condition:} CO receives a confirmation that S\&C has sent the questionnaire to the selected STs.
-
-\par \textbf{Exceptions:} S\&C generated an internal error.
-
-\par
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Images/UC_12.pdf}
-    \caption{Company select applicant student for his internship use case diagram}
-    \label{fig:use-case-diagram-12}
-\end{figure}
-
-\nextUseCaseID: Company Create A Complaints
-
-\par \textbf{Actors:} Company
-
-\par \textbf{Entry Condition:} The CO is correctly logged in. The CO had decided to create a complaint about the internship he's holding.
-
-\par \textbf{Flow of Events:}
-
-\begin{enumerate}
-    \item CO clicks on the "Create Complaint" button.
-    \item S\&C send to the CO a form to fill with the complaint details.
-    \item CO fills the form and submits it.
-    \item S\&C stores the complaint in the database.
-    \item S\&C request to the Emailing system to send an email to the UN about a new complaint about an internship of one of it's ST.
-    \item The Emailing system sends the email to the UN.
-    \item S\&C notifies the CO that the complaint was successfully submitted.
-
-          Executed When UN respond:
-    \item UN acknowledges the complaint.
-    \item S\&C change the status of the complaint to "Acknowledged".
-\end{enumerate}
-
-\par \textbf{Exit Condition:} CO receive the confirmation of the complaint being saved correctly
-
-\par \textbf{Exceptions:}  S\&C generated an internal error.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{Images/UC_13.pdf}
-    \caption{Company creates a complaint use case diagram}
-    \label{fig:use-case-diagram-13}
-\end{figure}
-
-\nextUseCaseID: Company Answers Questionnaire At Internship completion
-
-\par \textbf{Actors:} Company
-
-\par \textbf{Entry Condition:} The CO is correctly logged in. The internship has ended. The CO has received a notification to fill the questionnaire.
-
-\par \textbf{Flow of Events:}
-
-\begin{enumerate}
-    \item CO clicks on the "Fill Questionnaire" button.
-    \item S\&C fetch the questionnaire from the database.
-    \item S\&C shows the questionnaire to the CO.
-    \item CO fills each question and submits it.
-    \item S\&C stores the questionnaire in the database.
-    \item S\&C notifies the UN that the questionnaire was successfully submitted.
-    \item S\&C feeds the answers of the questionnaire to the suggestion system to improve it's response on how to improve a CV or an internship advertisement.
-\end{enumerate}
-
-\par \textbf{Exit Condition:} CO receive the confirmation of the questionnaire being saved correctly
-
-\par \textbf{Exceptions:}  S\&C generated an internal error.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{Images/UC_14.pdf}
-    \caption{Company answers questionnaire at internship completion use case diagram}
-    \label{fig:use-case-diagram-14}
-\end{figure}
-
-\nextUseCaseID: University Reviews and Handles Complaint
-
-\par \textbf{Actors:} University
-
-\par \textbf{Entry Condition:} The UN is correctly logged in. The UN has a list of complaints to review.
-
-\par \textbf{Flow of Events:}
-
-\begin{enumerate}
-    \item UN clicks on the "Complaints" button.
-    \item S\&C fetch the complaints from the database.
-    \item S\&C shows a preview of the complaints to the UN.
-    \item UN selects a complaint to review.
-    \item S\&C fetch the complaint details from the database.
-    \item S\&C shows the complaint details to the UN.
-    \item UN review the complaint and writes a response and decide if the internship need to be suspended.
-    \item S\&C update the status of the complaint with the UN response.
-    \item S\&C suspend the internship if the UN decided to do so.
-    \item S\&C notifies the UN that the complaint was successfully reviewed.
-\end{enumerate}
-
-\par \textbf{Exit Condition:} UN receive the confirmation of the complaint being reviewed correctly
-
-\par \textbf{Exceptions:}  S\&C generated an internal error.
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{Images/UC_16.pdf}
-    \caption{University reviews and handles complaint use case diagram}
-    \label{fig:use-case-diagram-16}
-\end{figure}
+% 2
+\subsubsection{UCXX: }
+\label{subsubsec:UC_02_TO_MODIFY}
 
 % 3
 
@@ -472,6 +277,92 @@ CO has already loaded the questionnaire for the STs.
     \label{fig:use-case-diagram-5}
 \end{figure}
 
+% 6	
+
+\subsubsection{UCXX: Student Create A Complaints}
+\label{subsubsec:student-create-a-complaints}
+
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & ST, (opt) UN                                                                                                                \\
+        \hline
+        \textbf{Entry Conditions:} & The ST is correctly logged in. The ST had decided to create a complaint about the internship he's doing.                                                   \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+                \item ST clicks on the "Create Complaint" button.
+                \item S\&C send to the ST a form to fill with the complaint details.
+                \item ST fills the form and submits it.
+                \item S\&C stores the complaint in the database.
+                \item S\&C request to the Emailing system to send an email to the UN about a new complaint about an internship of one of it's ST.
+                \item The Emailing system sends the email to the UN.
+                \item S\&C notifies the ST that the complaint was successfully submitted.
+                \item (opt) UN acknowledges the complaint.
+                \item (opt) S\&C change the status of the complaint to "Acknowledged".
+            \end{enumerate} \\
+        \hline
+        \textbf{Exit Conditions:}  &  ST receive the confirmation of the complaint being saved correctly.                                               \\
+        \hline
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                     \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_6.pdf}
+    \caption{Student creates a complaint use case diagram}
+    \label{fig:use-case-diagram-6}
+\end{figure}
+
+
+% 7
+\subsubsection{UCXX: }
+\label{subsubsec:UC_07_TO_MODIFY}
+
+
+% 8 
+\subsubsection{UCXX: Company Login}
+\label{subsubsec:company-login}
+
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & CO                                                                                                                   \\
+        \hline
+        \textbf{Entry Conditions:} & CO has received the credentials by S\&C staff after the payment for the usage of the Website                          \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+                \item CO search the URL of S\&C login page.
+                \item S\&C send to CO the login web page.
+                \item CO inserts the username and password received.
+                \item S\&C validates the credentials.
+                \item S\&C sends the CO to the CO dashboard.
+                                     \end{enumerate} \\
+        \hline
+        \textbf{Exit Conditions:}  & CO is redirected to the CO dashboard.                                               \\
+        \hline
+        \textbf{Exceptions:}       & 
+            \begin{itemize}
+                \item The credentials are wrong.
+                \item The CO is was blocked by the S\&C staff after a violation of the platform guidelines.
+                \item S\&C generated an internal error.
+            \end{itemize}                                                                                   \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/UC_8.pdf}
+    \caption{Company login use case diagram}
+    \label{fig:use-case-diagram-8}
+\end{figure}
+
+% 9
+\subsubsection{UCXX: }
+\label{subsubsec:UC_09_TO_MODIFY}
+
 % 10
 
 \subsubsection{UCXX: Company Looks for Extra Potential Candidates through the Recommendation System}
@@ -524,6 +415,120 @@ CO has already loaded the questionnaire for the STs.
     \includegraphics[width=1.0\textwidth]{Images/UC_10.pdf}
     \caption{Company Looks for Extra Potential Candidates through the Recommendation System - Use Case Diagram}
     \label{fig:use-case-diagram-10}
+\end{figure}
+
+% 11
+\subsubsection{UCXX: }
+\label{subsubsec:UC_11_TO_MODIFY}
+
+% 12
+\subsubsection{UCXX: Company Select Applicant Student For His Internship}
+\label{subsubsec:company-select-applicant-student-for-his-internship}
+
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & CO                                                                                                                   \\
+        \hline
+        \textbf{Entry Conditions:} & CO is correctly logged in, has already created an internship listing, and has received applications from STs.
+        CO has already loaded the questionnaire for the STs.CO is correctly logged in. CO has published an internship listing.                             \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+            \item CO request the page that shows the applications for his internship.
+            \item S\&C fetches the applications from the database.
+            \item S\&C shows the applications to the CO.
+            \item CO selects the STs he wants to send the questionnaire.
+            \item S\&C store the selection of STs linked to the internship.
+            \item CO confirm the questionnaire to be sent to the selected STs.
+            \item S\&C notifies the selected STs that they have a questionnaire to fill, inherent to the CO's internship, via email.                             
+                                     \end{enumerate} \\
+        \hline
+        \textbf{Exit Conditions:}  & CO receives a confirmation that S\&C has sent the questionnaire to the selected STs.                                 \\
+        \hline
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                     \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/UC_12.pdf}
+    \caption{Company select applicant student for his internship use case diagram}
+    \label{fig:use-case-diagram-12}
+\end{figure}
+
+% 13
+\subsubsection{UCXX: Company Create A Complaints}
+\label{subsubsec:company-create-a-complaints}
+
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & CO, (opt) UN                                                                                                      \\
+        \hline
+        \textbf{Entry Conditions:} &  CO is correctly logged in. CO had decided to create a complaint about the internship it's holding.                \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+            \item CO clicks on the "Create Complaint" button.
+            \item S\&C send to the CO a form to fill with the complaint details.
+            \item CO fills the form and submits it.
+            \item S\&C stores the complaint in the database.
+            \item S\&C request to the Emailing system to send an email to the UN about a new complaint about an internship of one of it's ST.
+            \item The Emailing system sends the email to the UN.
+            \item S\&C notifies the CO that the complaint was successfully submitted.
+            \item (opt) UN acknowledges the complaint.
+            \item (opt) S\&C change the status of the complaint to "Acknowledged".                             
+                                     \end{enumerate} \\
+        \hline
+        \textbf{Exit Conditions:}  & CO has increased the number of potential candidates for the internship.                                               \\
+        \hline
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                     \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_13.pdf}
+    \caption{Company creates a complaint use case diagram}
+    \label{fig:use-case-diagram-13}
+\end{figure}
+
+
+% 14
+\subsubsection{UCXX: Company Answers Questionnaire At Internship completion}
+\label{subsubsec:company-answers-questionnaire-at-internship-completion}
+
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & CO                                                                                                                \\
+        \hline
+        \textbf{Entry Conditions:} & CO is correctly logged in. The internship has ended. CO has received a notification to fill the questionnaire.    \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+            \item CO clicks on the "Fill Questionnaire" button.
+            \item S\&C fetch the questionnaire from the database.
+            \item S\&C shows the questionnaire to the CO.
+            \item CO fills each question and submits it.
+            \item S\&C stores the questionnaire in the database.
+            \item S\&C notifies the UN that the questionnaire was successfully submitted.
+            \item S\&C feeds the answers of the questionnaire to the suggestion system to improve it's response on how to improve a CV or an internship advertisement.                                 
+                                     \end{enumerate} \\
+        \hline
+        \textbf{Exit Conditions:}  & CO receive the confirmation of the questionnaire being saved correctly                                               \\
+        \hline
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                     \\
+        \hline
+    \end{longtable}
+\end{center}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_14.pdf}
+    \caption{Company answers questionnaire at internship completion use case diagram}
+    \label{fig:use-case-diagram-14}
 \end{figure}
 
 % 14A
@@ -610,6 +615,44 @@ CO has already loaded the questionnaire for the STs.
     \includegraphics[width=1.0\textwidth]{Images/UC_15.pdf}
     \caption{University Views the Status of the Internships - Use Case Diagram}
     \label{fig:use-case-diagram-15}
+\end{figure}
+
+% 16
+\subsubsection{UCXX: University Reviews and Handles Complaint}
+\label{subsubsec:university-reviews-and-handles-complaint}
+
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & UN                                                                                                                \\
+        \hline
+        \textbf{Entry Conditions:} & UN is correctly logged in. The UN has a list of complaints to review.                                                    \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+            \item UN clicks on the "Complaints" button.
+            \item S\&C fetch the complaints from the database.
+            \item S\&C shows a preview of the complaints to the UN.
+            \item UN selects a complaint to review.
+            \item S\&C fetch the complaint details from the database.
+            \item S\&C shows the complaint details to the UN.
+            \item UN review the complaint and writes a response and decide if the internship need to be suspended.
+            \item S\&C update the status of the complaint with the UN response.
+            \item S\&C suspend the internship if the UN decided to do so.
+            \item S\&C notifies the UN that the complaint was successfully reviewed.                             
+                                     \end{enumerate} \\
+        \hline
+        \textbf{Exit Conditions:}  & UN receive the confirmation of the complaint being reviewed correctly.                                               \\
+        \hline
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                     \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_16.pdf}
+    \caption{University reviews and handles complaint use case diagram}
+    \label{fig:use-case-diagram-16}
 \end{figure}
 
 % 17
