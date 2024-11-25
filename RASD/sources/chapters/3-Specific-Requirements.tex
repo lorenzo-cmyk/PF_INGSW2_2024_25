@@ -1,33 +1,33 @@
 \chapter{Specific Requirements}
-\label{chap:specific-requirements}
+\label{chap:specific-requirements}%
 
 \par This chapter provides detailed specifications for the requirements previously mentioned that may require
 additional clarification for the development team's implementation.
 
 \section{External Interface Requirements}
-\label{sec:external-interface-requirements}
+\label{sec:external-interface-requirements}%
 
 \subsection{User Interfaces}
-\label{subsec:user-interfaces}
+\label{subsec:user-interfaces}%
 
 \par The user interface of S\&C is implemented as a web-based application, making it accessible through standard web
 browsers. No specialized software installation is required - users only need a web browser and an internet connection
 to access all platform features.
 
 \subsection{Hardware Interfaces}
-\label{subsec:hardware-interfaces}
+\label{subsec:hardware-interfaces}%
 
 \par S\&C – being a web application – will be available on all devices, connected to the internet, capable of running a
 modern browser. Users can use S\&C on laptops, desktops, smartphones, tablets, ...
 
 \subsection{Software Interfaces}
-\label{subsec:software-interfaces}
+\label{subsec:software-interfaces}%
 
 \par The system will primarily function as a standalone application. The only external dependency is the SSO portals of
 the various UN organizations that have requested enrollment in S\&C, which will provide access to UN personnel and STs.
 
 \subsection{Communication Interfaces}
-\label{subsec:communication-interfaces}
+\label{subsec:communication-interfaces}%
 
 \par The system primarily relies on HTTPS for secure communication. This includes communication between users and the
 frontend, as well as between the frontend and backend, and between the backend and the various SSO portals.
@@ -35,10 +35,10 @@ frontend, as well as between the frontend and backend, and between the backend a
 \par The SMTP protocol is also used to send notifications to the user's email address when necessary.
 
 \section{Functional Requirements}
-\label{sec:functional-requirements}
+\label{sec:functional-requirements}%
 
 \subsection{Requirements List}
-\label{subsec:requirements-list}
+\label{subsec:requirements-list}%
 
 % Define a new counter to add an unique ID to each requirement.
 \newcounter{requirementCounter}
@@ -133,15 +133,16 @@ frontend, as well as between the frontend and backend, and between the backend a
 \subsection{Use Case Diagrams}
 \label{subsec:use-case-diagrams}
 
-% 1
-\subsubsection{UCXX:Student Login }
+% 01
+
+\subsubsection{UC01: Student login}
 \label{subsubsec:student-login}
 \begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
         \hline
         \textbf{Actors:}           & ST                                                                            \\
         \hline
-        \textbf{Entry Conditions:} & The student university is subscribed to S\&C services                         \\
+        \textbf{Entry Conditions:} & The student university is subscribed to S\&C services.                        \\
         \hline
         \textbf{Flow of Events:}   & \begin{enumerate}
                                          \item ST searches for the URL of the S\&C login page.
@@ -153,7 +154,7 @@ frontend, as well as between the frontend and backend, and between the backend a
                                          \item S\&C returns a session token to the ST.
                                      \end{enumerate} \\
         \hline
-        \textbf{Exit condition:}   & ST has logged in successfully to S\&C                                         \\
+        \textbf{Exit condition:}   & ST has logged in successfully to S\&C.                                        \\
         \hline
         \textbf{Exceptions:}       & \begin{enumerate}
                                          \item The credentials are wrong.
@@ -166,14 +167,14 @@ frontend, as well as between the frontend and backend, and between the backend a
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/UC_1.pdf}
-    \caption{Student login use case diagram}
+    \includegraphics[width=1\textwidth]{Images/UC_1.pdf}
+    \caption{Student Login - Use Case Diagram}
     \label{fig:use-case-diagram-1}
-
 \end{figure}
 
 % 2
-\subsubsection{UCXX: Studend uploads its CV and recieves suggestions}
+
+\subsubsection{UC02: Student uploads its CV and receives suggestions}
 \label{subsubsec:studend-upload-CV}
 \begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
@@ -194,20 +195,21 @@ frontend, as well as between the frontend and backend, and between the backend a
         \hline
         \textbf{Exit Conditions:}  & ST has successfully uploaded the CV and received suggestions.                                         \\
         \hline
-        \textbf{Exceptions:}       & The ST tries to get the suggestions before they are ready                                             \\                                                      \\
+        \textbf{Exceptions:}       & The ST tries to get the suggestions before they are ready.                                            \\                                                      \\
         \hline
     \end{longtable}
 \end{center}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/UC_2.pdf}
-    \caption{Student uploads its CV and receives suggestions use case diagram}
+    \includegraphics[width=1\textwidth]{Images/UC_2.pdf}
+    \caption{Student Uploads its CV and Receives Suggestions - Use Case Diagram}
     \label{fig:use-case-diagram-2}
 \end{figure}
+
 % 3
 
-\subsubsection{UCXX: Student Internship Advertisement Search}
+\subsubsection{UC03: Student internship advertisement search}
 \label{subsubsec:student-internship-advertisement-search}
 
 \begin{center}
@@ -244,7 +246,7 @@ frontend, as well as between the frontend and backend, and between the backend a
 
 % 4
 
-\subsubsection{UCXX: Student Applies to an Internship}
+\subsubsection{UC04: Student applies to an internship}
 \label{subsubsec:student-applies-to-an-internship}
 
 \begin{center}
@@ -282,7 +284,7 @@ frontend, as well as between the frontend and backend, and between the backend a
 
 % 5
 
-\subsubsection{UCXX: Student Answers a Company Questionnaire}
+\subsubsection{UC05: Student answers a company questionnaire}
 \label{subsubsec:student-answers-a-company-questionnaire}
 
 \begin{center}
@@ -343,8 +345,8 @@ frontend, as well as between the frontend and backend, and between the backend a
 
 % 6	
 
-\subsubsection{UCXX: Student Create A Complaints}
-\label{subsubsec:student-create-a-complaints}
+\subsubsection{UC06: Student creates a complaints}
+\label{subsubsec:student-creates-a-complaints}
 
 \begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
@@ -375,13 +377,13 @@ frontend, as well as between the frontend and backend, and between the backend a
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{Images/UC_6.pdf}
-    \caption{Student creates a complaint use case diagram}
+    \caption{Student Creates a Complaint - Use Case Diagram}
     \label{fig:use-case-diagram-6}
 \end{figure}
 
-
 % 7
-\subsubsection{UCXX:Student answers questionnaire at internship completion}
+
+\subsubsection{UC07: Student answers questionnaire at internship completion}
 \label{subsubsec:student-answers-questionnaire-at-internship-completion}
 
 \begin{center}
@@ -402,7 +404,7 @@ frontend, as well as between the frontend and backend, and between the backend a
         \hline
         \textbf{Exit Conditions:}  & ST receive the confirmation of the questionnaire being saved correctly.                                \\
         \hline
-        \textbf{Exceptions:}       & Possible invalid formats for the answers submitted by the ST                                           \\
+        \textbf{Exceptions:}       & Possible invalid formats for the answers submitted by the ST.                                          \\
         \hline
     \end{longtable}
 \end{center}
@@ -410,21 +412,21 @@ frontend, as well as between the frontend and backend, and between the backend a
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{Images/UC_7.pdf}
-    \caption{Student answers questionnaire at internship completion use case diagram}
+    \caption{Student Answers Questionnaire at Internship Completion - Use Case Diagram}
     \label{fig:use-case-diagram-7}
 \end{figure}
 
+% 8
 
-% 8 
-\subsubsection{UCXX: Company Login}
+\subsubsection{UC08: Company login}
 \label{subsubsec:company-login}
 
 \begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
         \hline
-        \textbf{Actors:}           & CO                                                                                           \\
+        \textbf{Actors:}           & CO                                                                                            \\
         \hline
-        \textbf{Entry Conditions:} & CO has received the credentials by S\&C staff after the payment for the usage of the Website \\
+        \textbf{Entry Conditions:} & CO has received the credentials by S\&C staff after the payment for the usage of the Website. \\
         \hline
         \textbf{Flow of Events:}   & \begin{enumerate}
                                          \item CO search the URL of S\&C login page.
@@ -432,30 +434,32 @@ frontend, as well as between the frontend and backend, and between the backend a
                                          \item CO inserts the username and password received.
                                          \item S\&C validates the credentials.
                                          \item S\&C sends the CO to the CO dashboard.
-                                     \end{enumerate}                                          \\
+                                     \end{enumerate}                                           \\
         \hline
-        \textbf{Exit Conditions:}  & CO is redirected to the CO dashboard.                                                        \\
+        \textbf{Exit Conditions:}  & CO is redirected to the CO dashboard.                                                         \\
         \hline
         \textbf{Exceptions:}       &
         \begin{itemize}
             \item The credentials are wrong.
             \item The CO is was blocked by the S\&C staff after a violation of the platform guidelines.
             \item S\&C generated an internal error.
-        \end{itemize}                                \\
+        \end{itemize}                                 \\
         \hline
     \end{longtable}
 \end{center}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/UC_8.pdf}
-    \caption{Company login use case diagram}
+    \includegraphics[width=1\textwidth]{Images/UC_8.pdf}
+    \caption{Company Login - Use Case Diagram}
     \label{fig:use-case-diagram-8}
 \end{figure}
 
 % 9
-\subsubsection{UCXX: company creates an internship announcement}
+
+\subsubsection{UC09: Company creates an internship announcement}
 \label{subsubsec:company-creates-an-internship-announcement}
+
 \begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
         \hline
@@ -472,22 +476,23 @@ frontend, as well as between the frontend and backend, and between the backend a
                                          \item When the deadline is reached, the internship is automatically closed.
                                      \end{enumerate} \\
         \hline
-        \textbf{Exit Conditions:}  & CO has successfully created an internship announcement or a partial varsion was saved.                                                             \\
+        \textbf{Exit Conditions:}  & CO has successfully created an internship announcement or a partial version was saved.                                                             \\
         \hline
         \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                                                  \\
         \hline                                                                                                                                                                          \\
     \end{longtable}
 \end{center}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/UC_9.pdf}
-    \caption{Company creates an internship announcement use case diagram}
+    \includegraphics[width=1\textwidth]{Images/UC_9.pdf}
+    \caption{Company Creates an Internship Announcement - Use Case Diagram}
     \label{fig:use-case-diagram-9}
 \end{figure}
 
 % 10
 
-\subsubsection{UCXX: Company Looks for Extra Potential Candidates through the Recommendation System}
+\subsubsection{UC10: Company looks for extra potential candidates through the recommendation system}
 \label{subsubsec:company-looks-for-extra-potential-candidates-through-the-recommendation-system}
 
 \begin{center}
@@ -540,10 +545,11 @@ frontend, as well as between the frontend and backend, and between the backend a
 \end{figure}
 
 % 11
-\subsubsection{UCXX: Company creates a questionnaire for the applicants}
-\label{subsubsec:Company-creates-a-questionnaire}
-\begin{center}
 
+\subsubsection{UC11: Company creates a questionnaire for the applicants}
+\label{subsubsec:company-creates-a-questionnaire-for-the-applicants}
+
+\begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
         \hline
         \textbf{Actors:}           & CO                                                                                                        \\
@@ -573,16 +579,15 @@ frontend, as well as between the frontend and backend, and between the backend a
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/UC_11.pdf}
-    \caption{Company creates a questionnaire for the applicants use case diagram}
+    \includegraphics[width=1\textwidth]{Images/UC_11.pdf}
+    \caption{Company Creates a Questionnaire for the Applicants - Use Case Diagram}
     \label{fig:use-case-diagram-11}
 \end{figure}
 
-
 % 12
-\subsubsection{UCXX: Company Select Applicant Student For His Internship}
 
-\label{subsubsec:company-select-applicant-student-for-his-internship}
+\subsubsection{UC12: Company selects applicant student for its internship}
+\label{subsubsec:company-select-applicant-student-for-its-internship}
 
 \begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
@@ -611,14 +616,15 @@ frontend, as well as between the frontend and backend, and between the backend a
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/UC_12.pdf}
-    \caption{Company select applicant student for his internship use case diagram}
+    \includegraphics[width=1\textwidth]{Images/UC_12.pdf}
+    \caption{Company Selects Applicant Student for its Internship - Use Case Diagram}
     \label{fig:use-case-diagram-12}
 \end{figure}
 
 % 13
-\subsubsection{UCXX: Company Create A Complaints}
-\label{subsubsec:company-create-a-complaints}
+
+\subsubsection{UC13: Company creates a complaints}
+\label{subsubsec:company-creates-a-complaints}
 
 \begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
@@ -649,13 +655,13 @@ frontend, as well as between the frontend and backend, and between the backend a
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{Images/UC_13.pdf}
-    \caption{Company creates a complaint use case diagram}
+    \caption{Company Creates a Complaint - Use Case Diagram}
     \label{fig:use-case-diagram-13}
 \end{figure}
 
-
 % 14
-\subsubsection{UCXX: Company Answers Questionnaire At Internship completion}
+
+\subsubsection{UC14: Company answers questionnaire at internship completion}
 \label{subsubsec:company-answers-questionnaire-at-internship-completion}
 
 \begin{center}
@@ -682,17 +688,16 @@ frontend, as well as between the frontend and backend, and between the backend a
     \end{longtable}
 \end{center}
 
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{Images/UC_14.pdf}
-    \caption{Company answers questionnaire at internship completion use case diagram}
+    \caption{Company Answers Questionnaire at Internship Completion - Use Case Diagram}
     \label{fig:use-case-diagram-14}
 \end{figure}
 
-% 14A
+% 15
 
-\subsubsection{UCXX: Company Decides Who to Hire for an Internship}
+\subsubsection{UC15: Company decides who to hire for an internship}
 \label{subsubsec:company-decides-who-to-hire-for-an-internship}
 
 \begin{center}
@@ -736,12 +741,12 @@ frontend, as well as between the frontend and backend, and between the backend a
     \centering
     \includegraphics[width=1.0\textwidth]{Images/UC_14A.pdf}
     \caption{Company Decides Who to Hire for an Internship - Use Case Diagram}
-    \label{fig:use-case-diagram-14A}
+    \label{fig:use-case-diagram-15}
 \end{figure}
 
-% 15
+% 16
 
-\subsubsection{UCXX: University Views the Status of the Internships}
+\subsubsection{UC16: University views the status of the internships}
 \label{subsubsec:university-views-the-status-of-the-internships}
 
 \begin{center}
@@ -773,12 +778,13 @@ frontend, as well as between the frontend and backend, and between the backend a
     \centering
     \includegraphics[width=1.0\textwidth]{Images/UC_15.pdf}
     \caption{University Views the Status of the Internships - Use Case Diagram}
-    \label{fig:use-case-diagram-15}
+    \label{fig:use-case-diagram-16}
 \end{figure}
 
-% 16
-\subsubsection{UCXX: University Reviews and Handles Complaint}
-\label{subsubsec:university-reviews-and-handles-complaint}
+% 17
+
+\subsubsection{UC17: University reviews and handles a complaint}
+\label{subsubsec:university-reviews-and-handles-a-complaint}
 
 \begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
@@ -810,13 +816,13 @@ frontend, as well as between the frontend and backend, and between the backend a
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{Images/UC_16.pdf}
-    \caption{University reviews and handles complaint use case diagram}
-    \label{fig:use-case-diagram-16}
+    \caption{University Reviews and Handles a Complaint - Use Case Diagram}
+    \label{fig:use-case-diagram-17}
 \end{figure}
 
-% 17
+% 18
 
-\subsubsection{UCXX: University Blocks a Malicious Company}
+\subsubsection{UC18: University blocks a malicious company}
 \label{subsubsec:university-blocks-a-malicious-company}
 
 \begin{center}
@@ -846,5 +852,5 @@ frontend, as well as between the frontend and backend, and between the backend a
     \centering
     \includegraphics[width=1.0\textwidth]{Images/UC_17.pdf}
     \caption{University Blocks a Malicious Company - Use Case Diagram}
-    \label{fig:use-case-diagram-17}
+    \label{fig:use-case-diagram-18}
 \end{figure}
