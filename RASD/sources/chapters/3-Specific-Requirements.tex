@@ -134,13 +134,77 @@ frontend, as well as between the frontend and backend, and between the backend a
 \label{subsec:use-case-diagrams}
 
 % 1
-\subsubsection{UCXX: }
-\label{subsubsec:UC_01_TO_MODIFY}
+\subsubsection{UCXX:Student Login }
+\label{subsubsec:student-login}
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & ST                                                                            \\
+        \hline
+        \textbf{Entry Conditions:} & The student university is subscribed to S\&C services                         \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+                                         \item ST searches for the URL of the S\&C login page.
+                                         \item S\&C sends the login web page to the ST.
+                                         \item ST inserts the username and password used to log in to their university.
+                                         \item S\&C receives the credentials.
+                                         \item S\&C forwards the credentials to the university database.
+                                         \item The university database validates the credentials.
+                                         \item S\&C returns a session token to the ST.
+                                     \end{enumerate} \\
+        \hline
+        \textbf{Exit condition:}   & ST has logged in successfully to S\&C                                         \\
+        \hline
+        \textbf{Exceptions:}       & \begin{enumerate}
+                                         \item The credentials are wrong.
+                                         \item The ST was blocked by the S\&C staff.
+                                         \item S\&C generated an internal error.
+                                     \end{enumerate}                                    \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/UC_1.pdf}
+    \caption{Student login use case diagram}
+    \label{fig:use-case-diagram-1}
+
+\end{figure}
 
 % 2
-\subsubsection{UCXX: }
-\label{subsubsec:UC_02_TO_MODIFY}
+\subsubsection{UCXX: Studend uploads its CV and recieves suggestions}
+\label{subsubsec:studend-upload-CV}
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & ST                                                                                                    \\
+        \hline
+        \textbf{Entry Conditions:} & ST is correctly logged in to S\&C.                                                                    \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+                                         \item ST visits the "My CV" page.
+                                         \item ST uploads the CV file to S\&C.
+                                         \item S\&C stores the CV in the database.
+                                         \item The insert/update operation on the S\&C database triggers the CV suggestion system.
+                                         \item The suggestion system fetches the CV from the database and analyzes it.
+                                         \item The suggestion system generates feedback and improvement suggestions and stores them.
+                                         \item The ST can see the suggestions by clicking on the "Show suggestions" button on the "My CV" page.
+                                     \end{enumerate} \\
+        \hline
+        \textbf{Exit Conditions:}  & ST has successfully uploaded the CV and received suggestions.                                         \\
+        \hline
+        \textbf{Exceptions:}       & The ST tries to get the suggestions before they are ready                                             \\                                                      \\
+        \hline
+    \end{longtable}
+\end{center}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/UC_2.pdf}
+    \caption{Student uploads its CV and receives suggestions use case diagram}
+    \label{fig:use-case-diagram-2}
+\end{figure}
 % 3
 
 \subsubsection{UCXX: Student Internship Advertisement Search}
@@ -285,25 +349,25 @@ frontend, as well as between the frontend and backend, and between the backend a
 \begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
         \hline
-        \textbf{Actors:}           & ST, (opt) UN                                                                                                                \\
+        \textbf{Actors:}           & ST, (opt) UN                                                                                                                     \\
         \hline
-        \textbf{Entry Conditions:} & The ST is correctly logged in. The ST had decided to create a complaint about the internship he's doing.                                                   \\
+        \textbf{Entry Conditions:} & The ST is correctly logged in. The ST had decided to create a complaint about the internship he's doing.                         \\
         \hline
         \textbf{Flow of Events:}   & \begin{enumerate}
-                \item ST clicks on the "Create Complaint" button.
-                \item S\&C send to the ST a form to fill with the complaint details.
-                \item ST fills the form and submits it.
-                \item S\&C stores the complaint in the database.
-                \item S\&C request to the Emailing system to send an email to the UN about a new complaint about an internship of one of it's ST.
-                \item The Emailing system sends the email to the UN.
-                \item S\&C notifies the ST that the complaint was successfully submitted.
-                \item (opt) UN acknowledges the complaint.
-                \item (opt) S\&C change the status of the complaint to "Acknowledged".
-            \end{enumerate} \\
+                                         \item ST clicks on the "Create Complaint" button.
+                                         \item S\&C send to the ST a form to fill with the complaint details.
+                                         \item ST fills the form and submits it.
+                                         \item S\&C stores the complaint in the database.
+                                         \item S\&C request to the Emailing system to send an email to the UN about a new complaint about an internship of one of it's ST.
+                                         \item The Emailing system sends the email to the UN.
+                                         \item S\&C notifies the ST that the complaint was successfully submitted.
+                                         \item (opt) UN acknowledges the complaint.
+                                         \item (opt) S\&C change the status of the complaint to "Acknowledged".
+                                     \end{enumerate} \\
         \hline
-        \textbf{Exit Conditions:}  &  ST receive the confirmation of the complaint being saved correctly.                                               \\
+        \textbf{Exit Conditions:}  & ST receive the confirmation of the complaint being saved correctly.                                                              \\
         \hline
-        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                     \\
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                                \\
         \hline
     \end{longtable}
 \end{center}
@@ -317,8 +381,38 @@ frontend, as well as between the frontend and backend, and between the backend a
 
 
 % 7
-\subsubsection{UCXX: }
-\label{subsubsec:UC_07_TO_MODIFY}
+\subsubsection{UCXX:Student answers questionnaire at internship completion}
+\label{subsubsec:student-answers-questionnaire-at-internship-completion}
+
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & ST                                                                                                     \\
+        \hline
+        \textbf{Entry Conditions:} & ST is correctly logged in. The related internship has ended.                                           \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+                                         \item ST clicks on the "Fill Questionnaire" button.
+                                         \item S\&C fetch the questionnaire from its database.
+                                         \item S\&C gives the questionnaire to the ST.
+                                         \item ST fills the questions and submits them.
+                                         \item S\&C stores the answers to the questionnaire in the database.
+                                         \item S\&C feeds the answers of the questionnaire to the suggestion system to learn from this new data.
+                                     \end{enumerate} \\
+        \hline
+        \textbf{Exit Conditions:}  & ST receive the confirmation of the questionnaire being saved correctly.                                \\
+        \hline
+        \textbf{Exceptions:}       & Possible invalid formats for the answers submitted by the ST                                           \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_7.pdf}
+    \caption{Student answers questionnaire at internship completion use case diagram}
+    \label{fig:use-case-diagram-7}
+\end{figure}
 
 
 % 8 
@@ -328,26 +422,26 @@ frontend, as well as between the frontend and backend, and between the backend a
 \begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
         \hline
-        \textbf{Actors:}           & CO                                                                                                                   \\
+        \textbf{Actors:}           & CO                                                                                           \\
         \hline
-        \textbf{Entry Conditions:} & CO has received the credentials by S\&C staff after the payment for the usage of the Website                          \\
+        \textbf{Entry Conditions:} & CO has received the credentials by S\&C staff after the payment for the usage of the Website \\
         \hline
         \textbf{Flow of Events:}   & \begin{enumerate}
-                \item CO search the URL of S\&C login page.
-                \item S\&C send to CO the login web page.
-                \item CO inserts the username and password received.
-                \item S\&C validates the credentials.
-                \item S\&C sends the CO to the CO dashboard.
-                                     \end{enumerate} \\
+                                         \item CO search the URL of S\&C login page.
+                                         \item S\&C send to CO the login web page.
+                                         \item CO inserts the username and password received.
+                                         \item S\&C validates the credentials.
+                                         \item S\&C sends the CO to the CO dashboard.
+                                     \end{enumerate}                                          \\
         \hline
-        \textbf{Exit Conditions:}  & CO is redirected to the CO dashboard.                                               \\
+        \textbf{Exit Conditions:}  & CO is redirected to the CO dashboard.                                                        \\
         \hline
-        \textbf{Exceptions:}       & 
-            \begin{itemize}
-                \item The credentials are wrong.
-                \item The CO is was blocked by the S\&C staff after a violation of the platform guidelines.
-                \item S\&C generated an internal error.
-            \end{itemize}                                                                                   \\
+        \textbf{Exceptions:}       &
+        \begin{itemize}
+            \item The credentials are wrong.
+            \item The CO is was blocked by the S\&C staff after a violation of the platform guidelines.
+            \item S\&C generated an internal error.
+        \end{itemize}                                \\
         \hline
     \end{longtable}
 \end{center}
@@ -360,8 +454,36 @@ frontend, as well as between the frontend and backend, and between the backend a
 \end{figure}
 
 % 9
-\subsubsection{UCXX: }
-\label{subsubsec:UC_09_TO_MODIFY}
+\subsubsection{UCXX: company creates an internship announcement}
+\label{subsubsec:company-creates-an-internship-announcement}
+\begin{center}
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & CO                                                                                                                                                 \\                                                                                       \\
+        \hline
+        \textbf{Entry Conditions:} & CO is correctly logged in.                                                                                                                         \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+                                         \item CO opens the page "Create Internship".
+                                         \item CO compiles all the required fields for the internship.
+                                         \item S\&C saves the internship in the database, it is now visible to students.
+                                         \item CO can at any time decide to open the internship and start receiving applications. CO is required to provide a Deadline for the applications.
+                                         \item S\&C suggestion system provides to CO a set of candidates that could be suitable for the internship.
+                                         \item When the deadline is reached, the internship is automatically closed.
+                                     \end{enumerate} \\
+        \hline
+        \textbf{Exit Conditions:}  & CO has successfully created an internship announcement or a partial varsion was saved.                                                             \\
+        \hline
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                                                  \\
+        \hline                                                                                                                                                                          \\
+    \end{longtable}
+\end{center}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/UC_9.pdf}
+    \caption{Company creates an internship announcement use case diagram}
+    \label{fig:use-case-diagram-9}
+\end{figure}
 
 % 10
 
@@ -418,34 +540,71 @@ frontend, as well as between the frontend and backend, and between the backend a
 \end{figure}
 
 % 11
-\subsubsection{UCXX: }
-\label{subsubsec:UC_11_TO_MODIFY}
+\subsubsection{UCXX: Company creates a questionnaire for the applicants}
+\label{subsubsec:Company-creates-a-questionnaire}
+\begin{center}
+
+    \begin{longtable}{|l|p{0.75\linewidth}|}
+        \hline
+        \textbf{Actors:}           & CO                                                                                                        \\
+        \hline
+        \textbf{Entry conditions:} & CO is correctly logged in. An internship has reached the deadline and now has to evaluate the candidates. \\                                                                                                  \\
+        \hline
+        \textbf{Flow of Events:}   & \begin{enumerate}
+                                         \item CO visits the "My Internships" page.
+                                         \item S\&C fetch the internships from the database.
+                                         \item S\&C shows the internships to the CO.
+                                         \item CO selects an internship to view the details.
+                                         \item S\&C fetch the internship details from the database.
+                                         \item S\&C shows the internship details to the CO.
+                                         \item CO clicks on the "Create Questionnaire" button.
+                                         \item S\&C sends the questionnaire template to the CO.
+                                         \item CO fills the questionnaire  with relevant questions.
+                                         \item S\&C stores the questionnaire in the database.
+                                         \item S\&C notifies the CO that the questionnaire was successfully created.
+                                     \end{enumerate}                                \\
+        \hline
+        \textbf{Exit Conditions:}  & CO has successfully created a questionnaire for the applicants or a partial version has been saved.       \\
+        \hline
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                         \\
+        \hline
+    \end{longtable}
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/UC_11.pdf}
+    \caption{Company creates a questionnaire for the applicants use case diagram}
+    \label{fig:use-case-diagram-11}
+\end{figure}
+
 
 % 12
 \subsubsection{UCXX: Company Select Applicant Student For His Internship}
+
 \label{subsubsec:company-select-applicant-student-for-his-internship}
 
 \begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
         \hline
-        \textbf{Actors:}           & CO                                                                                                                   \\
+        \textbf{Actors:}           & CO                                                                                                                      \\
         \hline
         \textbf{Entry Conditions:} & CO is correctly logged in, has already created an internship listing, and has received applications from STs.
-        CO has already loaded the questionnaire for the STs.CO is correctly logged in. CO has published an internship listing.                             \\
+        CO has already loaded the questionnaire for the STs.CO is correctly logged in. CO has published an internship listing.                               \\
         \hline
         \textbf{Flow of Events:}   & \begin{enumerate}
-            \item CO request the page that shows the applications for his internship.
-            \item S\&C fetches the applications from the database.
-            \item S\&C shows the applications to the CO.
-            \item CO selects the STs he wants to send the questionnaire.
-            \item S\&C store the selection of STs linked to the internship.
-            \item CO confirm the questionnaire to be sent to the selected STs.
-            \item S\&C notifies the selected STs that they have a questionnaire to fill, inherent to the CO's internship, via email.                             
+                                         \item CO request the page that shows the applications for his internship.
+                                         \item S\&C fetches the applications from the database.
+                                         \item S\&C shows the applications to the CO.
+                                         \item CO selects the STs he wants to send the questionnaire.
+                                         \item S\&C store the selection of STs linked to the internship.
+                                         \item CO confirm the questionnaire to be sent to the selected STs.
+                                         \item S\&C notifies the selected STs that they have a questionnaire to fill, inherent to the CO's internship, via email.
                                      \end{enumerate} \\
         \hline
-        \textbf{Exit Conditions:}  & CO receives a confirmation that S\&C has sent the questionnaire to the selected STs.                                 \\
+        \textbf{Exit Conditions:}  & CO receives a confirmation that S\&C has sent the questionnaire to the selected STs.                                    \\
         \hline
-        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                     \\
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                       \\
         \hline
     \end{longtable}
 \end{center}
@@ -464,25 +623,25 @@ frontend, as well as between the frontend and backend, and between the backend a
 \begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
         \hline
-        \textbf{Actors:}           & CO, (opt) UN                                                                                                      \\
+        \textbf{Actors:}           & CO, (opt) UN                                                                                                                     \\
         \hline
-        \textbf{Entry Conditions:} &  CO is correctly logged in. CO had decided to create a complaint about the internship it's holding.                \\
+        \textbf{Entry Conditions:} & CO is correctly logged in. CO had decided to create a complaint about the internship it's holding.                               \\
         \hline
         \textbf{Flow of Events:}   & \begin{enumerate}
-            \item CO clicks on the "Create Complaint" button.
-            \item S\&C send to the CO a form to fill with the complaint details.
-            \item CO fills the form and submits it.
-            \item S\&C stores the complaint in the database.
-            \item S\&C request to the Emailing system to send an email to the UN about a new complaint about an internship of one of it's ST.
-            \item The Emailing system sends the email to the UN.
-            \item S\&C notifies the CO that the complaint was successfully submitted.
-            \item (opt) UN acknowledges the complaint.
-            \item (opt) S\&C change the status of the complaint to "Acknowledged".                             
+                                         \item CO clicks on the "Create Complaint" button.
+                                         \item S\&C send to the CO a form to fill with the complaint details.
+                                         \item CO fills the form and submits it.
+                                         \item S\&C stores the complaint in the database.
+                                         \item S\&C request to the Emailing system to send an email to the UN about a new complaint about an internship of one of it's ST.
+                                         \item The Emailing system sends the email to the UN.
+                                         \item S\&C notifies the CO that the complaint was successfully submitted.
+                                         \item (opt) UN acknowledges the complaint.
+                                         \item (opt) S\&C change the status of the complaint to "Acknowledged".
                                      \end{enumerate} \\
         \hline
-        \textbf{Exit Conditions:}  & CO has increased the number of potential candidates for the internship.                                               \\
+        \textbf{Exit Conditions:}  & CO has increased the number of potential candidates for the internship.                                                          \\
         \hline
-        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                     \\
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                                \\
         \hline
     \end{longtable}
 \end{center}
@@ -502,23 +661,23 @@ frontend, as well as between the frontend and backend, and between the backend a
 \begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
         \hline
-        \textbf{Actors:}           & CO                                                                                                                \\
+        \textbf{Actors:}           & CO                                                                                                                                                        \\
         \hline
-        \textbf{Entry Conditions:} & CO is correctly logged in. The internship has ended. CO has received a notification to fill the questionnaire.    \\
+        \textbf{Entry Conditions:} & CO is correctly logged in. The internship has ended. CO has received a notification to fill the questionnaire.                                            \\
         \hline
         \textbf{Flow of Events:}   & \begin{enumerate}
-            \item CO clicks on the "Fill Questionnaire" button.
-            \item S\&C fetch the questionnaire from the database.
-            \item S\&C shows the questionnaire to the CO.
-            \item CO fills each question and submits it.
-            \item S\&C stores the questionnaire in the database.
-            \item S\&C notifies the UN that the questionnaire was successfully submitted.
-            \item S\&C feeds the answers of the questionnaire to the suggestion system to improve it's response on how to improve a CV or an internship advertisement.                                 
+                                         \item CO clicks on the "Fill Questionnaire" button.
+                                         \item S\&C fetch the questionnaire from the database.
+                                         \item S\&C shows the questionnaire to the CO.
+                                         \item CO fills each question and submits it.
+                                         \item S\&C stores the questionnaire in the database.
+                                         \item S\&C notifies the UN that the questionnaire was successfully submitted.
+                                         \item S\&C feeds the answers of the questionnaire to the suggestion system to improve it's response on how to improve a CV or an internship advertisement.
                                      \end{enumerate} \\
         \hline
-        \textbf{Exit Conditions:}  & CO receive the confirmation of the questionnaire being saved correctly                                               \\
+        \textbf{Exit Conditions:}  & CO receive the confirmation of the questionnaire being saved correctly                                                                                    \\
         \hline
-        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                     \\
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                                                         \\
         \hline
     \end{longtable}
 \end{center}
@@ -624,26 +783,26 @@ frontend, as well as between the frontend and backend, and between the backend a
 \begin{center}
     \begin{longtable}{|l|p{0.75\linewidth}|}
         \hline
-        \textbf{Actors:}           & UN                                                                                                                \\
+        \textbf{Actors:}           & UN                                                                                                    \\
         \hline
-        \textbf{Entry Conditions:} & UN is correctly logged in. The UN has a list of complaints to review.                                                    \\
+        \textbf{Entry Conditions:} & UN is correctly logged in. The UN has a list of complaints to review.                                 \\
         \hline
         \textbf{Flow of Events:}   & \begin{enumerate}
-            \item UN clicks on the "Complaints" button.
-            \item S\&C fetch the complaints from the database.
-            \item S\&C shows a preview of the complaints to the UN.
-            \item UN selects a complaint to review.
-            \item S\&C fetch the complaint details from the database.
-            \item S\&C shows the complaint details to the UN.
-            \item UN review the complaint and writes a response and decide if the internship need to be suspended.
-            \item S\&C update the status of the complaint with the UN response.
-            \item S\&C suspend the internship if the UN decided to do so.
-            \item S\&C notifies the UN that the complaint was successfully reviewed.                             
+                                         \item UN clicks on the "Complaints" button.
+                                         \item S\&C fetch the complaints from the database.
+                                         \item S\&C shows a preview of the complaints to the UN.
+                                         \item UN selects a complaint to review.
+                                         \item S\&C fetch the complaint details from the database.
+                                         \item S\&C shows the complaint details to the UN.
+                                         \item UN review the complaint and writes a response and decide if the internship need to be suspended.
+                                         \item S\&C update the status of the complaint with the UN response.
+                                         \item S\&C suspend the internship if the UN decided to do so.
+                                         \item S\&C notifies the UN that the complaint was successfully reviewed.
                                      \end{enumerate} \\
         \hline
-        \textbf{Exit Conditions:}  & UN receive the confirmation of the complaint being reviewed correctly.                                               \\
+        \textbf{Exit Conditions:}  & UN receive the confirmation of the complaint being reviewed correctly.                                \\
         \hline
-        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                                     \\
+        \textbf{Exceptions:}       & S\&C generated an internal error.                                                                     \\
         \hline
     \end{longtable}
 \end{center}
