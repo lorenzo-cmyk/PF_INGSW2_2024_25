@@ -317,3 +317,6 @@ TSWLatexianTemp*
 # alloy jar and run script
 alloy.jar
 alloy.bat
+
+#test files
+test.als
