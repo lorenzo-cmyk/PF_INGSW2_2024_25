@@ -908,11 +908,10 @@ The following table shows the mapping between the goals of S\&C (as defined in \
 and the system requirements (as defined in \ref{tab:requirements-table}, pag. \pageref{tab:requirements-table}). Goals
 and requirements are enumerated by their respective IDs.
 
-% We will now make the following pages landscape to fit the table
-\afterpage{%
-    \clearpage% Flush earlier floats (otherwise order might not be correct)
-    \begin{landscape}% Landscape page
-        \centering % Center table
+\afterpage{% Makes the following pages landscape to fit the table.
+    \clearpage% Flushes earlier floats.
+    \begin{landscape}% The actual landscape environment.
+        \centering % Center the following table.
         \begin{longtable}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
             \hline
             \textbf{$\bm{G_{i}}$ \textrightarrow{}} & \textbf{01} & \textbf{02} & \textbf{03} & \textbf{04} & \textbf{05} & \textbf{06} & \textbf{07} & \textbf{08} & \textbf{09} & \textbf{10} & \textbf{11} & \textbf{12} & \textbf{13} & \textbf{14} & \textbf{15} & \textbf{16} & \textbf{17} & \textbf{18} & \textbf{19} & \textbf{20} & \textbf{21} & \textbf{22} & \textbf{23} & \textbf{24} \\ \hline
@@ -963,9 +962,10 @@ and requirements are enumerated by their respective IDs.
             \label{tab:goals-requirements-mapping}
         \end{longtable}
     \end{landscape}
-    \clearpage% Flush page
-    \pagebreak
+    \clearpage% Clear any produced floats in order to not compromise the following text.
 }
+
+\pagebreak
 
 \section{Performance Requirements}
 \label{sec:performance-requirements}%
