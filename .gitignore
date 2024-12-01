@@ -35,6 +35,8 @@
 !DD/sources/Images/Overview_diagram.pdf
 !DD/sources/Images/High_Level_Architectural_Design.pdf
 !DD/sources/Images/Low_Level_Architectural_Design.pdf
+!DD/sources/Images/*_Architecture.pdf
+!DD/sources/Images/Deployment_Diagram.pdf
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
 *.bcf

@@ -127,6 +127,68 @@
     \item \textbf{Query Manager}: This component executes queries and converts the data returned by the DBMS into the necessary objects for other components.
 \end{itemize}
 
+\subsubsection{Login Manager}
+\label{subsub:login-manager}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{Images/Login_Architecture.pdf}
+      \caption{Login Manager}
+      \label{login-manager-arch}
+\end{figure}
+
+\par The Login Manager is composed of other two sub-components:
+\begin{itemize}
+      \item \textbf{Student Login Manager}: This component is responsible for managing student logins
+            and their registration. It interacts with the Universities SSOs to authenticate students.
+      \item \textbf{COUN Login Manager}: This component is responsible for managing company and university logins.
+            It checks the credentials against those stored in the DBMS.
+\end{itemize}
+
+\subsubsection{Profile Manager}
+\label{subsub:profile-manager}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{Images/Profile_Architecture.pdf}
+      \caption{Profile Manager}
+      \label{profile-manager-arch}
+\end{figure}
+
+\par The Profile Manager is composed of other two sub-components:
+\begin{itemize}
+      \item \textbf{Profile Manager}: This component is responsible for the modification of the user's profile information.
+            For the compnaies it allows to create their profile description that will be shown to students.
+      \item \textbf{CV Manager}: This component is responsible for the management of the student's CVs and uploading them.
+\end{itemize}
+
+\subsubsection{Questionnaire Manager}
+\label{subsub:questionnaire-manager}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{Images/Questionnaire_Architecture.pdf}
+      \caption{Profile Manager}
+      \label{questionnaire-manager-arch}
+\end{figure}
+
+\par The Questionnaire Manager is composed of other two sub-components:
+\begin{itemize}
+      \item \textbf{Company Questionnaire Manager}: This component is responsible for managing the questionnaires created by companies.
+            It allows companies to create, modify and delate questionnaires to select students for internships.
+            It allows commpanies to see the answers to the questionnaires.
+      \item \textbf{Feedback Questionnaire Manager}: This component is responsible for managing the feedback questionnaires created by the system.
+            It allows the system to create questionnaires for feedback at the end of internships.
+\end{itemize}
+
+\section{Deployment View}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/Deployment_Diagram.pdf}
+    \caption{Deployment Diagram}
+    \label{fig:deployment-diagram}
+\end{figure}
 
 % This should be section 2.6. of the DD.
 
