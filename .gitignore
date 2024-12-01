@@ -25,11 +25,16 @@
 *.pdf
 
 ## Whitelist:
+## RASD auxiliary files:
 !RASD/sources/Images/UML.pdf
 !RASD/sources/Images/BPMN_[0-9]*[A-Z].pdf
 !RASD/sources/Images/BPMN_[0-9]*[0-9].pdf
 !RASD/sources/Images/UC_*.pdf
 
+## DD auxiliary files:
+!DD/sources/Images/Overview_diagram.pdf
+!DD/sources/Images/High_Level_Architectural_Design.pdf
+!DD/sources/Images/Low_Level_Architectural_Design.pdf
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
 *.bcf

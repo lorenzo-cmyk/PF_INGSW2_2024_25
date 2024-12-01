@@ -1,6 +1,133 @@
 \chapter{Architectural Design}
 \label{ch:architectural-design}%
 
+\section{Overview}
+\label{sub:overview}
+
+\par The following is an overview of the S\&C architecture structure:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/Overview_diagram.pdf}
+    \caption{S\&C Architecture Overview}
+    \label{fig:overview}
+\end{figure}
+
+\par On the client side, we can see:
+
+\begin{itemize}
+    \item \textbf{WebApp}: The web application that the user interacts with, allowing users to connect to S\&C.
+                           It is responsible for the user interface and for sending the user's requests to the server.
+\end{itemize}
+
+\par On the server side, we can see:
+
+\begin{itemize}
+    \item \textbf{Web Server}: It handles communication between users and the S\&C system. It is responsible for
+                                receiving the user's requests and distributing them to the different replicas of the S\&C server,
+                                performing load balancing. It is also responsible for managing user sessions.
+                                It contains the data necessary for students to use university SSOs to log in.
+
+    \item \textbf{S\&C Server}: The main server of the S\&C system. It is the core component of the system and is responsible
+                                for communication between the Web Server and the databases and the APIs/Services.
+                                It is replicated across multiple machines to ensure high availability and fault tolerance.
+
+    \item \textbf{DBMS Server}: This server archives all the essential information of the system.
+                                It stores data related to Users, CVs, Internship Advertisements, and Complaints.
+    
+    \item \textbf{Recommendation Engine Server}: This server is responsible for generating and searching recommended Internship Advertisements for students and anonymous CVs for companies.
+                                                It runs on the same hardware machine as the Suggestions Engine Server using a Docker container.
+
+    \item \textbf{Suggestions Engine Server}: This server is responsible for generating suggestions for improving students' CVs and companies' internship advertisements.
+                                            It runs on the same hardware machine as the Recommendation Engine Server using a Docker container.
+
+    \item \textbf{Mail Server}: This server is responsible for sending emails to users. It is used for sending notifications and confirmations of actions performed by users.
+
+\end{itemize}                                
+
+\section{Component View}
+\label{sub:component-view}
+
+\subsection{High-Level Components}
+\label{sub:high-level-components}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/High_Level_Architectural_Design.pdf}
+    \caption{High-Level Components}
+    \label{fig:high-level-components}
+\end{figure}
+
+\par Figure \ref{fig:high-level-components} shows the high-level components of the S\&C system. The main external components are:
+
+\begin{itemize}
+    \item \textbf{WebApp}: This is the web application that the user interacts with. It allows users to communicate 
+                            with the S\&C Server through the Dashboard Interface, which is the only means of interaction 
+                            between the users and the system. The Dashboard Interface includes multiple functionalities,
+                            one of which allows the Dashboard to send notifications to users while they are using the system.
+    \item \textbf{DBMS Server}: This server stores all the information of the Users, including their profile information, CVs, 
+                                Internship Advertisements, Questionnaires, and Complaints. It is the main component of the system and is 
+                                responsible for data management.
+    \item \textbf{Mail Server}: This server is responsible for notifying users outside of the web application. 
+                                It is used to send all types of notifications, including those confirming actions performed by a user,
+                                notifications of new recommendations for both students and companies, requests to fill out questionnaires,
+                                and notifications about the creation of new complaints, etc.
+    \item \textbf{Recommendation Engine Server}: This server is responsible for generating recommended Internship Advertisements for students 
+                                                and anonymous CVs for companies. It periodically retrieves CV data and Internship Advertisement data 
+                                                to improve the program responsible for creating suggestions for each user.
+    \item \textbf{Suggestions Engine Server}: This server is responsible for generating suggestions for improving students' CVs and companies' internship advertisements.
+                                            It periodically retrieves CV data, Internship Advertisement data, and feedback answers at the end of internships 
+                                            to improve the program responsible for creating suggestions for each user.
+    \item \textbf{Universities SSOs}: This external component allows students to log in to the system using their university credentials.
+\end{itemize}
+
+
+\subsection{Low-Level Components}
+\label{sub:low-level-components}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/Low_Level_Architectural_Design.pdf}
+    \caption{Low-Level Components}
+    \label{fig:low-level-components}
+\end{figure}
+
+\par Figure \ref{fig:low-level-components} shows the complete architecture of the S\&C system, detailing the components inside the S\&C Server:
+
+\begin{itemize}
+    \item \textbf{Dashboard Manager}: This component is responsible for interacting with users through the dashboard interface.
+                                    The Dashboard Manager executes user requests and interacts with the appropriate components.
+
+    \item \textbf{Login Manager}: This component is responsible for user login. For companies and universities,
+                                it checks credentials against those stored in the DBMS. For students, it handles the first login (registration) 
+                                and subsequent logins by interacting with the Universities SSOs.
+
+    \item \textbf{Internship Manager}: This component manages all stages of the Internship selection and execution process.
+                                    It handles the creation of Internship Advertisements, the list of student applications,
+                                    and the status of internships. It also provides an interface for the Complaint Manager to modify the status of internships.
+    
+    \item \textbf{Profile Manager}: This component manages user profiles. It allows users to modify their profile information,
+                                    students to upload their CVs, and companies to create their profile descriptions.
+    
+    \item \textbf{Questionnaire Manager}: This component manages Questionnaires, both those created by companies for selecting students for internships 
+    and those created by the system for feedback at the end of internships. 
+    
+    \item \textbf{Complaints Manager}: This component manages complaints. It is used to create complaints, manage them, and if necessary,
+    interact with the related internship to modify its status through the interface provided by the Internship Manager.
+    
+    \item \textbf{Notification Manager}: This component manages notifications. It generates notifications to send to the 
+    dashboard if the user is logged in, and interacts with the Mail Server to send notifications to users outside of the web application.
+    
+    \item \textbf{Recommendation Manager}: This component interacts with the Recommendation Engine Server. It retrieves the data
+    required by the recommendation engine to improve its suggestions, and retrieves the results of the recommendation engine to display to users. 
+    
+    \item \textbf{Suggestions Manager}: This component interacts with the Suggestions Engine Server. It retrieves the data
+    required by the suggestion engine to improve its suggestions, and retrieves the results of the suggestion engine to display to users.
+    
+    \item \textbf{Query Manager}: This component executes queries and converts the data returned by the DBMS into the necessary objects for other components.
+\end{itemize}
+
+
 % This should be section 2.6. of the DD.
 
 \section{Selected Architectural Styles and Patterns}
