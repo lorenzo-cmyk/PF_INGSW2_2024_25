@@ -145,6 +145,25 @@
             It checks the credentials against those stored in the DBMS.
 \end{itemize}
 
+\subsubsection{Internship Manager}
+\label{subsub:internship-manager}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{Images/Internship_Architecture.pdf}
+      \caption{Internship Manager}
+      \label{internship-manager-arch}
+\end{figure}
+
+\par The Internship Manager is composed of other two sub-components:
+\begin{itemize}
+      \item \textbf{Internship Selection Manager}: This component is responsible all the stages of the internship selection process.
+            It handles the creation of internship advertisements, the list of student applications.
+      \item \textbf{Internship Data Manager}: This component is responsible for managing the status of internships,
+            who's the responsible for the internship, the descriptions of it, the requirements and the duration.
+            It also provides an interface for the Complaint Manager to modify the status of internships. 
+\end{itemize}
+
 \subsubsection{Profile Manager}
 \label{subsub:profile-manager}
 
