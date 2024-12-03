@@ -7,3 +7,9 @@ open functions
 assert response_cardinality{
     all i: Internship | #i.applicants >= #i.responses
 }
+
+
+//to test tomorrow
+assert ongoing_check{
+    all i: Internship | i.state = Ongoing implies i.applicants != none and i.responses != none
+}

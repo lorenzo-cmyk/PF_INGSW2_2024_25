@@ -18,9 +18,9 @@ sig University {
 
 
 sig Internship {
-    state: one Status,
-    applicants: set Student, //applicants are the students that have applied and will recieve the Interview questionnaire
-    selected_student: one Student,
+    var state: one Status,
+    var applicants: set Student, //applicants are the students that have applied and will recieve the Interview questionnaire
+    var selected_student: lone Student,
     company: one Company,
     questionnaire: one Interview,
     deadline: one Date,
@@ -73,6 +73,7 @@ sig Date{
 abstract sig Status{
 
 }
-one sig Open, Selecting, Ongoing, Completed, Interrupted, Closed extends Status{
+
+one sig Created, Selecting, Ongoing, Completed, Interrupted, Ended, Terminated extends Status{
 
 }

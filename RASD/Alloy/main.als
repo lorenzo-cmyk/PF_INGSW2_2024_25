@@ -5,4 +5,6 @@ open modules/functions
 open modules/assertions
 
 
-run {} for 5
+check response_cardinality for 5
+
+
