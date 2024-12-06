@@ -243,6 +243,10 @@ The choice of a 3-Tier-Architecture is also motivated by the fact that it can be
 components: the Model (data), the View (interface), and the Controller (business logic). This pattern is particularly
 useful since it allows for a clear separation of concerns and a more modular and maintainable codebase.
 
+With this knowledge in mind, the services division shown in the Deployment Diagram (\ref{fig:deployment-diagram}) can 
+be easily understood: the Web Server is the presentation tier, the S\&C Server is the application tier, and the DBMS 
+Server is the data tier. The other services are additional components that provide extra functionalities to the system.
+
 \par{\textbf{Client-Server Communication:}} S\&C - like almost all modern web applications - is based on a
 Client-Server architecture. The client (the user's browser) sends requests to the server, which processes them and
 returns the appropriate responses. All the static content (HTML, CSS, JavaScript) is served directly using HTTPS, while
