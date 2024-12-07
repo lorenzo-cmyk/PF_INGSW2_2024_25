@@ -35,6 +35,9 @@ fact Ongoing_means_selected{
 }
 
 //variable updates and persistance
+fact responders_are_applicants{
+    always all i:Internship | i.responses in i.applicants
+}
 fact Apply_only_when_open{
     always all i:Internship | (i.state != Created ) implies i.applicants = i.applicants' //the only transition that can change the applicants is the one from Created to Open
 }
