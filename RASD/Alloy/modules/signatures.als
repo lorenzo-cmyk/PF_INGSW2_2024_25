@@ -2,7 +2,7 @@ module signatures
 //actors
 sig Student {
     uni : one University,
-    internships: one Internship, //internship the student has participated in
+    //TODO check internships: one Internship, //internship the student has participated in
     complaints: set Complaint
 }
 
@@ -24,12 +24,11 @@ sig Internship {
     company: one Company,
     questionnaire: one Interview,
     deadline: one Date,
-    responses: set Response,
+    var responses: set Response,
     duration: one WorkPeriod
 }
 
 sig Response{
-    question: one Question,
     submitter: one Student,
     responseTime: one Date,
 }
@@ -39,7 +38,7 @@ sig WorkPeriod{
     end: one Date
 }
 abstract sig questionnaire{
-    questions: set Question
+    
 }
 sig Interview extends questionnaire{
     
@@ -51,21 +50,14 @@ sig Complaint{
     submitter: one Student,
     content: one String
 }
-
-
-//is it useful?
-sig Question{
-
-}
-
-
 //utils
 
 //dates for temporal properties
 sig Date{
     day: Int,
     month: Int,
-    year: Int
+    year: Int,
+    is_before: set Date
 }
 
 

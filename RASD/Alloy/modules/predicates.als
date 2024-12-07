@@ -14,3 +14,11 @@ pred later_date[d1,d2: Date]{
 pred multiple_students[un:University]{
     #un.University_students > 1
 }
+
+pred normal_development[i:Internship]{
+    eventually i.state = Ended
+}
+
+pred comes_before[d1,d2:Date]{
+    d2 in d1.is_before
+}

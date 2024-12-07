@@ -13,3 +13,8 @@ assert response_cardinality{
 assert ongoing_check{
     all i: Internship | i.state = Ongoing implies i.applicants != none and i.responses != none
 }
+
+//maybe useless
+assert normal_development{
+    some i: Internship | eventually i.state = Ended
+}

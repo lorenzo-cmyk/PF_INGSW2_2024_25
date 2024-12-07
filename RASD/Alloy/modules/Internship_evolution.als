@@ -1,3 +1,4 @@
+module Internship_evolution
 open signatures
 
 //forces the initial state of every intership to be "Created"
