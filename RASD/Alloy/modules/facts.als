@@ -8,7 +8,7 @@ open functions
 //deadline enforced
 
 fact internship_deadline {
-  all i: Internship | all r: i.responses | later_date[i.deadline, r.responseTime]
+  all i: Internship | all r: i.responses | later_date[r.responseTime, i.deadline]
 }
 
 //no students form univerity that have blocked the company
