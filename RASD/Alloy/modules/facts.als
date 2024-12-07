@@ -31,13 +31,6 @@ fact selected_has_responded{
 fact breathing_room{
   all i: Internship | later_date[i.duration.start, i.deadline]
 }
-//other facts
-/*
-//for simplicity things like 31 february are allowed
-fact date_format {
-  all d: Date | d.year >= 0 and d.month >= 1 and d.month <= 12 and d.day >= 1 and d.day <= 31
-}
-*/
 
 fact work_period_start_before_end {
   all wp: WorkPeriod | later_date[wp.end, wp.start]
@@ -50,4 +43,15 @@ fact one_company_per_internship{
   all c1,c2 :Company | (c1 != c2) implies c1.internships & c2.internships = none
 }
 
+//total ordering on dates
+fact antisymmetry{
+	all d1,d2:Date |  d1 in d2.later_than  implies d2 not in d1.later_than
+}
 
+fact transitivity{
+	all d1,d2,d3 :Date | (d1 in d2.later_than and d2 in d3.later_than) implies d1 in d3.later_than
+ }
+
+fact  total_order{
+all  d1, d2 : Date |d1 != d2 implies  ( d1 in d2.later_than or d2  in d1.later_than)
+}

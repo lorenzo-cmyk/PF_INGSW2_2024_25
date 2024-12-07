@@ -54,10 +54,7 @@ sig Complaint{
 
 //dates for temporal properties
 sig Date{
-    day: Int,
-    month: Int,
-    year: Int,
-    is_before: set Date
+    later_than: set Date
 }
 
 
