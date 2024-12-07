@@ -16,5 +16,5 @@ assert ongoing_check{
 
 //maybe useless
 assert normal_development{
-    some i: Internship | eventually i.state = Ended
+    some i: Internship | eventually i.state = Completed
 }

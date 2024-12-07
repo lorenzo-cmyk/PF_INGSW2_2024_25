@@ -5,12 +5,13 @@ open modules/functions
 open modules/assertions
 open modules/Internship_evolution
 
-pred show[i:Internship]{
-    once i.state = Created
+pred show_Comp[i:Internship]{
+    some i: Internship | eventually i.state = Completed and eventually #i.applicants > 1
 }
 pred show_Int[i:Internship]{
-    some i: Internship | eventually i.state = Ended and eventually #i.applicants > 1
+    some i: Internship | eventually i.state = Terminated and eventually #i.applicants > 1
 }
 
-//run normal_development for 5 but exactly 1 Internship, 5 steps
-run show_Int for 5 but exactly 1 Internship,3 Student, 5 steps
+run show_Comp for 5 but exactly 1 Internship,3 Student, 6 steps
+run show_Int for 5 but exactly 1 Internship,3 Student, 6 steps
+

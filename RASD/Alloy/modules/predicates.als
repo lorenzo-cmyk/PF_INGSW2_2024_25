@@ -4,7 +4,7 @@ open functions
 
 //d1 is later than d2
 pred later_date[d1,d2: Date]{
-    d2 in d1.later_than
+    d2 in d1.comes_later_than
 }
 
 
@@ -14,5 +14,5 @@ pred multiple_students[un:University]{
 }
 
 pred normal_development[i:Internship]{
-    eventually i.state = Ended
+    eventually i.state = Completed
 }

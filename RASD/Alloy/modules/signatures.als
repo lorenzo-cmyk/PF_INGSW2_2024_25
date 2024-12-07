@@ -7,7 +7,7 @@ sig Student {
 }
 
 sig Company {
-    internships: set Internship
+    
 }
 
 
@@ -24,14 +24,10 @@ sig Internship {
     company: one Company,
     questionnaire: one Interview,
     deadline: one Date,
-    var responses: set Response,
+    var responses: set Student, //students that have responded to the Interview questionnaire
     duration: one WorkPeriod
 }
 
-sig Response{
-    submitter: one Student,
-    responseTime: one Date,
-}
 
 sig WorkPeriod{
     start: one Date,
@@ -54,7 +50,7 @@ sig Complaint{
 
 //dates for temporal properties
 sig Date{
-    later_than: set Date
+    comes_later_than: set Date
 }
 
 
@@ -63,6 +59,6 @@ abstract sig Status{
 
 }
 
-one sig Created, Selecting, Ongoing, Completed, Interrupted, Ended, Terminated extends Status{
+one sig Created, Open, Selecting, Ongoing, Completed, Interrupted, Terminated extends Status{
 
 }
