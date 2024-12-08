@@ -7,8 +7,6 @@ pred later_date[d1,d2: Date]{
     d2 in d1.comes_later_than
 }
 
-
-//bo
 pred multiple_students[un:University]{
     #un.University_students > 1
 }
