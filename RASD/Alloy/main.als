@@ -6,7 +6,7 @@ open modules/assertions
 open modules/Internship_evolution
 
 pred show_Comp[i:Internship]{
-    some i: Internship | eventually i.state = Completed
+    some i: Internship | eventually i.state = Completed and eventually #i.applicants > 1
 }
 pred show_Int[i:Internship]{
     some i: Internship | eventually i.state = Terminated and eventually #i.applicants > 1

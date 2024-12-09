@@ -9,7 +9,7 @@ sig Student {
 sig Company {
     
 }
-
+ 
 
 sig University {
     blocked: set Company
