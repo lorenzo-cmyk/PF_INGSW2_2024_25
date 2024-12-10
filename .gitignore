@@ -37,6 +37,7 @@
 !DD/sources/Images/Low_Level_Architectural_Design.pdf
 !DD/sources/Images/*_Architecture.pdf
 !DD/sources/Images/Deployment_Diagram.pdf
+!DD/sources/Images/RV_*.pdf
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
 *.bcf

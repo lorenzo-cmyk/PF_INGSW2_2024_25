@@ -216,6 +216,145 @@ running specific hardware. Even the firewall(s) can be virtualized if needed.
 protocols will be discussed in \ref{sec:selected-architectural-styles-patterns}. Other minor design decisions will be
 explained in \ref{sec:other-design-decisions}.
 
+\section{Runtime View}
+\label{sec:runtime-view}%
+
+\subsection{Student Login}
+\label{sub:student-login}%
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_01a.pdf}
+      \caption{Runtime View - Student Login}
+      \label{fig:rv-student-login}
+\end{figure}
+
+\par This sequence diagram represents the ST login and first access process. The ST searches into the browser for the
+S\&C web application and gets the login page. After clicking on the "Login as Student" button the ST is redirected to
+a page require the selection of the university of the ST between the available ones. After the selection, the ST is redirected
+to the university's SSO page where the ST inserts the credentials. The SSO validates the credentials and sends back a
+token to the S\&C server. The S\&C server validates the token and check if the ST is already registered in the system searching
+for it in the DBMS. If the ST is not registered, the S\&C server creates a new ST profile and redirects the ST to the
+profile page to complete the registration. If the ST is already registered, the S\&C server redirects the ST to the
+dashboard page.
+
+\subsection{Company or University Login}
+\label{sub:company-or-university-login}%
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_01b.pdf}
+      \caption{Runtime View - Company or University Login}
+      \label{fig:rv-company-or-university-login}
+\end{figure}
+
+\par This sequence diagram represents the CO or UN login process. Here is not shown the registration process because it has 
+appened in a previous instance between the CO or UN staff and the S\&C staff by email. The CO or UN searches into the browser for the S\&C 
+web application and gets the login page. After clicking on the "Login with Company/University credentials" button the CO or UN
+inserts the credentials and clicks on the "Login" button. The S\&C server validates the credentials and if the credentials
+are correct the CO or UN is redirected to the dashboard page otherwise an error message is shown.
+
+\subsection{Student Loads CV}
+\label{sub:student-loads-cv}%
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_02.pdf}
+      \caption{Runtime View - Student Loads CV}
+      \label{fig:rv-student-loads-cv}
+\end{figure}
+
+\par This sequence diagram represents the ST CV upload process. The ST clicks on the "Upload CV" button in his profile 
+management page. The S\&C server sends back the CV upload page. The ST selects the CV file and clicks on the "Upload" button.
+The S\&C server validates the file and saves it in the DBMS and notifies the ST that the CV has been uploaded successfully
+otherwise an error message is shown. If the CV is uploaded successfully the S\&C server checks if the CV is one of the 
+standard formats supported by the Suggestion Engine, if it's not then a notification is sent that the CV is not supported and
+so the ST can't receive suggestions, instead if the CV is supported it's sent to the Suggestion Engine to be analyzed and
+suggestions are sent back to the ST.
+
+\subsection{Student browser and search for internships}
+\label{sub:student-browser-and-search-for-internships}%
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_03.pdf}
+      \caption{Runtime View - Student browser and search for internships}
+      \label{fig:rv-student-browser-and-search-for-internships}
+\end{figure}
+
+\par This sequence diagram represents the ST search for internships process. ST clicks on the "Search" button in the dashboard
+page. The S\&C server sends back the search page. The ST selects the filters and clicks on the "Search" button. The S\&C server
+through the Internship Manager retrieves the internships that match the filters and sends them back to the ST. The ST can
+request the internship that the Recommendation Engine suggests to him by clicking on the "recommended for you" filter in the 
+filter selection. The S\&C server retrieve the recommended internships from the Recommendation Engine and sends them back to the ST.
+
+\subsection{Student compiles Company Questionnaire}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_04a.pdf}
+      \caption{Runtime View - Student compiles Company Questionnaire}
+      \label{fig:rv-student-compiles-company-questionnaire}
+\end{figure}
+
+\par This sequence diagram represents the ST compiles Company Questionnaire process. ST after receiving the email that
+a questionnaires for an internship he applied for is available. To compile the questionnaire ST access the specified internship
+advertisements and then clicks on the "Fill out Questionnaire" button or can directly access the questionnaire from the email. 
+At first the S\&C server checks if the ST is trying to answers the questionnaire after the deadline, if it's the case it notifies
+the ST that the questionnaire is no longer available. If the questionnaire is still available, the S\&C server retrieves through
+the Company Questionnaire Manager the questions of the questionnaire and sends them one by one to the ST.
+The ST answers the questions and clicks on the "Next" button. The S\&C server saves the answers and sends the next question
+until the last one.  
+
+\subsection{Student compiles Feedback Questionnaire}
+\label{sub:student-compiles-feedback-questionnaire}%
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_04b.pdf}
+      \caption{Runtime View - Student compiles Feedback Questionnaire}
+      \label{fig:rv-student-compiles-feedback-questionnaire}
+\end{figure}
+
+\par This sequence diagram represents the ST compiles Feedback Questionnaire process. ST after receiving the email that
+a feedback questionnaire for an internship he completed is available, To compile the questionnaire ST access the specified internship
+advertisements and then clicks on the "Fill out Questionnaire" button or can directly access the questionnaire from the email.
+In this case there is no deadline check because the questionnaire is for statistic and feedback purposes. The S\&C server retrieves
+through the Feedback Questionnaire Manager the questions of the questionnaire and sends them one by one to the ST.
+The ST answers the questions and clicks on the "Next" button. The S\&C server saves the answers and sends the next question
+until the last one.
+
+\subsection{Student creates a complaint}
+\label{sub:student-creates-a-complaint}%
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_05.pdf}
+      \caption{Runtime View - Student creates a complaint}
+      \label{fig:rv-student-creates-a-complaint}
+\end{figure}
+
+\par This sequence diagram represents the ST creates a complaint process. ST clicks on the "Create Complaint" button in the
+dashboard page. The S\&C server sends back the complaint creation page after retrieving the internships that the ST is involved in, 
+if the ST is not involved in any internship the page will show that a complaint can't be created. The ST selects the internship 
+and the reason for the complaint and writes the complaint in the text area. The ST clicks on the "Submit" button. The S\&C server
+saves the complaint and sends a notification to the CO and UN staff involved in the internship.
+
+
+\subsection{Company creates an internship advertisement}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_06.pdf}
+      \caption{Runtime View - Company creates an internship advertisement}
+      \label{fig:rv-company-creates-an-internship-advertisement}
+\end{figure}
+
+\par This sequence diagram represents the CO creates an internship advertisement process. CO clicks on the "Create Internship
+Advertisement" button in the dashboard page. The S\&C server sends back the internship advertisement creation page. The CO fills
+the form with the details of the internship advertisement and clicks on the "Submit" button. If the internship advertisement is
+saved correctly then the S\&C server feeds the data to the Suggestion Engine to be analyzed and suggestions are sent back to the CO.
+
 \section{Selected Architectural Styles and Patterns}
 \label{sec:selected-architectural-styles-patterns}%
 
