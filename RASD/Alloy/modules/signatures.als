@@ -15,8 +15,7 @@ sig University {
     blocked: set Company
 }
 
-
-
+//internship signature, carries most of the information about the entire process
 sig Internship {
     var state: one Status,
     var applicants: set Student, //applicants are the students that have applied and will recieve the Interview questionnaire
@@ -25,23 +24,29 @@ sig Internship {
     questionnaire: one Interview,
     deadline: one Date,
     var responses: set Student, //students that have responded to the Interview questionnaire
-    duration: one WorkPeriod
+    duration: one WorkPeriod,
+    Feedback: one Feedback
 }
 
-
+//work period of the internship
 sig WorkPeriod{
     start: one Date,
     end: one Date
 }
+//generic questionnaire
 abstract sig questionnaire{
     
 }
+//interview questionnaire for the selection phase
 sig Interview extends questionnaire{
     
 }
+
+//feedback questionnaire for when the internship is completed without being cancelled
 sig Feedback extends questionnaire{
-    
+    compiled_by: one Student
 }
+//TODO use somewhere
 sig Complaint{
     submitter: one Student,
     content: one String
