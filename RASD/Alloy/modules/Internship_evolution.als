@@ -21,7 +21,7 @@ fact evolution{
 }
 //initial state of the internship
 fact Created_is_uninitialized_state{
-    always some i: Internship | i.state = Created implies (i.applicants = none and i.selected_student = none and i.responses = none)
+    always some i: Internship | i.state = Created implies (i.applicants = none and i.selected_student = none and i.responses = none and i.feedback.compiled_by = none)
 }
 
 //possible values of variables in states
@@ -55,15 +55,15 @@ fact selected_has_responded{
 
 //feedback is compiled only when the internship is completed
 fact uncompiled_feedback{
-    always all i: Internship | i.state != Completed implies i.Feedback.compiled_by = none 
+    always all i: Internship | i.state != Completed implies i.feedback.compiled_by = none 
 }
 
 //if the internship is completed, the feedback must be compiled by someone
 fact feedback_compilation{
-    all i: Internship | eventually i.state = Completed implies eventually i.Feedback.compiled_by != none
+   all i: Internship | eventually i.state = Completed implies eventually i.feedback.compiled_by != none
 }
 
 //feedback is compiled by the selected student or by none if the internship is not completed
 fact compiled_by_selected{
-    always all i: Internship | i.Feedback.compiled_by = i.selected_student or i.Feedback.compiled_by = none
+    always all i: Internship | i.feedback.compiled_by = i.selected_student or i.feedback.compiled_by = none
 }

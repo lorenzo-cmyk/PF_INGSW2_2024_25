@@ -39,7 +39,7 @@ The analysis is focused on modeling the temporal evolution and development of an
             deadline: one Date,
             var responses: set Student, //students that have responded to the Interview questionnaire
             duration: one WorkPeriod,
-            Feedback: one Feedback
+            feedback: one Feedback
         }
         
         //work period of the internship
@@ -58,7 +58,7 @@ The analysis is focused on modeling the temporal evolution and development of an
         
         //feedback questionnaire for when the internship is completed without being calcelled
         sig Feedback extends questionnaire{
-            compiled_by: one Student
+            var compiled_by: lone Student
         }
         
         sig Complaint{
@@ -177,17 +177,17 @@ The analysis is focused on modeling the temporal evolution and development of an
         
         //feedback is compiled only when the internship is completed
         fact uncompiled_feedback{
-        always all i: Internship | i.state != Completed implies i.Feedback.compiled_by = none
+        always all i: Internship | i.state != Completed implies i.feedback.compiled_by = none
         }
         
         //if the internship is completed, the feedback must be compiled by someone
         fact feedback_compilation{
-        all i: Internship | eventually i.state = Completed implies eventually i.Feedback.compiled_by != none
+        all i: Internship | eventually i.state = Completed implies eventually i.feedback.compiled_by != none
         }
         
         //feedback is compiled by the selected student or by none if the internship is not completed
         fact compiled_by_selected{
-        always all i: Internship | i.Feedback.compiled_by = i.selected_student or i.Feedback.compiled_by = none
+        always all i: Internship | i.feedback.compiled_by = i.selected_student or i.feedback.compiled_by = none
         }
         
         //useful assertions ,predicates and functions used in the model and for testing it during development of it.

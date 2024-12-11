@@ -25,7 +25,7 @@ sig Internship {
     deadline: one Date,
     var responses: set Student, //students that have responded to the Interview questionnaire
     duration: one WorkPeriod,
-    Feedback: one Feedback
+    feedback: one Feedback
 }
 
 //work period of the internship
@@ -44,7 +44,7 @@ sig Interview extends questionnaire{
 
 //feedback questionnaire for when the internship is completed without being cancelled
 sig Feedback extends questionnaire{
-    compiled_by: one Student
+    var compiled_by: lone Student
 }
 //TODO use somewhere
 sig Complaint{
