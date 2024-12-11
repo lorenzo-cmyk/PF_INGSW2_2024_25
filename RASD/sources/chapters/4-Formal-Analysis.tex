@@ -15,8 +15,6 @@ The analysis is focused on modeling the temporal evolution and development of an
         //actors
         sig Student {
             uni : one University,
-            //TODO check internships: one Internship, //internship the student has participated in
-            complaints: set Complaint
         }
         
         //company signature
@@ -61,10 +59,6 @@ The analysis is focused on modeling the temporal evolution and development of an
             var compiled_by: lone Student
         }
         
-        sig Complaint{
-            submitter: one Student,
-            content: one String
-        }
         
         //dates 
         sig Date{
@@ -79,12 +73,25 @@ The analysis is focused on modeling the temporal evolution and development of an
         
         one sig Created, Open, Selecting, Ongoing, Completed, Interrupted, Terminated extends Status{
         
-        }
-        
-        
-       
+        }      
 \end{lstlisting}
-\par Now the fats that hold on the model.
+\par The signatures that extend Status are used to represent the evolution of en intenship with time. Their meaning is as follows:
+\begin{itemize}
+    \item Created: The internship has just been created nothing has happened yet.
+    \item Open: The internship is open and students can now Apply.
+    \item Selecting: The students recieved the Interview questionnaire and the company waits for their responses.
+    \item Ongoing: The internship is ongoing and the selected student is working.
+    \item Completed: The internship has been completed and the feedback has been compiled.
+    \item Interrupted: Some problem has arisen and the internship has been interrupted.
+    \item Terminated: Due to the problems previoulsy arisen the internship has been terminated. %(Bad Ending)
+\end{itemize}
+
+\par\hfill\break
+\textcolor{green}{\noindent\rule{\textwidth}{1pt}}
+\Large\textcolor{green}{Facts of the model}\hfill\break
+\textcolor{green}{\noindent\rule{\textwidth}{1pt}}
+
+
 \begin{lstlisting}[language=Alloy]
             
               
@@ -122,8 +129,13 @@ The analysis is focused on modeling the temporal evolution and development of an
         all d:Date | d not in d.comes_later_than
         }
         
-        
-        //fact that define the temporal evolution of the internship
+\end{lstlisting}
+\par\hfill\break
+\textcolor{green}{\noindent\rule{\textwidth}{1pt}}
+\Large\textcolor{green}{Facts that model the evulution of the internship}\hfill\break
+\textcolor{green}{\noindent\rule{\textwidth}{1pt}}
+
+\begin{lstlisting}[language=Alloy]
         //forces the initial state of every intership to be "Created"
         fact begin{
                 always some i: Internship | i.state != Created implies once i.state = Created
@@ -141,6 +153,11 @@ The analysis is focused on modeling the temporal evolution and development of an
                 always all i:Internship | i.state = Interrupted  implies (i.state' = Terminated or i.state' = Ongoing)
                 always all i:Internship | i.state = Terminated  implies i.state' = Terminated
             }
+\end{lstlisting}
+
+
+
+\begin{lstlisting}[language=Alloy]
         //initial state of the internship
         fact Created_is_uninitialized_state{
         always some i: Internship | i.state = Created implies (i.applicants = none and i.selected_student = none and i.responses = none)
@@ -245,6 +262,24 @@ The analysis is focused on modeling the temporal evolution and development of an
                 {i:Internship | i.company = c}
             }
         
+\end{lstlisting}
+
+
+\par In order to visualize the final model and check that the bahaoivor is consistent with the requirements, the following predicates are used to generate instances.
+
+\begin{lstlisting}[language= Alloy]
+    //show an instanc where the isternship is completed
+    pred show_Comp[i:Internship]{
+        some i: Internship | eventually i.state = Completed and eventually #i.applicants > 1
+    }
+    //show an instance where the internship is interrupted and Terminates bocause of problematics
+    pred show_Int[i:Internship]{
+        some i: Internship | eventually i.state = Terminated and eventually #i.applicants > 1
+    }
+    //show an instance where the internship is interrupted and resumes an in the end is completed
+    pred resume_after_Int[i:Internship]{
+        some i: Internship | eventually i.state = Interrupted and  eventually i.state =Completed and eventually #i.applicants > 1
+    }
 \end{lstlisting}
 
 \end{document}
