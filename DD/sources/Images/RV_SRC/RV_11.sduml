@@ -1,0 +1,40 @@
+title ST Creates a Complaint
+
+note over Client: Client is on the relevant internship page.
+
+Client->Client: createComplaint() // Shows the complaint form.
+
+note over Client: System checks if another complaint has been made by the same user for the same internship.
+
+Client->WebServer: retrieveComplaint(idInternshipAd)
+WebServer->Dashboard Manager: retrieveComplaint(idInternshipAd)
+Dashboard Manager->Complaint Manager: retrieveComplaint(idInternshipAd)
+Complaint Manager->Query Manager: retrieveComplaintData(idInternshipAd)
+Query Manager->DBMS: executeQuery(...)
+DBMS-->Query Manager: return <Complaint>
+Query Manager-->Complaint Manager: return <Complaint>
+Complaint Manager-->Dashboard Manager: return <Complaint>
+Dashboard Manager-->WebServer: return <Complaint>
+
+alt <Complaint> is not null
+    WebServer-->Client: Show error message.
+else <Complaint> is null
+WebServer-->Client: Show the complaint form.
+
+# Complants are usually short so I don't think it's necessary to store the intermediate answers.
+
+note over Client: Client fills in the form.
+
+Client->Client: submitComplaint(idInternshipAd, complaintData)
+Client->WebServer: submitComplaint(idInternshipAd, complaintData)
+WebServer->Dashboard Manager: submitComplaint(idInternshipAd, complaintData)
+Dashboard Manager->Complaint Manager: submitComplaint(idInternshipAd, complaintData)
+Complaint Manager->Query Manager: insertComplaintData(idInternshipAd, complaintData)
+Query Manager->DBMS: executeQuery(...)
+DBMS-->Query Manager: return null
+Query Manager-->Complaint Manager: return null
+Complaint Manager-->Dashboard Manager: return null
+Dashboard Manager-->WebServer: return null
+WebServer-->Client: Show confirmation message.
+
+end
