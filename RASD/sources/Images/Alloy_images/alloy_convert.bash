@@ -1,3 +1,4 @@
+#requires graphviz
 start=1
 end=5
 

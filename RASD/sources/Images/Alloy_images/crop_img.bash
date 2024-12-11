@@ -1,3 +1,4 @@
+# This script crops the right side of the images in the Alloy_images folder.
 start=1
 end=5
 
