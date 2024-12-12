@@ -1,0 +1,29 @@
+title UN Block a Malicious Company
+
+note over Client: Client visits "My Contracts" page.
+
+Client->Client: Client search for the company to block based on name, VAT number, etc.
+
+Client->WebServer: retriveCompanies(defaultFilter)
+WebServer->Dashboard Manager: retriveCompanies(defaultFilter)
+Dashboard Manager->Internship Data Manager: retriveCompanies(defaultFilter)
+Internship Data Manager->Query Manager: retriveCompaniesData(defaultFilter)
+Query Manager->DBMS: executeQuery(...)
+DBMS-->Query Manager: return <Companies>
+Query Manager-->Internship Data Manager: return <Companies>
+Internship Data Manager-->Dashboard Manager: return <Companies>
+Dashboard Manager-->WebServer: return <Companies>
+WebServer-->Client: Show the various companies.
+
+Client->Client: Client selects the company to block.
+
+Client->WebServer: blockCompany(idCompany, reason)
+WebServer->Dashboard Manager: blockCompany(idCompany, reason)
+Dashboard Manager->Internship Data Manager: blockCompany(idCompany, reason)
+Internship Data Manager->Query Manager: updateCompanyBlacklist(idCompany, reason)
+Query Manager->DBMS: executeQuery(...)
+DBMS-->Query Manager: return null
+Query Manager-->Internship Data Manager: return null
+Internship Data Manager-->Dashboard Manager: return null
+Dashboard Manager-->WebServer: return null
+WebServer-->Client: Show confirmation message.

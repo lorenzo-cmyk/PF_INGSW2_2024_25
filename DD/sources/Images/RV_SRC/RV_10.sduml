@@ -1,0 +1,32 @@
+title CO Compiles Post-Internship Feedback Form
+
+note over Client: Client is on the relevant intership page.
+
+Client->Client: compilePostInternshipFeedbackForm() // Shows the questionnaire form.
+
+Client->WebServer: retriveInternshipFeedbackForm(idInternshipAd)
+WebServer->Dashboard Manager: retriveInternshipFeedbackForm(idInternshipAd)
+Dashboard Manager->Feedback Post-Internship Manager: retriveInternshipFeedbackForm(idInternshipAd)
+Feedback Post-Internship Manager->Query Manager: retriveInternshipFeedbackFormData(idInternshipAd)
+Query Manager->DBMS: executeQuery(...)
+DBMS-->Query Manager: return <Internship Feedback Questions>
+Query Manager-->Feedback Post-Internship Manager: return <Internship Feedback Questions>
+Feedback Post-Internship Manager-->Dashboard Manager: return <Internship Feedback Questions>
+Dashboard Manager-->WebServer: return <Internship Feedback Questions>
+WebServer-->Client: Show the questionnaire form.
+
+# Post Internship Feedback are usually short so I don't think it's necessary to store the intermediate answers.
+
+note over Client: Client fills in the form.
+
+Client->Client: submitInternshipFeedbackForm(idInternshipAd, feedbackFormData)
+Client->WebServer: submitInternshipFeedbackForm(idInternshipAd, feedbackFormData)
+WebServer->Dashboard Manager: submitInternshipFeedbackForm(idInternshipAd, feedbackFormData)
+Dashboard Manager->Feedback Post-Internship Manager: submitInternshipFeedbackForm(idInternshipAd, feedbackFormData)
+Feedback Post-Internship Manager->Query Manager: insertInternshipFeedbackFormData(idInternshipAd, feedbackFormData)
+Query Manager->DBMS: executeQuery(...)
+DBMS-->Query Manager: return null
+Query Manager-->Feedback Post-Internship Manager: return null
+Feedback Post-Internship Manager-->Dashboard Manager: return null
+Dashboard Manager-->WebServer: return null
+WebServer-->Client: Show confirmation message.

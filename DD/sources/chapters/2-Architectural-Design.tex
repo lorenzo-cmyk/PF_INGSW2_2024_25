@@ -266,10 +266,10 @@ are correct the CO is redirected to the dashboard page otherwise an error messag
       \label{fig:rv-student-loads-cv}
 \end{figure}
 
-\par This sequence diagram represents the ST CV upload process. The ST clicks on the "Upload CV" button in his profile 
+\par This sequence diagram represents the ST CV upload process. The ST clicks on the "Upload CV" button in his profile
 management page. The S\&C server sends back the CV upload page. The ST selects the CV file and clicks on the "Upload" button.
 The S\&C server validates the file and saves it in the DBMS and notifies the ST that the CV has been uploaded successfully
-otherwise an error message is shown. If the CV is uploaded successfully the S\&C server checks if the CV is one of the 
+otherwise an error message is shown. If the CV is uploaded successfully the S\&C server checks if the CV is one of the
 standard formats supported by the Suggestion Engine, if it's not then a notification is sent that the CV is not supported and
 so the ST can't receive suggestions, instead if the CV is supported it's sent to the Suggestion Engine to be analyzed and
 suggestions are sent back to the ST.
@@ -287,7 +287,7 @@ suggestions are sent back to the ST.
 \par This sequence diagram represents the ST search for internships process. ST clicks on the "Search" button in the dashboard
 page. The S\&C server sends back the search page. The ST selects the filters and clicks on the "Search" button. The S\&C server
 through the Internship Manager retrieves the internships that match the filters and sends them back to the ST. The ST can
-request the internship that the Recommendation Engine suggests to him by clicking on the "recommended for you" filter in the 
+request the internship that the Recommendation Engine suggests to him by clicking on the "recommended for you" filter in the
 filter selection. The S\&C server retrieve the recommended internships from the Recommendation Engine and sends them back to the ST.
 
 \subsection{Student compiles Company Questionnaire}
@@ -301,12 +301,12 @@ filter selection. The S\&C server retrieve the recommended internships from the 
 
 \par This sequence diagram represents the ST compiles Company Questionnaire process. ST after receiving the email that
 a questionnaires for an internship he applied for is available. To compile the questionnaire ST access the specified internship
-advertisements and then clicks on the "Fill out Questionnaire" button or can directly access the questionnaire from the email. 
+advertisements and then clicks on the "Fill out Questionnaire" button or can directly access the questionnaire from the email.
 At first the S\&C server checks if the ST is trying to answers the questionnaire after the deadline, if it's the case it notifies
 the ST that the questionnaire is no longer available. If the questionnaire is still available, the S\&C server retrieves through
 the Company Questionnaire Manager the questions of the questionnaire and sends them one by one to the ST.
 The ST answers the questions and clicks on the "Next" button. The S\&C server saves the answers and sends the next question
-until the last one.  
+until the last one.
 
 \subsection{Student compiles Feedback Questionnaire}
 \label{sub:student-compiles-feedback-questionnaire}%
@@ -337,13 +337,13 @@ until the last one.
 \end{figure}
 
 \par This sequence diagram represents the ST creates a complaint process. ST clicks on the "Create Complaint" button in the
-dashboard page. The S\&C server sends back the complaint creation page after retrieving the internships that the ST is involved in, 
-if the ST is not involved in any internship the page will show that a complaint can't be created. The ST selects the internship 
+dashboard page. The S\&C server sends back the complaint creation page after retrieving the internships that the ST is involved in,
+if the ST is not involved in any internship the page will show that a complaint can't be created. The ST selects the internship
 and the reason for the complaint and writes the complaint in the text area. The ST clicks on the "Submit" button. The S\&C server
 saves the complaint and sends a notification to the CO and UN staff involved in the internship.
 
-
 \subsection{Company creates an internship advertisement}
+\label{sub:company-creates-an-internship-advertisement}%
 
 \begin{figure}[H]
       \centering
@@ -357,9 +357,153 @@ Advertisement" button in the dashboard page. The S\&C server sends back the inte
 the form with the details of the internship advertisement and clicks on the "Submit" button. If the internship advertisement is
 saved correctly then the S\&C server feeds the data to the Suggestion Engine to be analyzed and suggestions are sent back to the CO.
 
+% RV 07
+\subsection{Company creates a questionnaire}
+\label{sub:company-creates-a-questionnaire}%
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_07.pdf}
+      \caption{Runtime View - Company creates a questionnaire for selecting students}
+      \label{fig:rv-co-creates-questionnaire}
+\end{figure}
+
+\par This sequence diagram illustrates the general process involved by a CO in creating a questionnaire for selecting
+and evaluating candidates for the relevant internship. The CO is viewing the internship advertisement and clicks on the
+"Create Questionnaire" button. The S\&C server checks if a form has already been created for the that internship, and
+if not, allows the client to open the questionnaire creation page. The CO then fills in the form with the questions
+that they wish to ask the candidates and the points that each question is worth. Since the form that CO is creating
+maybe long and complex, the client sends each question to the server as it is created. Once the form is completed, the
+CO clicks on the "Submit" button. The S\&C server saves the form and sends a confirmation message to the CO.
+
+% RV 08
+\subsection{Company selects applicants to send questionnaire to}
+\label{sub:company-selects-applicants-to-send-questionnaire-to}%
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_08.pdf}
+      \caption{Runtime View - Company selects applicants to send questionnaire to}
+      \label{fig:rv-co-selects-applicants}
+\end{figure}
+
+\par This sequence diagram illustrates the process involved by a CO in selecting applicants to send a questionnaire to
+for the relevant internship. The CO is viewing the internship advertisement and clicks on the "Send Questionnaire"
+button. The S\&C server retrieves the list of applicants for the internship and sends it to the client that will
+displays it. If the CO wishes so they can see the profile of each applicant individually in order to make a more
+informed decision. The CO then selects all the applicants that they wish to send the questionnaire to and clicks on
+the "Send" button. The candidates pool is identified and sent to the S\&C server. S\&C Core will then notify all
+selected students via email - using the Email Server - that they have a questionnaire to fill out.
+
+% RV 09
+\subsection{Company edits its own profile}
+\label{sub:company-edits-its-own-profile}%
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_09.pdf}
+      \caption{Runtime View - Company edits its own profile}
+      \label{fig:rv-co-edits-profile}
+\end{figure}
+
+\par This sequence diagram states how a CO can edit its own profile page. The CO clicks on the "Edit Profile" button
+in its own profile page. The client will than show the editing form. After the CO has made the necessary changes,
+they click on the "Submit" button. The S\&C server will then save the changes and shows a confirmation message to the
+CO.
+
+% RV 10
+\subsection{Company compiles the post-internship feedback form}
+\label{sub:company-compiles-the-post-internship-feedback-form}%
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_10.pdf}
+      \caption{Runtime View - Company compiles the post-internship feedback form}
+      \label{fig:rv-co-compiles-feedback-form}
+\end{figure}
+
+\par This sequence diagram illustrates how the CO can compile the post-internship feedback form. The client is on the
+now ended internship page and clicks on the "Post-Internship Feedback" button. The S\&C server retrieves the feedback
+form and sends it to the client. The CO then fills in the form with the necessary information and clicks on the
+"Submit" button. The S\&C server saves the feedback and sends a confirmation message to the CO.
+
+\par Since this questionnaire are usually very short and simple, the client sends the entire form to the server at
+once without saving the answers one by one.
+
+% RV 11
+\subsection{Company creates a complaint}
+\label{sub:company-creates-a-complaint}%
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_11.pdf}
+      \caption{Runtime View - Company creates a complaint}
+      \label{fig:rv-co-creates-complaint}
+\end{figure}
+
+\par This sequence diagram illustrates how a CO can create a complaint. The client is on the dashboard and clicks
+on the "Create Complaint" button. The S\&C server provides the client with the list of internships that the CO is
+involved in to allow the CO to select the internship that the complaint is related to. The CO then writes the in the
+form its reasons and clicks on the "Submit" button. The S\&C server saves the complaint and sends a notification to
+the UN staff and the ST involved in the work experience.
+
+\par Again, since the complaint form is short storing the intermediate answers is not necessary.
+
+% RV 12
+\subsection{University monitors the status of the internships}
+\label{sub:university-monitors-the-status-of-the-internships}%
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_12.pdf}
+      \caption{Runtime View - University monitors the status of the internships}
+      \label{fig:rv-un-monitors-internships}
+\end{figure}
+
+\par This sequence diagram illustrates how a UN can monitor the status of the internships. The clients load the "My
+Internships" page. The S\&C server retrieves the list of internships that the UN is involved in and sends it to the
+client. The UN can then see the status of each internship and if any complaints that have been made. If needed the UN
+can filter the list by status, company, or other criteria to find the desired information.
+
+% RV 13
+\subsection{University handles a complaint}
+\label{sub:university-handles-a-complaint}%
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_13.pdf}
+      \caption{Runtime View - University handles a complaint}
+      \label{fig:rv-un-handles-complaint}
+\end{figure}
+
+\par This sequence diagram illustrates how a UN can handle a complaint. The client is on the "My Complaints" page. The
+S\&C server retrieves the list of "active" complaints that the UN is involved in and sends it to the client. The UN can
+then see the status of each complaint and - if needed - can filter the list by company, or other criteria.
+
+\par The UN can then click on a complaint to see the details. The S\&C server retrieves the complaint details and sends
+it back to the client. The UN can then see the complaint and the related internship. UN can respond to the complaint
+and also suspend the internship if necessary. The S\&C server saves the changes made and sends a confirmation message
+to the UN after each action.
+
+% RV 14
+\subsection{University blocks a malicious company}
+\label{sub:university-blocks-a-malicious-company}%
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Images/RV_14.pdf}
+      \caption{Runtime View - University blocks a malicious company}
+      \label{fig:rv-un-blocks-company}
+\end{figure}
+
+\par This sequence diagram illustrates how a UN can block a malicious company. The client is on the "My Contracts" page
+and clicks on the "Block Company" button. The client shows a search bar where the UN can search for the company to
+block using the company's name, VAT number, or other criteria. The S\&C server retrieves the list of companies that
+match the search criteria and sends it to the client. The UN can then select the company to block and clicks on the
+"Block" button. The S\&C server adds the company to the blacklist and sends a confirmation message to the UN.
+
 \section{Component Interfaces}
 \label{sec:component-interfaces}%
-
 
 \begin{itemize}
       \item \textbf{Login Manager}:
@@ -442,7 +586,6 @@ saved correctly then the S\&C server feeds the data to the Suggestion Engine to 
           \end{itemize}
   
   \end{itemize}
-
 
 \section{Selected Architectural Styles and Patterns}
 \label{sec:selected-architectural-styles-patterns}%
