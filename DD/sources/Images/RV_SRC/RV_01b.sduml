@@ -1,0 +1,36 @@
+title Company Sign In
+
+participant Client
+participant "Web Server" as Web
+participant "Dashboard Manager" as Dashboard
+participant "Credential Login Manager" as LogManager
+participant "Query Manager" as QueryMan
+participant DBMS
+
+Client -> Web: www.student&company.it
+Web --> Client: Landing Page
+Client -> Web: credentialLogin()
+Web --> Client: Credential Form Page
+Client -> Web: sendCredential(username, password)
+Web -> Dashboard: sendCredential(username, password)
+
+Dashboard -> LogManager: validateCredential(username, password)
+LogManager -> QueryMan: credentialStored(username)
+QueryMan -> DBMS: executeQuery()
+
+DBMS --> QueryMan: tuple with archived Credentials
+QueryMan --> LogManager: username, password hash
+
+box over LogManager: Verification of the Credential
+
+alt Correct Credential
+
+LogManager --> Dashboard: Login Successful
+Dashboard --> Web: Home Page
+Web --> Client: Home Page
+
+else Incorrect Credential
+
+LogManager --> Dashboard: Login Error
+Dashboard --> Web: Login Error
+Web --> Client: Login Error

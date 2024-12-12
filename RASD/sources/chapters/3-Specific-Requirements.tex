@@ -145,6 +145,41 @@ frontend, as well as between the frontend and backend, and between the backend a
 \subsection{Use Case Diagrams}
 \label{subsec:use-case-diagrams}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_Unregistered_User.pdf}
+    \caption{Use Case Diagram for Unregistered Users}
+    \label{fig:use-case-diagram-unregistered-user}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_Student.pdf}
+    \caption{Use Case Diagram for Students}
+    \label{fig:use-case-diagram-students}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_Company.pdf}
+    \caption{Use Case Diagram for Companies}
+    \label{fig:use-case-diagram-companies}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Images/UC_University.pdf}
+    \caption{Use Case Diagram for Universities}
+    \label{fig:use-case-diagram-universities}
+\end{figure}
+
+\subsection{Use Cases}
+\label{subsec:use-cases}
+
+\par In this section, a detailed description of the main use cases of the system is presented.
+Each use case is described by a table containing the actors, entry conditions, flow of events, exit conditions, and exceptions.
+The use case diagram shows the messages exchanged between the actors and the system and the functions called by them.
+
 % 01
 
 \subsubsection{UC01: Student login}
@@ -873,11 +908,10 @@ The following table shows the mapping between the goals of S\&C (as defined in \
 and the system requirements (as defined in \ref{tab:requirements-table}, pag. \pageref{tab:requirements-table}). Goals
 and requirements are enumerated by their respective IDs.
 
-% We will now make the following pages landscape to fit the table
-\afterpage{%
-    \clearpage% Flush earlier floats (otherwise order might not be correct)
-    \begin{landscape}% Landscape page
-        \centering % Center table
+\afterpage{% Makes the following pages landscape to fit the table.
+    \clearpage% Flushes earlier floats.
+    \begin{landscape}% The actual landscape environment.
+        \centering % Center the following table.
         \begin{longtable}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
             \hline
             \textbf{$\bm{G_{i}}$ \textrightarrow{}} & \textbf{01} & \textbf{02} & \textbf{03} & \textbf{04} & \textbf{05} & \textbf{06} & \textbf{07} & \textbf{08} & \textbf{09} & \textbf{10} & \textbf{11} & \textbf{12} & \textbf{13} & \textbf{14} & \textbf{15} & \textbf{16} & \textbf{17} & \textbf{18} & \textbf{19} & \textbf{20} & \textbf{21} & \textbf{22} & \textbf{23} & \textbf{24} \\ \hline
@@ -928,5 +962,84 @@ and requirements are enumerated by their respective IDs.
             \label{tab:goals-requirements-mapping}
         \end{longtable}
     \end{landscape}
-    \clearpage% Flush page
+    \clearpage% Clear any produced floats in order to not compromise the following text.
 }
+
+\pagebreak
+
+\section{Performance Requirements}
+\label{sec:performance-requirements}%
+
+\par{\textbf{Latency Requirements}} Regarding performance, S\&C should be developed with a very scalable architecture
+capable of assuring its user a great QoE (Quality of Experience): in particular, the latency between user’s interaction
+and application response should always be less than 300ms (excluding, of course, end-to-end transmission latency not
+imputable to S\&C but on the network itself).
+
+\par{\textbf{Storage Requirements}} The system must also be able to store the needed data safely and implement proper
+technique of disaster recovery. The data to be stored are mostly text-based, with the most demanding objects being ST’s
+CVs and images used in CO’s profiles. An average of 10 MB/user should be maintained – using compression techniques if
+necessary – to ensure the scalability of the application itself.
+
+\par{\textbf{Architecture Sizing}} The primary market of S\&C is Italy, where S\&C corp. can establish relationships
+with the various universities of the nation. According to 2024’s data in Italy there are 1.9M universities students,
+assuming being able to target 20\% of market capacity this would correspond to a user base of 380K users. Designing the
+system to accommodate 500k users should be sufficient and should allow for unexpected expansions The infrastructure
+will be dynamically scalable, capable of adjusting to accommodate up to twice the monthly average user count, ensuring
+long-term flexibility and performance.
+
+\section{Design Constraints}
+\label{sec:design-constraints}%
+
+\subsection{Standards Compliance}
+\label{subsec:standards-compliance}%
+
+\par S\&C should be compliant with EU’s GDPR regulations to be able to operate in Italy legally ensuring the protection
+of the users’ personal data and privacy.
+
+\subsection{Hardware Limitations}
+\label{subsec:hardware-limitations}%
+
+\par Server-side, the system must be able to run on commodity x86 hardware. Client-side the requirements are much
+blander, only requiring a UE (User Equipment) capable of running a modern web-browser connected with a reliable
+connection to the Internet.
+
+\pagebreak
+
+\section{Software System Attributes}
+\label{sec:software-system-attributes}%
+
+\subsection{Reliability}
+\label{subsec:reliability}%
+
+\par The system must be designed in such a way that errors can’t propagate over the whole architecture and fault can be
+easily identified and isolated. Enough replicas of data and services should be implemented to ensure the reliability of
+the application.
+
+\subsection{Availability}
+\label{subsec:availability}%
+
+\par The system must be available 99.99\% (four-nines) of the time, thus allowing 52 minutes of down-time yearly.
+
+\par Maintenance should be carried out when the impact on the clients is negligible and must be announced in advance.
+
+\subsection{Security}
+\label{subsec:security}%
+
+\par The system implements a comprehensive authentication and authorization framework to manage user access rights.
+Authentication verifies the identity of users attempting to log in, while authorization ensures that authenticated
+users possess appropriate permissions for requested actions.
+
+\par To safeguard the system's integrity, standard security measures will be implemented, including encryption of user
+credentials and personal data and protection mechanisms against database query injection vulnerabilities.
+
+\subsection{Maintainability}
+\label{subsec:maintainability}%
+
+\par The system must be modular enough to allow future expansions with limited effort and repercussion. Enough replicas
+of the system must be always up to allow maintenance without impacting on user’s traffic.
+
+\subsection{Portability}
+\label{subsec:portability}%
+
+\par As stated before, the server-side architecture must be able to run on commodity x86 hardware and the client-side
+frontend must be reachable with a generic browser from the endpoints.

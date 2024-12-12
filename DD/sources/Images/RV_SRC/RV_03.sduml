@@ -1,0 +1,44 @@
+title Student Browse and Search Internship Advertisement
+
+participant "Client" as Client
+participant "Web Server" as Web
+participant "Dashboard Manager" as Dashboard
+participant "Internship Data Manager" as IntData
+participant "Recommendation Manager" as Recommendations
+participant "Query Manager" as QueryManager
+participant "DBMS" as DBMS
+participant "Recommendation Engine" as RecommendationEn
+
+Client -> Web: requestSearchPage()
+Web --> Client: Search Page
+Client -> Web: initiateSearch(SearchParameters)
+Web -> Dashboard: initiateSearch(SearchParameters)
+
+alt With Recommendation For User Toggled
+Dashboard -> Recommendations: retriveRecommendation(STId, SearchParameters)
+Recommendations -> RecommendationEn: retriveRecommendation(STId, SearchParameters)
+
+RecommendationEn --> Recommendations: List of Internship Advertisement Id
+Recommendations --> Dashboard: List of Internship Advertisement Id
+Dashboard -> IntData: requestSnippet(InternIds)
+IntData -> QueryManager: requestSnippet(InternIds)
+QueryManager -> DBMS: executeQuery()
+DBMS --> QueryManager: Tuples of Snippet of Internship Advertisement
+QueryManager -->  IntData: list of Internship Ad. Snippet
+IntData --> Dashboard:  list of Internship Ad. Snippet
+Dashboard --> Web: list of Internship Ad. Snippet
+Web --> Client: Result of Search Page
+
+else Normal Search
+Dashboard -> IntData: internshipSearch(SearchParameters) 
+
+IntData -> QueryManager: internshipSearch(SearchParameters)
+QueryManager -> DBMS: executeQuery()
+DBMS --> QueryManager: Tuples of Snippet of Internship Advertisement
+QueryManager -->  IntData: list of Internship Ad. Snippet
+IntData --> Dashboard:  list of Internship Ad. Snippet
+Dashboard --> Web: list of Internship Ad. Snippet
+Web --> Client: Result of Search Page
+
+
+end

@@ -1,0 +1,58 @@
+title Student Sign Up / Sign In - University Login
+
+participant "Client" as Client
+participant "Web Server" as Web
+participant "Dashboard Manager" as Dashboard
+participant "SSOs Login Manager" as StLogManager
+participant "SSOs" as SSOs
+participant "Query Manager" as QueryManager
+participant "DBMS" as DBMS
+
+Client -> Web: www.student&company.it
+Web --> Client: Login Form Page
+
+
+Client -> Web: ssoLogin()
+Web --> Client: University Selection Form Page
+Client -> Web: LoginAtUniversity(unId)
+Web -> Dashboard : LoginAtUniversity(unId)
+Dashboard -> StLogManager: LoginAtUniversity(unId)
+StLogManager -> SSOs: redirectToSSOs()
+SSOs --> StLogManager: UN SSO login page
+StLogManager --> Dashboard: UN SSO login page
+Dashboard --> Web: UN SSO login page
+Web --> Client: UN SSO login page
+
+
+box over Client,SSOs:Interaction Between Client and SSOs server for login
+
+SSOs --> StLogManager: Identification OK
+StLogManager -> QueryManager: retrieveInfo(userId)
+QueryManager -> DBMS: executeQuery()
+activate DBMS
+
+alt First Access
+  DBMS--> QueryManager: No Data
+  QueryManager --> StLogManager: No Information Retrived
+  StLogManager --> Dashboard: No data present
+  Dashboard --> Web: STInformation Page
+  Web --> Client: STInformation Page 
+  Client -> Web: sendInfo(STInformation)
+  Web -> Dashboard: sendInfo(STInformation)
+  Dashboard -> StLogManager: sendInfo(STInformation)
+  StLogManager -> QueryManager: linkInfoToId(STid, STInformation)
+  QueryManager -> DBMS: executeQuery()
+  DBMS --> QueryManager: Transaction OK
+  QueryManager --> StLogManager: Query Executed Correctly
+  StLogManager --> Dashboard: Link Executed Correctly
+  Dashboard --> Web: Home Page
+  Web --> Client: Home Page
+else Login
+DBMS --> QueryManager: User Information Tuple
+QueryManager --> StLogManager: UserInformation
+StLogManager --> Dashboard: UserInformation
+Dashboard --> Web: Home Page
+Web --> Client: Home Page
+
+deactivate DBMS 
+end
