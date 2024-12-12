@@ -74,7 +74,27 @@
 \usepackage{lipsum} % DUMMY PACKAGE
 \usepackage{fancyhdr} % For the headers
 \usepackage{pdflscape} % For landscape pages
+\usepackage{listings}
 \fancyhf{}
+
+% Define Alloy language (custom settings for highlighting)
+\lstdefinelanguage{Alloy}{
+    keywords={abstract, module, open, sig, extends, fact, pred, fun, let, this, implies, some, all, no, one, lone, set,},
+    keywordstyle=\color{blue}\bfseries,
+    morekeywords=[2]{eventually, always, until, before, after, once,not, and, or, implies, iff, else, disj, xor, in, &},
+    keywordstyle=[2]\color[rgb]{0,0,0.5}\bfseries,
+    sensitive=true,
+    basicstyle=\ttfamily\small,
+    comment=[l]{//},
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{orange}\ttfamily,
+    morestring=[b]",
+    keywordstyle=\bfseries\color{blue},
+    commentstyle=\itshape\color[rgb]{0,0.5,0},
+    stringstyle=\color{orange},  
+    breaklines=true,
+    showstringspaces=false
+}
 
 % CONFIGURATION FILE
 \input{Configuration_Files/config}
@@ -127,5 +147,7 @@
 \include{./chapters/2-Overall-Description.tex}
 
 \include{./chapters/3-Specific-Requirements.tex}
+
+\include{./chapters/4-Formal-Analysis.tex}
 
 \end{document}
