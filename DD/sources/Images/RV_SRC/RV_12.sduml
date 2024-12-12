@@ -5,12 +5,12 @@ note over Client: Client is viewing the "My Internships" page.
 Client->Client: retriveIntershipsStatus(defaultFilter)
 Client->WebServer: retriveIntershipsStatus(defaultFilter)
 WebServer->Dashboard Manager: retriveIntershipsStatus(defaultFilter)
-Dashboard Manager->Internship Manager: retriveIntershipsStatus(defaultFilter)
-Internship Manager->Query Manager: retriveIntershipsStatusData(defaultFilter)
+Dashboard Manager->Internship Data Manager: retriveIntershipsStatus(defaultFilter)
+Internship Data Manager->Query Manager: retriveIntershipsStatusData(defaultFilter)
 Query Manager->DBMS: executeQuery(...)
 DBMS-->Query Manager: return <Internship Status>
-Query Manager-->Internship Manager: return <Internship Status>
-Internship Manager-->Dashboard Manager: return <Internship Status>
+Query Manager-->Internship Data Manager: return <Internship Status>
+Internship Data Manager-->Dashboard Manager: return <Internship Status>
 Dashboard Manager-->WebServer: return <Internship Status>
 WebServer-->Client: Show the various internships and their status.
 
@@ -19,11 +19,11 @@ note over Client: Client can filter the internships by company, status, date, et
 Client->Client: filterInternships(criteria)
 Client->WebServer: retriveIntershipsStatus(newFilter)
 WebServer->Dashboard Manager: retriveIntershipsStatus(newFilter)
-Dashboard Manager->Internship Manager: retriveIntershipsStatus(newFilter)
-Internship Manager->Query Manager: retriveIntershipsStatusData(newFilter)
+Dashboard Manager->Internship Data Manager: retriveIntershipsStatus(newFilter)
+Internship Data Manager->Query Manager: retriveIntershipsStatusData(newFilter)
 Query Manager->DBMS: executeQuery(...)
 DBMS-->Query Manager: return <Internship Status>
-Query Manager-->Internship Manager: return <Internship Status>
-Internship Manager-->Dashboard Manager: return <Internship Status>
+Query Manager-->Internship Data Manager: return <Internship Status>
+Internship Data Manager-->Dashboard Manager: return <Internship Status>
 Dashboard Manager-->WebServer: return <Internship Status>
 WebServer-->Client: Show the filtered internships and their status.
