@@ -1,0 +1,47 @@
+title Student Compile Company's Questionnaire
+
+participant "Client" as Client
+participant "Web" as Web
+participant "Dashboard Manager" as Dashboard
+participant "Company Questionnaire Manager" as QuestManager
+participant "Query Manager" as QueryManager
+participant "DBMS" as DBMS
+
+box over Client: Client is on the internship advertisement of a Company
+
+Client -> Web: compileQuestionnaire(idInternshipAd)
+Web -> Dashboard: compileQuestionnaire(idInternshipAd)
+Dashboard -> QuestManager: compileCOQuestionnaire(idInternshipAd)
+QuestManager -> QueryManager: retrieveQuestionnaireData(idInternshipAd)
+QueryManager -> DBMS: executeQuery()
+DBMS --> QueryManager: tuples with Questionnaire Information
+QueryManager --> QuestManager: SelectionProcessQuest
+box over QuestManager: is request before the deadline?
+
+alt Before deadline
+
+loop For question
+
+QuestManager --> Dashboard: COQuestion
+Dashboard --> Web: COQuestion
+Web --> Client: COQuestion
+
+Client -> Web: answerCOQuestion(Answer)
+Web -> Dashboard: answerCOQuestion(Answer)
+Dashboard -> QuestManager: answerCOQuestion(Answer)
+QuestManager -> QueryManager: saveSTanswer(Answer)
+QueryManager -> DBMS: executeQuery()
+
+DBMS --> QueryManager: Transaction OK
+QueryManager --> QuestManager: Transaction OK
+box over QuestManager: Next Question
+
+end
+
+else Deadline elapsed
+
+QuestManager --> Dashboard: Request not in time
+Dashboard --> Web: Request not in time
+Web--> Client: Notify request not in time
+
+end
