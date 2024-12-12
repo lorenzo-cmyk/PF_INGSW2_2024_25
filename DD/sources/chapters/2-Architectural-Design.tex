@@ -9,7 +9,7 @@
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=1.0\textwidth]{Images/Overview_diagram.pdf}
+      \includegraphics[width=0.85\textwidth]{Images/Overview_diagram.pdf}
       \caption{S\&C Architecture Overview}
       \label{fig:overview}
 \end{figure}
@@ -48,7 +48,7 @@
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Images/High_Level_Architectural_Design.pdf}
+      \includegraphics[width=0.85\textwidth]{Images/High_Level_Architectural_Design.pdf}
       \caption{High-Level Components}
       \label{fig:high-level-components}
 \end{figure}
@@ -81,7 +81,7 @@
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=1.0\textwidth]{Images/Low_Level_Architectural_Design.pdf}
+      \includegraphics[width=0.85\textwidth]{Images/Low_Level_Architectural_Design.pdf}
       \caption{Low-Level Components}
       \label{fig:low-level-components}
 \end{figure}
@@ -91,9 +91,9 @@
 \begin{itemize}
       \item \textbf{Dashboard Manager}: This component is responsible for interacting with users through the dashboard interface.
             The Dashboard Manager executes user requests and interacts with the appropriate components.
-      \item \textbf{Login Manager}: This component is responsible for user login. For companies and universities,
-            it checks credentials against those stored in the DBMS. For students, it handles the first login (registration)
-            and subsequent logins by interacting with the Universities SSOs.
+      \item \textbf{Login Manager}: This component is responsible for user login. For companies it checks credentials 
+      against those stored in the DBMS. For students and and universities, it interacts with the Universities SSOs,
+      for the students it also handle the first access to the platform.
       \item \textbf{Internship Manager}: This component manages all stages of the Internship selection and execution process.
             It handles the creation of Internship Advertisements, the list of student applications,
             and the status of internships. It also provides an interface for the Complaint Manager to modify the status of internships.
@@ -117,17 +117,18 @@
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Images/Login_Architecture.pdf}
+      \includegraphics[width=0.85\textwidth]{Images/Login_Architecture.pdf}
       \caption{Login Manager}
       \label{login-manager-arch}
 \end{figure}
 
 \par The Login Manager is composed of other two sub-components:
 \begin{itemize}
-      \item \textbf{Student Login Manager}: This component is responsible for managing student logins
-            and their registration. It interacts with the Universities SSOs to authenticate students.
-      \item \textbf{COUN Login Manager}: This component is responsible for managing company and university logins.
-            It checks the credentials against those stored in the DBMS.
+      \item \textbf{SSO Login Manager}: This component is responsible for interacting with the Universities SSOs to authenticate 
+      the students and the authorized staff with the SSOs. It also manages the registration of new students. 
+      It creates a new student profile if the student is not already registered in the DBMS.
+      \item \textbf{Credential Login Manager}: This component is responsible for authenticating the company with the credentials
+      stored in the DBMS. 
 \end{itemize}
 
 \subsubsection{Internship Manager}
@@ -135,7 +136,7 @@
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Images/Internship_Architecture.pdf}
+      \includegraphics[width=0.85\textwidth]{Images/Internship_Architecture.pdf}
       \caption{Internship Manager}
       \label{internship-manager-arch}
 \end{figure}
@@ -154,7 +155,7 @@
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Images/Profile_Architecture.pdf}
+      \includegraphics[width=0.85\textwidth]{Images/Profile_Architecture.pdf}
       \caption{Profile Manager}
       \label{profile-manager-arch}
 \end{figure}
@@ -171,7 +172,7 @@
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Images/Questionnaire_Architecture.pdf}
+      \includegraphics[width=0.85\textwidth]{Images/Questionnaire_Architecture.pdf}
       \caption{Questionnaire Manager}
       \label{questionnaire-manager-arch}
 \end{figure}
@@ -190,7 +191,7 @@
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=1.0\textwidth]{Images/Deployment_Diagram.pdf}
+      \includegraphics[width=0.85\textwidth]{Images/Deployment_Diagram.pdf}
       \caption{Deployment Diagram}
       \label{fig:deployment-diagram}
 \end{figure}
@@ -219,47 +220,48 @@ explained in \ref{sec:other-design-decisions}.
 \section{Runtime View}
 \label{sec:runtime-view}%
 
-\subsection{Student Login}
-\label{sub:student-login}%
+\subsection{Student and Universities Staff Login}
+\label{sub:student-and-universities-staff-login}%
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=1.0\textwidth]{Images/RV_01a.pdf}
-      \caption{Runtime View - Student Login}
+      \includegraphics[width=0.85\textwidth]{Images/RV_01a.pdf}
+      \caption{Runtime View - Student and Universities Staff Login}
       \label{fig:rv-student-login}
 \end{figure}
 
 \par This sequence diagram represents the ST login and first access process. The ST searches into the browser for the
-S\&C web application and gets the login page. After clicking on the "Login as Student" button the ST is redirected to
+S\&C web application and gets the login page. After clicking on the "Login with SSO" button the ST is redirected to
 a page require the selection of the university of the ST between the available ones. After the selection, the ST is redirected
 to the university's SSO page where the ST inserts the credentials. The SSO validates the credentials and sends back a
 token to the S\&C server. The S\&C server validates the token and check if the ST is already registered in the system searching
 for it in the DBMS. If the ST is not registered, the S\&C server creates a new ST profile and redirects the ST to the
 profile page to complete the registration. If the ST is already registered, the S\&C server redirects the ST to the
 dashboard page.
+This process is the same for the UN staff but there is no registration process because the UN staff is registered by the S\&C staff.
 
-\subsection{Company or University Login}
-\label{sub:company-or-university-login}%
+\subsection{Company Login}
+\label{sub:company-login}%
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=1.0\textwidth]{Images/RV_01b.pdf}
-      \caption{Runtime View - Company or University Login}
-      \label{fig:rv-company-or-university-login}
+      \includegraphics[width=0.85\textwidth]{Images/RV_01b.pdf}
+      \caption{Runtime View - Company Login}
+      \label{fig:rv-company-login}
 \end{figure}
 
-\par This sequence diagram represents the CO or UN login process. Here is not shown the registration process because it has 
-appened in a previous instance between the CO or UN staff and the S\&C staff by email. The CO or UN searches into the browser for the S\&C 
-web application and gets the login page. After clicking on the "Login with Company/University credentials" button the CO or UN
+\par This sequence diagram represents the CO login process. Here is not shown the registration process because it was done
+in a previous instance between the CO and the S\&C staff by email. The CO searches into the browser for the S\&C 
+web application and gets the login page. After clicking on the "Login with Company credentials" button the CO 
 inserts the credentials and clicks on the "Login" button. The S\&C server validates the credentials and if the credentials
-are correct the CO or UN is redirected to the dashboard page otherwise an error message is shown.
+are correct the CO is redirected to the dashboard page otherwise an error message is shown.
 
 \subsection{Student Loads CV}
 \label{sub:student-loads-cv}%
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=1.0\textwidth]{Images/RV_02.pdf}
+      \includegraphics[width=0.85\textwidth]{Images/RV_02.pdf}
       \caption{Runtime View - Student Loads CV}
       \label{fig:rv-student-loads-cv}
 \end{figure}
@@ -277,7 +279,7 @@ suggestions are sent back to the ST.
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=1.0\textwidth]{Images/RV_03.pdf}
+      \includegraphics[width=0.85\textwidth]{Images/RV_03.pdf}
       \caption{Runtime View - Student browser and search for internships}
       \label{fig:rv-student-browser-and-search-for-internships}
 \end{figure}
@@ -292,7 +294,7 @@ filter selection. The S\&C server retrieve the recommended internships from the 
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=1.0\textwidth]{Images/RV_04a.pdf}
+      \includegraphics[width=0.85\textwidth]{Images/RV_04a.pdf}
       \caption{Runtime View - Student compiles Company Questionnaire}
       \label{fig:rv-student-compiles-company-questionnaire}
 \end{figure}
@@ -311,7 +313,7 @@ until the last one.
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=1.0\textwidth]{Images/RV_04b.pdf}
+      \includegraphics[width=0.85\textwidth]{Images/RV_04b.pdf}
       \caption{Runtime View - Student compiles Feedback Questionnaire}
       \label{fig:rv-student-compiles-feedback-questionnaire}
 \end{figure}
@@ -329,7 +331,7 @@ until the last one.
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=1.0\textwidth]{Images/RV_05.pdf}
+      \includegraphics[width=0.85\textwidth]{Images/RV_05.pdf}
       \caption{Runtime View - Student creates a complaint}
       \label{fig:rv-student-creates-a-complaint}
 \end{figure}
@@ -345,7 +347,7 @@ saves the complaint and sends a notification to the CO and UN staff involved in 
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=1.0\textwidth]{Images/RV_06.pdf}
+      \includegraphics[width=0.85\textwidth]{Images/RV_06.pdf}
       \caption{Runtime View - Company creates an internship advertisement}
       \label{fig:rv-company-creates-an-internship-advertisement}
 \end{figure}
@@ -354,6 +356,93 @@ saves the complaint and sends a notification to the CO and UN staff involved in 
 Advertisement" button in the dashboard page. The S\&C server sends back the internship advertisement creation page. The CO fills
 the form with the details of the internship advertisement and clicks on the "Submit" button. If the internship advertisement is
 saved correctly then the S\&C server feeds the data to the Suggestion Engine to be analyzed and suggestions are sent back to the CO.
+
+\section{Component Interfaces}
+\label{sec:component-interfaces}%
+
+
+\begin{itemize}
+      \item \textbf{Login Manager}:
+          \begin{itemize}
+              \item LoginAtUniversity(String unId)
+              \item sendInfo(STInfo stInfo)
+              \item validateCredential(String username, String password)
+          \end{itemize}
+  
+      \item \textbf{Internship Manager}
+          \begin{itemize}
+              \item requestSnipped(List<String> internIds)
+              \item internshipSearch(SearchParameters searchParams)
+              \item retrieveSTInternship(String stId)
+              \item storeInternshipAd(InternshipAd internshipAd)
+          \end{itemize}
+  
+      \item \textbf{Profile Manager}
+          \begin{itemize}
+              \item archiveCV(File CV)
+          \end{itemize}
+      
+      \item \textbf{Questionnaire Manager}
+          \begin{itemize}
+              \item compileQuestionnaire(String idInternshipAd)
+              \item answerCOQuestionnaire(Answer answer)
+              \item compileFeedbackQuestionnaire(String idInternshipAd)
+              \item answerFeedbackQuestionnaire(Answer answer)
+          \end{itemize}
+  
+      \item \textbf{Complaint Manager}
+          \begin{itemize}
+              \item createAndNotifyComplaint(String stId, String universityId, Complaint complaint)
+          \end{itemize}
+  
+      \item \textbf{Notification Manager}
+          \begin{itemize}
+              \item newComplaintAdded(String universityId, String companyId)
+          \end{itemize}
+  
+      \item \textbf{Recommendation Manager}
+          \begin{itemize}
+              \item retrieveRecommendation(String stId, SearchParameters searchParams)
+          \end{itemize}
+  
+      \item \textbf{Suggestion Manager}
+          \begin{itemize}
+              \item feedCVToEngine(File CV)
+              \item feedInternAdToEngine(InternshipAd internshipAd)
+          \end{itemize}
+  
+      \item \textbf{Query Manager}
+          \begin{itemize}
+              \item retrieveInfo(String userId)
+              \item linkInfoToId(String userId, STInfo stInfo)
+              \item credentialStored(String username)
+              \item archiveCV(File CV)
+              \item requestSnipped(List<String> internIds)
+              \item internshipSearch(SearchParameters searchParams)
+              \item retrieveQuestionnaireData(String idInternshipAd)
+              \item saveSTAnswer(Answer answer)
+              \item retrieveSTInternship(String stId)
+              \item storeInternshipAd(InternshipAd internshipAd)
+          \end{itemize}
+  
+      \item \textbf{Dashboard Manager}
+          \begin{itemize}
+              \item LoginAtUniversity(String unId)
+              \item sendInfo(STInfo stInfo)
+              \item sendCredential(String username, String password)
+              \item initiateSearch(SearchParameters searchParams)
+              \item compileQuestionnaire(String idInternshipAd)
+              \item answerCOQuestionnaire(Answer answer)
+              \item compileFeedbackQuestionnaire(String idInternshipAd)
+              \item answerFeedbackQuestionnaire(Answer answer)
+              \item retrieveSTInternship(String stId)
+              \item createComplaint(String stId, String universityId, Complaint complaint)
+              \item addComplaint(String stId, Complaint complaint)
+              \item createInternshipAd(InternshipAd internshipAd)
+          \end{itemize}
+  
+  \end{itemize}
+
 
 \section{Selected Architectural Styles and Patterns}
 \label{sec:selected-architectural-styles-patterns}%
