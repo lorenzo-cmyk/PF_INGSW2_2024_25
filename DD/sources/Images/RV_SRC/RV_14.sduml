@@ -1,6 +1,6 @@
 title UN Block a Malicious Company
 
-note over Client: Client visits "My Contract" page.
+note over Client: Client visits "My Contracts" page.
 
 Client->Client: Client search for the company to block based on name, VAT number, etc.
 
