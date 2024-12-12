@@ -1,40 +1,39 @@
-title ST Creates a Complaint
+title CO Creates a Complaint
 
-note over Client: Client is on the relevant internship page.
+note over Client: Client is on the dashboard and presses the "Create Complaint" button.
 
-Client->Client: createComplaint() // Shows the complaint form.
-
-note over Client: System checks if another complaint has been made by the same user for the same internship.
-
-Client->WebServer: retrieveComplaint(idInternshipAd)
-WebServer->Dashboard Manager: retrieveComplaint(idInternshipAd)
-Dashboard Manager->Complaint Manager: retrieveComplaint(idInternshipAd)
-Complaint Manager->Query Manager: retrieveComplaintData(idInternshipAd)
+Client->Web Server: requestComplaintPage(companyId)
+Web Server->Dashboard Manager: retrieveCOInternships(companyId)
+Dashboard Manager->Internship Data Manager: retrieveCOInternships(companyId)
+Internship Data Manager->Query Manager: retrieveCOInternships(companyId)
 Query Manager->DBMS: executeQuery(...)
-DBMS-->Query Manager: return <Complaint>
-Query Manager-->Complaint Manager: return <Complaint>
-Complaint Manager-->Dashboard Manager: return <Complaint>
-Dashboard Manager-->WebServer: return <Complaint>
+DBMS-->Query Manager: return <Internships>
+Query Manager-->Internship Data Manager: return <Internships>
+Internship Data Manager-->Dashboard Manager: return <Internships>
+Dashboard Manager-->Web Server: return <Internships>
+Web Server-->Client: "Create Complaint" page.
 
-alt <Complaint> is not null
-    WebServer-->Client: Show error message.
-else <Complaint> is null
-WebServer-->Client: Show the complaint form.
+note over Client: Client selects the regarding internship, explains its own reasons and presses the "Submit" button.
 
-# Complants are usually short so I don't think it's necessary to store the intermediate answers.
-
-note over Client: Client fills in the form.
-
-Client->Client: submitComplaint(idInternshipAd, complaintData)
-Client->WebServer: submitComplaint(idInternshipAd, complaintData)
-WebServer->Dashboard Manager: submitComplaint(idInternshipAd, complaintData)
-Dashboard Manager->Complaint Manager: submitComplaint(idInternshipAd, complaintData)
-Complaint Manager->Query Manager: insertComplaintData(idInternshipAd, complaintData)
+Client->Web Server: createComplaint(companyId, internshipId, reason)
+Web Server->Dashboard Manager: createComplaint(companyId, internshipId, reason)
+Dashboard Manager->Complaint Manager: createAndNotifyComplaint(companyId, internshipId, reason)
+Complaint Manager->Query Manager: addComplaint(companyId, internshipId, reason)
 Query Manager->DBMS: executeQuery(...)
-DBMS-->Query Manager: return null
-Query Manager-->Complaint Manager: return null
-Complaint Manager-->Dashboard Manager: return null
-Dashboard Manager-->WebServer: return null
-WebServer-->Client: Show confirmation message.
-
-end
+DBMS-->Query Manager: return success
+Query Manager-->Complaint Manager: return success
+# We need to retrieve the universityId of the internship to notify UN staff.
+Complaint Manager->Internship Data Manager: retrieveIntershipUN(internshipId)
+Internship Data Manager->Query Manager: retrieveIntershipUN(internshipId)
+Query Manager->DBMS: executeQuery(...)
+DBMS-->Query Manager: return <universityId>
+Query Manager-->Internship Data Manager: return <universityId>
+Internship Data Manager-->Complaint Manager: return <universityId>
+# We need to notify the UN staff about the new complaint.
+Complaint Manager->Notify Manager: newComplaintAdded(companyId, universityId)
+Notify Manager->Mail Server: createMailComplaint(companyId, universityId)
+Mail Server-->Notify Manager: return success
+Notify Manager-->Complaint Manager: return success
+Complaint Manager-->Dashboard Manager: return success
+Dashboard Manager-->Web Server: return success
+Web Server-->Client: Show success message

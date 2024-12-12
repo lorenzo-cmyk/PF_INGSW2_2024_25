@@ -429,25 +429,23 @@ form and sends it to the client. The CO then fills in the form with the necessar
 once without saving the answers one by one.
 
 % RV 11
-\subsection{Student creates a complaint}
-\label{sub:student-creates-a-complaint}%
+\subsection{Company creates a complaint}
+\label{sub:company-creates-a-complaint}%
 
 \begin{figure}[H]
       \centering
       % \includegraphics[width=1.0\textwidth]{Images/RV_11.pdf}
-      \caption{Runtime View - Student creates a complaint}
-      \label{fig:rv-st-creates-complaint}
+      \caption{Runtime View - Company creates a complaint}
+      \label{fig:rv-co-creates-complaint}
 \end{figure}
 
-\par This sequence diagram illustrates how a ST can create a complaint. The client is on the internship page and clicks 
-on the "Create Complaint" button. The S\&C server checks if the ST has already created a complaint for that internship, 
-and if not, allows the client to open the complaint creation page. The ST then fills in the form with an accurate 
-description of the problem and clicks on the "Submit" button. The S\&C server saves the complaint and shows a 
-confirmation message to the ST.
+\par This sequence diagram illustrates how a CO can create a complaint. The client is on the dashboard and clicks 
+on the "Create Complaint" button. The S\&C server provides the client with the list of internships that the CO is 
+involved in to allow the CO to select the internship that the complaint is related to. The CO then writes the in the 
+form its reasons and clicks on the "Submit" button. The S\&C server saves the complaint and sends a notification to 
+the UN staff and the ST involved in the work experience.
 
-\par Again, since the complaint form is short storing the intermediate answers is not necessary. Additionally, is worth 
-noting that the S\&C server will notify the UN staff involved in the internship about the complaint via email but this 
-is outside the scope of this figure.
+\par Again, since the complaint form is short storing the intermediate answers is not necessary.
 
 % RV 12
 \subsection{University monitors the status of the internships}
