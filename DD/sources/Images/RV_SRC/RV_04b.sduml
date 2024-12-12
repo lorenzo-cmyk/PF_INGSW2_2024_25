@@ -1,0 +1,36 @@
+title Student Compile Post-Internship Feedback
+
+participant "Client" as Client
+participant "Web" as Web
+participant "Dashboard Manager" as Dashboard
+participant "Feedback Post Internship Manager" as QuestManager
+participant "Query Manager" as QueryManager
+participant "DBMS" as DBMS
+
+box over Client: Client is on the internship advertisement of a Company
+
+Client -> Web: compileFeedbackQuestionnaire(idInternshipAd)
+Web -> Dashboard: compileFeedbackQuestionnaire(idInternshipAd)
+Dashboard -> QuestManager: compileFeedbackQuestionnaire(idInternshipAd)
+QuestManager -> QueryManager: retrieveQuestionnaireData(idInternshipAd)
+QueryManager -> DBMS: executeQuery()
+DBMS --> QueryManager: tuples with Questionnaire Information
+QueryManager --> QuestManager: SelectionProcessQuest
+
+loop For question
+
+QuestManager --> Dashboard: FeedbackQuestion
+Dashboard --> Web: FeedbackQuestion
+Web --> Client: FeedbackQuestion
+
+Client -> Web: answerFeedbackQuestion(Answer)
+Web -> Dashboard: answerFeedbackQuestion(Answer)
+Dashboard -> QuestManager: answerFeedbackQuestion(Answer)
+QuestManager -> QueryManager: saveSTanswer(Answer)
+QueryManager -> DBMS: executeQuery()
+
+DBMS --> QueryManager: Transaction OK
+QueryManager --> QuestManager: Transaction OK
+box over QuestManager: Next Question
+
+end
