@@ -55,6 +55,7 @@
 \usepackage{tabularx}
 \usepackage{longtable} % Tables that can span several pages
 \usepackage{colortbl}
+\usepackage{tabu}
 
 % PACKAGES FOR ALGORITHMS (PSEUDO-CODE)
 \usepackage{algorithm}
@@ -127,14 +128,33 @@
 }
 
 %----------------------------------------------------------------------------
+%	DELIVERABLE INFORMATION
+%----------------------------------------------------------------------------
+\begin{table}[h!]
+    \begin{tabu} to \textwidth { X[0.3,r,p] X[0.7,l,p] }
+        \hline
+
+        \textbf{Deliverable:}   & RASD                                                                                                                \\
+        \textbf{Title:}         & Requirements Analysis and Specification Document                                                                    \\
+        \textbf{Authors:}       & Apollonio Marco, Bossi Giacomo, Chiroli Lorenzo                                                                     \\
+        \textbf{Version:}       & 1.0                                                                                                                 \\
+        \textbf{Date:}          & 2024-12-13                                                                                                          \\
+        \textbf{Download page:} & \href{https://github.com/MarcoApollonio02/ApollonioBossiChiroli}{github.com/MarcoApollonio02/ApollonioBossiChiroli} \\
+        \textbf{Copyright:}     & Copyright © 2024 – All Rights Reserved                                                                              \\
+        \hline
+    \end{tabu}
+\end{table}
+\thispagestyle{empty} % No page numbers on this page
+
+%----------------------------------------------------------------------------
 %	LIST OF CONTENTS/FIGURES/TABLES
 %----------------------------------------------------------------------------
 \startpreamble
 \setcounter{page}{1} % Set page counter to 1
 \thispagestyle{empty} % No page numbers on this page
 \tableofcontents % Write out the Table of Contents
-\listoffigures
-\listoftables
+\listoffigures % Write out the List of Figures
+\listoftables % Write out the List of Tables
 \thispagestyle{empty} % No page numbers on this page
 \cleardoublepage % Start the document on a right-hand page
 
