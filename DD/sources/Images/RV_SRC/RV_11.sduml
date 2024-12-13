@@ -23,15 +23,15 @@ Query Manager->DBMS: executeQuery(...)
 DBMS-->Query Manager: return success
 Query Manager-->Complaint Manager: return success
 # We need to retrieve the universityId of the internship to notify UN staff.
-Complaint Manager->Internship Data Manager: retrieveIntershipUN(internshipId)
-Internship Data Manager->Query Manager: retrieveIntershipUN(internshipId)
+Complaint Manager->Internship Data Manager: retrieveIntershipUNandST(internshipId)
+Internship Data Manager->Query Manager: retrieveIntershipUNandST(internshipId)
 Query Manager->DBMS: executeQuery(...)
-DBMS-->Query Manager: return <universityId>
-Query Manager-->Internship Data Manager: return <universityId>
-Internship Data Manager-->Complaint Manager: return <universityId>
+DBMS-->Query Manager: return <universityId, studentId>
+Query Manager-->Internship Data Manager: return <universityId, studentId>
+Internship Data Manager-->Complaint Manager: return <universityId, studentId>
 # We need to notify the UN staff about the new complaint.
-Complaint Manager->Notify Manager: newComplaintAdded(companyId, universityId)
-Notify Manager->Mail Server: createMailComplaint(companyId, universityId)
+Complaint Manager->Notify Manager: newComplaintAdded(studentId, universityId)
+Notify Manager->Mail Server: createMailComplaint(studentId, universityId)
 Mail Server-->Notify Manager: return success
 Notify Manager-->Complaint Manager: return success
 Complaint Manager-->Dashboard Manager: return success
