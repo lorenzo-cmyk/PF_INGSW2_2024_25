@@ -12,10 +12,10 @@ participant "Suggestion Engine" as SuggestionEn
 Client -> Web: requestCreateQuestionnairepage()
 Web --> Client: Create Questionnaire Page
 
-Client -> Web: createInternshipAd(InternshipAd)
-Web -> Dashboard: createInternshipAd(InternshipAd)
-Dashboard -> InternshipData: storeInternshipAd(InternshipAd)
-InternshipData -> QueryManager: storeInternshipAd(InternshipAd)
+Client -> Web: createInternshipAd(companyId, internshipAd)
+Web -> Dashboard: createInternshipAd(companyId, internshipAd)
+Dashboard -> InternshipData: storeInternshipAd(companyId, internshipAd)
+InternshipData -> QueryManager: storeInternshipAd(companyId, internshipAd)
 QueryManager -> DBMS: executeQuery()
 
 alt Success

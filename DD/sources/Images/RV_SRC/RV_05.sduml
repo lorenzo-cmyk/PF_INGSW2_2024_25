@@ -21,11 +21,11 @@ IntData --> Dashboard: InternshipAd
 Dashboard --> Web: InternshipAd
 Web --> Client: Create Complaint Page
 
-Client -> Web: createComplaint(studentId, universityId, complaint)
-Web -> Dashboard: createComplaint(studentId, universityId, complaint)
-Dashboard -> Complaint: createAndNotifyComplaint(studentId, universityId, complaint)
+Client -> Web: createComplaint(studentId, internshipId, reason)
+Web -> Dashboard: createComplaint(studentId, internshipId, reason)
+Dashboard -> Complaint: createAndNotifyComplaint(studentId, internshipId, reason)
 
-Complaint -> QueryManager: addComplaint(studentId, Complaint)
+Complaint -> QueryManager: addComplaint(studentId, idInternshipAd, Complaint)
 QueryManager -> DBMS: executeQuery()
 DBMS --> QueryManager: Transaction OK
 QueryManager --> Complaint: Transaction OK

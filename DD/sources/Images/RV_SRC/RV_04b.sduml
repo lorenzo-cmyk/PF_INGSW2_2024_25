@@ -1,36 +1,32 @@
-title Student Compile Post-Internship Feedback
+title Student Compiles Post-Internship Feedback Form
 
-participant "Client" as Client
-participant "Web" as Web
-participant "Dashboard Manager" as Dashboard
-participant "Feedback Post Internship Manager" as QuestManager
-participant "Query Manager" as QueryManager
-participant "DBMS" as DBMS
+note over Client: Client is on the relevant internship page.
 
-box over Client: Client is on the internship advertisement of a Company
+Client->Client: compilePostInternshipFeedbackForm() // Shows the questionnaire form.
 
-Client -> Web: compileFeedbackQuestionnaire(idInternshipAd)
-Web -> Dashboard: compileFeedbackQuestionnaire(idInternshipAd)
-Dashboard -> QuestManager: compileFeedbackQuestionnaire(idInternshipAd)
-QuestManager -> QueryManager: retrieveQuestionnaireData(idInternshipAd)
-QueryManager -> DBMS: executeQuery()
-DBMS --> QueryManager: tuples with Questionnaire Information
-QueryManager --> QuestManager: SelectionProcessQuest
+Client->WebServer: retrieveInternshipFeedbackForm(idInternshipAd)
+WebServer->Dashboard Manager: retrieveInternshipFeedbackForm(idInternshipAd)
+Dashboard Manager->Feedback Post-Internship Manager: retrieveInternshipFeedbackForm(idInternshipAd)
+Feedback Post-Internship Manager->Query Manager: retrieveInternshipFeedbackFormData(idInternshipAd)
+Query Manager->DBMS: executeQuery(...)
+DBMS-->Query Manager: return <Internship Feedback Questions>
+Query Manager-->Feedback Post-Internship Manager: return <Internship Feedback Questions>
+Feedback Post-Internship Manager-->Dashboard Manager: return <Internship Feedback Questions>
+Dashboard Manager-->WebServer: return <Internship Feedback Questions>
+WebServer-->Client: Show the questionnaire form.
 
-loop For question
+# Post Internship Feedback are usually short so I don't think it's necessary to store the intermediate answers.
 
-QuestManager --> Dashboard: FeedbackQuestion
-Dashboard --> Web: FeedbackQuestion
-Web --> Client: FeedbackQuestion
+note over Client: Client fills in the form.
 
-Client -> Web: answerFeedbackQuestion(Answer)
-Web -> Dashboard: answerFeedbackQuestion(Answer)
-Dashboard -> QuestManager: answerFeedbackQuestion(Answer)
-QuestManager -> QueryManager: saveSTanswer(Answer)
-QueryManager -> DBMS: executeQuery()
-
-DBMS --> QueryManager: Transaction OK
-QueryManager --> QuestManager: Transaction OK
-box over QuestManager: Next Question
-
-end
+Client->Client: submitInternshipFeedbackForm(idInternshipAd, feedbackFormData)
+Client->WebServer: submitInternshipFeedbackForm(idInternshipAd, feedbackFormData)
+WebServer->Dashboard Manager: submitInternshipFeedbackForm(idInternshipAd, feedbackFormData)
+Dashboard Manager->Feedback Post-Internship Manager: submitInternshipFeedbackForm(idInternshipAd, feedbackFormData)
+Feedback Post-Internship Manager->Query Manager: insertInternshipFeedbackFormData(idInternshipAd, feedbackFormData)
+Query Manager->DBMS: executeQuery(...)
+DBMS-->Query Manager: return null
+Query Manager-->Feedback Post-Internship Manager: return null
+Feedback Post-Internship Manager-->Dashboard Manager: return null
+Dashboard Manager-->WebServer: return null
+WebServer-->Client: Show confirmation message.

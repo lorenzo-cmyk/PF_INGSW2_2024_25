@@ -220,6 +220,7 @@ explained in \ref{sec:other-design-decisions}.
 \section{Runtime View}
 \label{sec:runtime-view}%
 
+% RV 01a
 \subsection{Student and Universities Staff Login}
 \label{sub:student-and-universities-staff-login}%
 
@@ -240,6 +241,7 @@ profile page to complete the registration. If the ST is already registered, the 
 dashboard page.
 This process is the same for the UN staff but there is no registration process because the UN staff is registered by the S\&C staff.
 
+% RV 01b
 \subsection{Company Login}
 \label{sub:company-login}%
 
@@ -256,6 +258,7 @@ web application and gets the login page. After clicking on the "Login with Compa
 inserts the credentials and clicks on the "Login" button. The S\&C server validates the credentials and if the credentials
 are correct the CO is redirected to the dashboard page otherwise an error message is shown.
 
+% RV 02
 \subsection{Student Loads CV}
 \label{sub:student-loads-cv}%
 
@@ -274,6 +277,7 @@ standard formats supported by the Suggestion Engine, if it's not then a notifica
 so the ST can't receive suggestions, instead if the CV is supported it's sent to the Suggestion Engine to be analyzed and
 suggestions are sent back to the ST.
 
+% RV 03
 \subsection{Student browser and search for internships}
 \label{sub:student-browser-and-search-for-internships}%
 
@@ -290,6 +294,7 @@ through the Internship Manager retrieves the internships that match the filters 
 request the internship that the Recommendation Engine suggests to him by clicking on the "recommended for you" filter in the
 filter selection. The S\&C server retrieve the recommended internships from the Recommendation Engine and sends them back to the ST.
 
+% RV 04a
 \subsection{Student compiles Company Questionnaire}
 
 \begin{figure}[H]
@@ -308,6 +313,7 @@ the Company Questionnaire Manager the questions of the questionnaire and sends t
 The ST answers the questions and clicks on the "Next" button. The S\&C server saves the answers and sends the next question
 until the last one.
 
+% RV 04b
 \subsection{Student compiles Feedback Questionnaire}
 \label{sub:student-compiles-feedback-questionnaire}%
 
@@ -320,11 +326,10 @@ until the last one.
 
 \par This sequence diagram represents the ST compiles Feedback Questionnaire process. ST after receiving the email that
 a feedback questionnaire for an internship he completed is available, To compile the questionnaire ST access the specified internship
-advertisements and then clicks on the "Fill out Questionnaire" button or can directly access the questionnaire from the email.
+advertisements and then clicks on the "Post-Internship Feedback" button or can directly access the questionnaire from the email.
 In this case there is no deadline check because the questionnaire is for statistic and feedback purposes. The S\&C server retrieves
-through the Feedback Questionnaire Manager the questions of the questionnaire and sends them one by one to the ST.
-The ST answers the questions and clicks on the "Next" button. The S\&C server saves the answers and sends the next question
-until the last one.
+the feedback form and sends it to the client. The ST then fills in the form with the necessary information and clicks on the
+"Submit" button. The S\&C server saves the feedback and sends a confirmation message to the CO.
 
 \subsection{Student creates a complaint}
 \label{sub:student-creates-a-complaint}%
@@ -518,7 +523,7 @@ match the search criteria and sends it to the client. The UN can then select the
               \item requestSnipped(List<String> internIds)
               \item internshipSearch(SearchParameters searchParams)
               \item retrieveSTInternship(String stId)
-              \item storeInternshipAd(InternshipAd internshipAd)
+              \item storeInternshipAd(String companyId, InternshipAd internshipAd)
           \end{itemize}
   
       \item \textbf{Profile Manager}
@@ -528,15 +533,15 @@ match the search criteria and sends it to the client. The UN can then select the
       
       \item \textbf{Questionnaire Manager}
           \begin{itemize}
-              \item compileQuestionnaire(String idInternshipAd)
+              \item compileCOQuestionnaire(String idInternshipAd)
               \item answerCOQuestionnaire(Answer answer)
-              \item compileFeedbackQuestionnaire(String idInternshipAd)
-              \item answerFeedbackQuestionnaire(Answer answer)
+              \item retrieveInternshipFeedbackForm(String idInternshipAd)
+              \item submitInternshipFeedbackForm(String idInternshipAd, FeedbackData feedbackFormData)
           \end{itemize}
   
       \item \textbf{Complaint Manager}
           \begin{itemize}
-              \item createAndNotifyComplaint(String stId, String universityId, Complaint complaint)
+              \item createAndNotifyComplaint(String stId, String internshipId, Complaint reason)
           \end{itemize}
   
       \item \textbf{Notification Manager}
@@ -565,8 +570,11 @@ match the search criteria and sends it to the client. The UN can then select the
               \item internshipSearch(SearchParameters searchParams)
               \item retrieveQuestionnaireData(String idInternshipAd)
               \item saveSTAnswer(Answer answer)
+              \item retrieveInternshipFeedbackForm(String idInternshipAd)
+              \item insertInternshipFeedbackFormData(String idInternshipAd,FeedbackData feedbackFormData)
               \item retrieveSTInternship(String stId)
-              \item storeInternshipAd(InternshipAd internshipAd)
+              \item addComplaint(String stId, String idInternshipAd, Complaint reason)
+              \item storeInternshipAd(String companyId, InternshipAd internshipAd)
           \end{itemize}
   
       \item \textbf{Dashboard Manager}
@@ -574,15 +582,15 @@ match the search criteria and sends it to the client. The UN can then select the
               \item LoginAtUniversity(String unId)
               \item sendInfo(STInfo stInfo)
               \item sendCredential(String username, String password)
+              \item loadCV(File CV)
               \item initiateSearch(SearchParameters searchParams)
               \item compileQuestionnaire(String idInternshipAd)
               \item answerCOQuestionnaire(Answer answer)
-              \item compileFeedbackQuestionnaire(String idInternshipAd)
-              \item answerFeedbackQuestionnaire(Answer answer)
+              \item retrieveInternshipFeedbackForm(String idInternshipAd)
+              \item submitInternshipFeedbackForm(String idInternshipAd, FeedbackData feedbackFormData)
               \item retrieveSTInternship(String stId)
-              \item createComplaint(String stId, String universityId, Complaint complaint)
-              \item addComplaint(String stId, Complaint complaint)
-              \item createInternshipAd(InternshipAd internshipAd)
+              \item createComplaint(String stId, String internshipId, Complaint reason)
+              \item createInternshipAd(String companyId, InternshipAd internshipAd)
           \end{itemize}
   
   \end{itemize}
