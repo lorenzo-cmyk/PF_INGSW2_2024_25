@@ -42,6 +42,7 @@
 !DD/sources/Images/RV_*.pdf
 !DD/sources/Images/GUI/ST/Diagram.pdf
 !DD/sources/Images/GUI/CO/Diagram.pdf
+!DD/sources/Images/GUI/UN/Diagram.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
