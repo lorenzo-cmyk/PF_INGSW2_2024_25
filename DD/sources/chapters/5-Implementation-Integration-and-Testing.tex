@@ -1,0 +1,105 @@
+\chapter{Implementation, Integration and Testing}
+\label{ch:implementation-integration-and-testing}%
+
+\section{Overview and Implementation Plan}
+\label{sec:overview-and-implementation-plan}
+
+\par In this chapter, we will discuss the implementation of the S\&C Web Application, the integration and the test
+strategy that will be used to ensure the quality of the software. In general, the methodology used to implement the
+S\&C Web Application is the Bottom-Up approach, which is a software development approach that starts by implementing
+the lower-level modules first, and then integrating them to create higher-level modules.
+
+\par By using this approach, we can ensure that the lower-level modules are working correctly before integrating them into
+higher-level modules. Each module will require a Driver to test the module. The Driver will simulate the behavior of
+the higher-level module and will call the lower-level module to test its functionality by making calls of the interfaces
+given by the lower-level module.
+The Bottom-Up strategy grants a step by step integration of the modules and ensures that the software is working correctly
+thanks to the testing of each module, that will make easier to identify and fix the bugs of the different modules before
+integrating them into more complex ones. This strategy also allows the development team to work on different modules
+simultaneously, which can speed up the development process.
+
+
+\section{Features Identifications}
+\label{sec:features-identifications}%
+
+\par \textbf{[F1] Login Features}: This are fundamentals features of S\&C, that are required by every user. 
+This set of features is crucial to the proper working of the Web Application, due to the fact that is the first feature 
+used by a user before doing any other activity.
+
+\begin{itemize}
+    \item \textbf{[F1.1] Login by SSOs}: This feature allows the STs and the UN's staff to login into the Web Application
+    using their SSOs.
+    \item \textbf{[F1.2] Login by Email and Password}: This feature allows the COs to login into the Web Application
+    using the username and password provided by S\&C staff
+\end{itemize}
+
+\par \textbf{[F2] CO Features}: This set of features is used by the COs to manage their profile, the internships
+advertisement that they will create, their editing, the creation of the questionnaires, the management of the applicants
+lists and the management of the internships.
+
+\begin{itemize}
+    \item \textbf{[F2.1] Profile Management}: This feature allows the COs to manage their profile, by changing their
+    CO's information, such as the description provided and the CO's logo.
+    \item \textbf{[F2.2] COs' Questionnaires Management}: This feature allows the COs to create, edit and delete the 
+    questionnaires that they will send to the applicants that have applied to their internships.
+    \item \textbf{[F2.3] Internship Advertisement Management}: This feature allows the COs to create, edit and delete
+    the internships advertisements.
+    \item \textbf{[F2.4] Internship Progress Management}: This feature allows the COs to see the applicants that have
+    applied to their internships, to visualize the applicants' information, to select the applicants that they want to
+    send the interview questionnaires and to set the deadlines for the applicants to answer the questionnaires.
+    \item \textbf{[F2.5] System's Questionnaires Answering}: This feature allows the COs to answer the feedback 
+    questionnaires that the system will send to them after the internships have ended.
+\end{itemize}
+
+\par \textbf{[F3] ST Features}: This set of features is used by the STs to manage their profile, to apply to the 
+internships and to answer the questionnaires sent by the COs.
+
+\begin{itemize}
+    \item \textbf{[F3.1] Profile Management}: This feature allows the STs to manage their profile, by changing their
+    ST's information, and to load their CV.
+    \item \textbf{[F3.2] Internship Advertisement Application}: This feature allows the STs to apply to the internships
+    advertisements that they are interested in.
+    \item \textbf{[F3.3] COs' Questionnaires Answering}: This feature allows the STs to answer the questionnaires sent by
+    the COs and to see the deadlines for the questionnaires.
+    \item \textbf{[F3.4] Internship Progression}: This feature allows the STs to see the status of the internships
+    advertisement that they have applied to.
+    \item \textbf{[F2.5] System's Questionnaires Answering}: This feature allows the STs to answer the feedback 
+    questionnaires that the system will send to them after the internships have ended.
+\end{itemize}
+
+\par \textbf{[F4] UN Features}: This set of features is used by the UN's staff to visualize the information of the
+internships to which it's students are involved, the contracts that the UN has with S\&C, and the ability to block the
+COs that are not following the terms of the application.
+
+\begin{itemize}
+    \item \textbf{[F4.1] Internships Information Visualization}: This feature allows the UN's staff to see the
+    information and the status of the internships to which it's students are involved.
+    \item \textbf{[F4.2] Contracts Visualization}: This feature allows the UN's staff to see the contracts that the UN
+    has with S\&C.
+    \item \textbf{[F4.3] COs' Blocking}: This feature allows the UN's staff to block the COs.
+\end{itemize}
+
+\par \textbf{[F5] Complaint Features}: This set of features is used by the COs and the STs to make complaints about the
+internships, and allow the UN's staff to see the complaints and to take action about it.
+
+\begin{itemize}
+    \item \textbf{[F5.1] Complaint Creation}: This feature allows the COs and the STs to create complaints about the
+    internships.
+    \item \textbf{[F5.2] Complaint Visualization}: This feature allows all the users involved to see the complaint 
+    created.
+    \item \textbf{[F5.3] Complaint Resolution}: This feature allows the UN's staff to take action about the complaints
+    and eventually to suspend the internship.
+\end{itemize}
+
+\par \textbf{[F6] Notification Features}: This set of features is to send notifications to the user, like 
+that they received a questionnaires to which they need to answer, or that a new complaint has been created about an internship
+that they are involved in.
+
+\par \textbf{[F7] Recommendation Features}: This set of features is to recommend internships to the STs based on their
+CVs and to the COs to recommend STs based on the internships that they have created.
+
+\par \textbf{[F8] Suggestions Features}: This set of features is to suggest to the COs how to improve their internships
+applications to make them more attractive to the STs, to the STs how to make their CVs more attractive to the COs
+
+\par \textbf{[F9] Visualization Features}: This set of features is to visualize all the information that a user needs,
+the notifications that they have received, the search engine with it's filter.
