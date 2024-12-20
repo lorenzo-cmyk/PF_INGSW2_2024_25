@@ -2,7 +2,7 @@
 \label{ch:implementation-integration-and-testing}%
 
 \section{Overview and Implementation Plan}
-\label{sec:overview-and-implementation-plan}
+\label{sec:overview-and-implementation-plan}%
 
 \par In this chapter, we will discuss the implementation of the S\&C Web Application, the integration and the test
 strategy that will be used to ensure the quality of the software. In general, the methodology used to implement the
@@ -22,9 +22,62 @@ simultaneously, which can speed up the development process.
 \section{Features Identifications}
 \label{sec:features-identifications}%
 
-\par \textbf{[F1] Login Features}: This are fundamentals features of S\&C, that are required by every user. 
-This set of features is crucial to the proper working of the Web Application, due to the fact that is the first feature 
-used by a user before doing any other activity.
+\par The S\&C Web Application is a complex software that has different features that are going to be used by the different
+users. The features are divided into three main categories: the CO Features, the ST Features, and the UN Features. Each
+category has different features that are going to be used by the different users. The features are identified as follows:
+
+\par \textbf{CO Features}: This set of features is used by the COs to manage their profile, the internships
+advertisement that they will create, their editing, the creation of the questionnaires, the management of the applicants
+lists and the management of the internships.
+
+\begin{itemize}
+    \item \textbf{[CO.1] Profile Management}: This feature allows the COs to manage their profile, by changing their
+    CO's information, such as the description provided and the CO's logo.
+    \item \textbf{[CO.2] COs' Questionnaires Management}: This feature allows the COs to create, edit and delete the 
+    questionnaires that they will send to the applicants that have applied to their internships.
+    \item \textbf{[CO.3] Internship Advertisement Management}: This feature allows the COs to create, edit and delete
+    the internships advertisements.
+    \item \textbf{[CO.4] Internship Progress Management}: This feature allows the COs to see the applicants that have
+    applied to their internships, to visualize the applicants' information, to select the applicants that they want to
+    send the interview questionnaires and to set the deadlines for the applicants to answer the questionnaires.
+    \item \textbf{[CO.5] System's Questionnaires Answering}: This feature allows the COs to answer the feedback 
+    questionnaires that the system will send to them after the internships have ended.
+\end{itemize}
+
+\par \textbf{ST Features}: This set of features is used by the STs to manage their profile, to apply to the 
+internships and to answer the questionnaires sent by the COs.
+
+\begin{itemize}
+    \item \textbf{[ST.1] Profile Management}: This feature allows the STs to manage their profile, by changing their
+    ST's information, and to load their CV.
+    \item \textbf{[ST.2] Internship Advertisement Application}: This feature allows the STs to apply to the internships
+    advertisements that they are interested in.
+    \item \textbf{[ST.3] COs' Questionnaires Answering}: This feature allows the STs to answer the questionnaires sent by
+    the COs and to see the deadlines for the questionnaires.
+    \item \textbf{[ST.4] Internship Progression}: This feature allows the STs to see the status of the internships
+    advertisement that they have applied to.
+    \item \textbf{[ST.5] System's Questionnaires Answering}: This feature allows the STs to answer the feedback 
+    questionnaires that the system will send to them after the internships have ended.
+\end{itemize}
+
+\par \textbf{UN Features}: This set of features is used by the UN's staff to visualize the information of the
+internships to which it's students are involved, the contracts that the UN has with S\&C, and the ability to block the
+COs that are not following the terms of the application.
+
+\begin{itemize}
+    \item \textbf{[UN.1] Internships Information Visualization}: This feature allows the UN's staff to see the
+    information and the status of the internships to which it's students are involved.
+    \item \textbf{[UN.2] Contracts Visualization}: This feature allows the UN's staff to see the contracts that the UN
+    has with S\&C.
+    \item \textbf{[UN.3] COs' Blocking}: This feature allows the UN's staff to block the COs.
+\end{itemize}
+
+
+\par This feature identification is useful to identify what the different users can do in the Web Application. 
+Now it's going to be discussed how the different features are going to be implemented based on the architecture given in
+chapter \ref{ch:architectural-design}:
+
+\par \textbf{[F1] Login Features}: 
 
 \begin{itemize}
     \item \textbf{[F1.1] Login by SSOs}: This feature allows the STs and the UN's staff to login into the Web Application
@@ -33,51 +86,45 @@ used by a user before doing any other activity.
     using the username and password provided by S\&C staff
 \end{itemize}
 
-\par \textbf{[F2] CO Features}: This set of features is used by the COs to manage their profile, the internships
-advertisement that they will create, their editing, the creation of the questionnaires, the management of the applicants
-lists and the management of the internships.
+\par \textbf{[F2] Internship Management Features}:
 
 \begin{itemize}
-    \item \textbf{[F2.1] Profile Management}: This feature allows the COs to manage their profile, by changing their
-    CO's information, such as the description provided and the CO's logo.
-    \item \textbf{[F2.2] COs' Questionnaires Management}: This feature allows the COs to create, edit and delete the 
-    questionnaires that they will send to the applicants that have applied to their internships.
-    \item \textbf{[F2.3] Internship Advertisement Management}: This feature allows the COs to create, edit and delete
+    \item \textbf{[CO.3] Internship Advertisement Management}: This feature allows the COs to create, edit and delete
     the internships advertisements.
-    \item \textbf{[F2.4] Internship Progress Management}: This feature allows the COs to see the applicants that have
+    \item \textbf{[CO.4] Internship Progress Management}: This feature allows the COs to see the applicants that have
     applied to their internships, to visualize the applicants' information, to select the applicants that they want to
     send the interview questionnaires and to set the deadlines for the applicants to answer the questionnaires.
-    \item \textbf{[F2.5] System's Questionnaires Answering}: This feature allows the COs to answer the feedback 
-    questionnaires that the system will send to them after the internships have ended.
-\end{itemize}
-
-\par \textbf{[F3] ST Features}: This set of features is used by the STs to manage their profile, to apply to the 
-internships and to answer the questionnaires sent by the COs.
-
-\begin{itemize}
-    \item \textbf{[F3.1] Profile Management}: This feature allows the STs to manage their profile, by changing their
-    ST's information, and to load their CV.
-    \item \textbf{[F3.2] Internship Advertisement Application}: This feature allows the STs to apply to the internships
+    \item \textbf{[ST.2] Internship Advertisement Application}: This feature allows the STs to apply to the internships
     advertisements that they are interested in.
-    \item \textbf{[F3.3] COs' Questionnaires Answering}: This feature allows the STs to answer the questionnaires sent by
-    the COs and to see the deadlines for the questionnaires.
-    \item \textbf{[F3.4] Internship Progression}: This feature allows the STs to see the status of the internships
+    \item \textbf{[ST.4] Internship Progression}: This feature allows the STs to see the status of the internships
     advertisement that they have applied to.
-    \item \textbf{[F2.5] System's Questionnaires Answering}: This feature allows the STs to answer the feedback 
-    questionnaires that the system will send to them after the internships have ended.
+    \item \textbf{[UN.1] Internships Information Visualization}: This feature allows the UN's staff to see the
+    information and the status of the internships to which it's students are involved.
 \end{itemize}
 
-\par \textbf{[F4] UN Features}: This set of features is used by the UN's staff to visualize the information of the
-internships to which it's students are involved, the contracts that the UN has with S\&C, and the ability to block the
-COs that are not following the terms of the application.
+
+\par \textbf{[F3] Profile Management Features}:
 
 \begin{itemize}
-    \item \textbf{[F4.1] Internships Information Visualization}: This feature allows the UN's staff to see the
-    information and the status of the internships to which it's students are involved.
-    \item \textbf{[F4.2] Contracts Visualization}: This feature allows the UN's staff to see the contracts that the UN
-    has with S\&C.
-    \item \textbf{[F4.3] COs' Blocking}: This feature allows the UN's staff to block the COs.
+    \item \textbf{[CO.1] Profile Management}: This feature allows the COs to manage their profile, by changing their
+    CO's information, such as the description provided and the CO's logo.
+    \item \textbf{[ST.1] Profile Management}: This feature allows the STs to manage their profile, by changing their
+    ST's information, and to load their CV.
 \end{itemize}
+
+\par \textbf{[F4] Questionnaires Management Features}:
+
+\begin{itemize}
+    \item \textbf{[CO.2] COs' Questionnaires Management}: This feature allows the COs to create, edit and delete the 
+    questionnaires that they will send to the applicants that have applied to their internships.
+    \item \textbf{[CO.5] System's Questionnaires Answering}: This feature allows the COs to answer the feedback 
+    questionnaires that the system will send to them after the internships have ended.
+    \item \textbf{[ST.3] COs' Questionnaires Answering}: This feature allows the STs to answer the questionnaires sent by
+    the COs and to see the deadlines for the questionnaires.
+    \item \textbf{[ST.5] System's Questionnaires Answering}: This feature allows the STs to answer the feedback 
+    questionnaires that the system will send to them after the internships have ended.
+
+\end{itemize} 
 
 \par \textbf{[F5] Complaint Features}: This set of features is used by the COs and the STs to make complaints about the
 internships, and allow the UN's staff to see the complaints and to take action about it.
@@ -103,3 +150,17 @@ applications to make them more attractive to the STs, to the STs how to make the
 
 \par \textbf{[F9] Visualization Features}: This set of features is to visualize all the information that a user needs,
 the notifications that they have received, the search engine with it's filter.
+
+
+\section{Integration Strategy}
+\label{sec:integration-strategy}%
+
+\par The integration strategy and the testing will start as soon as the DBMS and the host server are built and ready 
+to be used. The integration will be done by using the Bottom-Up approach an so the first module that will be implemented
+and tested will be the Query Manager module, that is the module that will return the fundamental classes that are going to
+be used by the other modules. So the Query Manager module is containing and will generate object of the classes that are
+part of the Model in the MVC architecture. The Query Manager module will be tested by using a proper Driver that will 
+simulate the behavior of the other modules that will use the Query Manager module.  
+
+
+
