@@ -91,9 +91,9 @@
 \begin{itemize}
       \item \textbf{Dashboard Manager}: This component is responsible for interacting with users through the dashboard interface.
             The Dashboard Manager executes user requests and interacts with the appropriate components.
-      \item \textbf{Login Manager}: This component is responsible for user login. For companies it checks credentials 
-      against those stored in the DBMS. For students and and universities, it interacts with the Universities SSOs,
-      for the students it also handle the first access to the platform.
+      \item \textbf{Login Manager}: This component is responsible for user login. For companies it checks credentials
+            against those stored in the DBMS. For students and and universities, it interacts with the Universities SSOs,
+            for the students it also handle the first access to the platform.
       \item \textbf{Internship Manager}: This component manages all stages of the Internship selection and execution process.
             It handles the creation of Internship Advertisements, the list of student applications,
             and the status of internships. It also provides an interface for the Complaint Manager to modify the status of internships.
@@ -124,11 +124,11 @@
 
 \par The Login Manager is composed of other two sub-components:
 \begin{itemize}
-      \item \textbf{SSO Login Manager}: This component is responsible for interacting with the Universities SSOs to authenticate 
-      the students and the authorized staff with the SSOs. It also manages the registration of new students. 
-      It creates a new student profile if the student is not already registered in the DBMS.
+      \item \textbf{SSO Login Manager}: This component is responsible for interacting with the Universities SSOs to authenticate
+            the students and the authorized staff with the SSOs. It also manages the registration of new students.
+            It creates a new student profile if the student is not already registered in the DBMS.
       \item \textbf{Credential Login Manager}: This component is responsible for authenticating the company with the credentials
-      stored in the DBMS. 
+            stored in the DBMS.
 \end{itemize}
 
 \subsubsection{Internship Manager}
@@ -242,6 +242,7 @@ dashboard page.
 This process is the same for the UN staff but there is no registration process because the UN staff is registered by the S\&C staff.
 
 % RV 01b
+
 \subsection{Company Login}
 \label{sub:company-login}%
 
@@ -253,12 +254,13 @@ This process is the same for the UN staff but there is no registration process b
 \end{figure}
 
 \par This sequence diagram represents the CO login process. Here is not shown the registration process because it was done
-in a previous instance between the CO and the S\&C staff by email. The CO searches into the browser for the S\&C 
-web application and gets the login page. After clicking on the "Login with Company credentials" button the CO 
+in a previous instance between the CO and the S\&C staff by email. The CO searches into the browser for the S\&C
+web application and gets the login page. After clicking on the "Login with Company credentials" button the CO
 inserts the credentials and clicks on the "Login" button. The S\&C server validates the credentials and if the credentials
 are correct the CO is redirected to the dashboard page otherwise an error message is shown.
 
 % RV 02
+
 \subsection{Student Loads CV}
 \label{sub:student-loads-cv}%
 
@@ -278,7 +280,8 @@ so the ST can't receive suggestions, instead if the CV is supported it's sent to
 suggestions are sent back to the ST.
 
 % RV 03
-\subsection{Student browser and search for internships}
+
+\subsection{Student Browser and Search for Internships}
 \label{sub:student-browser-and-search-for-internships}%
 
 \begin{figure}[H]
@@ -295,7 +298,8 @@ request the internship that the Recommendation Engine suggests to him by clickin
 filter selection. The S\&C server retrieve the recommended internships from the Recommendation Engine and sends them back to the ST.
 
 % RV 04a
-\subsection{Student compiles Company Questionnaire}
+
+\subsection{Student Compiles Company Questionnaire}
 
 \begin{figure}[H]
       \centering
@@ -314,7 +318,8 @@ The ST answers the questions and clicks on the "Next" button. The S\&C server sa
 until the last one.
 
 % RV 04b
-\subsection{Student compiles Feedback Questionnaire}
+
+\subsection{Student Compiles Feedback Questionnaire}
 \label{sub:student-compiles-feedback-questionnaire}%
 
 \begin{figure}[H]
@@ -331,7 +336,7 @@ In this case there is no deadline check because the questionnaire is for statist
 the feedback form and sends it to the client. The ST then fills in the form with the necessary information and clicks on the
 "Submit" button. The S\&C server saves the feedback and sends a confirmation message to the CO.
 
-\subsection{Student creates a complaint}
+\subsection{Student Creates a Complaint}
 \label{sub:student-creates-a-complaint}%
 
 \begin{figure}[H]
@@ -347,7 +352,7 @@ if the ST is not involved in any internship the page will show that a complaint 
 and the reason for the complaint and writes the complaint in the text area. The ST clicks on the "Submit" button. The S\&C server
 saves the complaint and sends a notification to the CO and UN staff involved in the internship.
 
-\subsection{Company creates an internship advertisement}
+\subsection{Company Creates an Internship Advertisement}
 \label{sub:company-creates-an-internship-advertisement}%
 
 \begin{figure}[H]
@@ -363,7 +368,8 @@ the form with the details of the internship advertisement and clicks on the "Sub
 saved correctly then the S\&C server feeds the data to the Suggestion Engine to be analyzed and suggestions are sent back to the CO.
 
 % RV 07
-\subsection{Company creates a questionnaire}
+
+\subsection{Company Creates a Questionnaire}
 \label{sub:company-creates-a-questionnaire}%
 
 \begin{figure}[H]
@@ -382,7 +388,8 @@ maybe long and complex, the client sends each question to the server as it is cr
 CO clicks on the "Submit" button. The S\&C server saves the form and sends a confirmation message to the CO.
 
 % RV 08
-\subsection{Company selects applicants to send questionnaire to}
+
+\subsection{Company Selects Applicants to Send Questionnaire to}
 \label{sub:company-selects-applicants-to-send-questionnaire-to}%
 
 \begin{figure}[H]
@@ -401,7 +408,8 @@ the "Send" button. The candidates pool is identified and sent to the S\&C server
 selected students via email - using the Email Server - that they have a questionnaire to fill out.
 
 % RV 09
-\subsection{Company edits its own profile}
+
+\subsection{Company Edits Its Own Profile}
 \label{sub:company-edits-its-own-profile}%
 
 \begin{figure}[H]
@@ -417,7 +425,8 @@ they click on the "Submit" button. The S\&C server will then save the changes an
 CO.
 
 % RV 10
-\subsection{Company compiles the post-internship feedback form}
+
+\subsection{Company Compiles the Post-Internship Feedback Form}
 \label{sub:company-compiles-the-post-internship-feedback-form}%
 
 \begin{figure}[H]
@@ -436,7 +445,8 @@ form and sends it to the client. The CO then fills in the form with the necessar
 once without saving the answers one by one.
 
 % RV 11
-\subsection{Company creates a complaint}
+
+\subsection{Company Creates a Complaint}
 \label{sub:company-creates-a-complaint}%
 
 \begin{figure}[H]
@@ -455,7 +465,8 @@ the UN staff and the ST involved in the work experience.
 \par Again, since the complaint form is short storing the intermediate answers is not necessary.
 
 % RV 12
-\subsection{University monitors the status of the internships}
+
+\subsection{University Monitors the Status of the Internships}
 \label{sub:university-monitors-the-status-of-the-internships}%
 
 \begin{figure}[H]
@@ -471,7 +482,8 @@ client. The UN can then see the status of each internship and if any complaints 
 can filter the list by status, company, or other criteria to find the desired information.
 
 % RV 13
-\subsection{University handles a complaint}
+
+\subsection{University Handles a Complaint}
 \label{sub:university-handles-a-complaint}%
 
 \begin{figure}[H]
@@ -491,7 +503,8 @@ and also suspend the internship if necessary. The S\&C server saves the changes 
 to the UN after each action.
 
 % RV 14
-\subsection{University blocks a malicious company}
+
+\subsection{University Blocks a Malicious Company}
 \label{sub:university-blocks-a-malicious-company}%
 
 \begin{figure}[H]
@@ -512,88 +525,88 @@ match the search criteria and sends it to the client. The UN can then select the
 
 \begin{itemize}
       \item \textbf{Login Manager}:
-          \begin{itemize}
-              \item LoginAtUniversity(String unId)
-              \item sendInfo(STInfo stInfo)
-              \item validateCredential(String username, String password)
-          \end{itemize}
-  
+            \begin{itemize}
+                  \item LoginAtUniversity(String unId)
+                  \item sendInfo(STInfo stInfo)
+                  \item validateCredential(String username, String password)
+            \end{itemize}
+
       \item \textbf{Internship Manager}
-          \begin{itemize}
-              \item requestSnipped(List<String> internIds)
-              \item internshipSearch(SearchParameters searchParams)
-              \item retrieveSTInternship(String stId)
-              \item storeInternshipAd(String companyId, InternshipAd internshipAd)
-          \end{itemize}
-  
+            \begin{itemize}
+                  \item requestSnipped(List<String> internIds)
+                  \item internshipSearch(SearchParameters searchParams)
+                  \item retrieveSTInternship(String stId)
+                  \item storeInternshipAd(String companyId, InternshipAd internshipAd)
+            \end{itemize}
+
       \item \textbf{Profile Manager}
-          \begin{itemize}
-              \item archiveCV(File CV)
-          \end{itemize}
-      
+            \begin{itemize}
+                  \item archiveCV(File CV)
+            \end{itemize}
+
       \item \textbf{Questionnaire Manager}
-          \begin{itemize}
-              \item compileCOQuestionnaire(String idInternshipAd)
-              \item answerCOQuestionnaire(Answer answer)
-              \item retrieveInternshipFeedbackForm(String idInternshipAd)
-              \item submitInternshipFeedbackForm(String idInternshipAd, FeedbackData feedbackFormData)
-          \end{itemize}
-  
+            \begin{itemize}
+                  \item compileCOQuestionnaire(String idInternshipAd)
+                  \item answerCOQuestionnaire(Answer answer)
+                  \item retrieveInternshipFeedbackForm(String idInternshipAd)
+                  \item submitInternshipFeedbackForm(String idInternshipAd, FeedbackData feedbackFormData)
+            \end{itemize}
+
       \item \textbf{Complaint Manager}
-          \begin{itemize}
-              \item createAndNotifyComplaint(String stId, String internshipId, Complaint reason)
-          \end{itemize}
-  
+            \begin{itemize}
+                  \item createAndNotifyComplaint(String stId, String internshipId, Complaint reason)
+            \end{itemize}
+
       \item \textbf{Notification Manager}
-          \begin{itemize}
-              \item newComplaintAdded(String universityId, String companyId)
-          \end{itemize}
-  
+            \begin{itemize}
+                  \item newComplaintAdded(String universityId, String companyId)
+            \end{itemize}
+
       \item \textbf{Recommendation Manager}
-          \begin{itemize}
-              \item retrieveRecommendation(String stId, SearchParameters searchParams)
-          \end{itemize}
-  
+            \begin{itemize}
+                  \item retrieveRecommendation(String stId, SearchParameters searchParams)
+            \end{itemize}
+
       \item \textbf{Suggestion Manager}
-          \begin{itemize}
-              \item feedCVToEngine(File CV)
-              \item feedInternAdToEngine(InternshipAd internshipAd)
-          \end{itemize}
-  
+            \begin{itemize}
+                  \item feedCVToEngine(File CV)
+                  \item feedInternAdToEngine(InternshipAd internshipAd)
+            \end{itemize}
+
       \item \textbf{Query Manager}
-          \begin{itemize}
-              \item retrieveInfo(String userId)
-              \item linkInfoToId(String userId, STInfo stInfo)
-              \item credentialStored(String username)
-              \item archiveCV(File CV)
-              \item requestSnipped(List<String> internIds)
-              \item internshipSearch(SearchParameters searchParams)
-              \item retrieveQuestionnaireData(String idInternshipAd)
-              \item saveSTAnswer(Answer answer)
-              \item retrieveInternshipFeedbackForm(String idInternshipAd)
-              \item insertInternshipFeedbackFormData(String idInternshipAd,FeedbackData feedbackFormData)
-              \item retrieveSTInternship(String stId)
-              \item addComplaint(String stId, String idInternshipAd, Complaint reason)
-              \item storeInternshipAd(String companyId, InternshipAd internshipAd)
-          \end{itemize}
-  
+            \begin{itemize}
+                  \item retrieveInfo(String userId)
+                  \item linkInfoToId(String userId, STInfo stInfo)
+                  \item credentialStored(String username)
+                  \item archiveCV(File CV)
+                  \item requestSnipped(List<String> internIds)
+                  \item internshipSearch(SearchParameters searchParams)
+                  \item retrieveQuestionnaireData(String idInternshipAd)
+                  \item saveSTAnswer(Answer answer)
+                  \item retrieveInternshipFeedbackForm(String idInternshipAd)
+                  \item insertInternshipFeedbackFormData(String idInternshipAd,FeedbackData feedbackFormData)
+                  \item retrieveSTInternship(String stId)
+                  \item addComplaint(String stId, String idInternshipAd, Complaint reason)
+                  \item storeInternshipAd(String companyId, InternshipAd internshipAd)
+            \end{itemize}
+
       \item \textbf{Dashboard Manager}
-          \begin{itemize}
-              \item LoginAtUniversity(String unId)
-              \item sendInfo(STInfo stInfo)
-              \item sendCredential(String username, String password)
-              \item loadCV(File CV)
-              \item initiateSearch(SearchParameters searchParams)
-              \item compileQuestionnaire(String idInternshipAd)
-              \item answerCOQuestionnaire(Answer answer)
-              \item retrieveInternshipFeedbackForm(String idInternshipAd)
-              \item submitInternshipFeedbackForm(String idInternshipAd, FeedbackData feedbackFormData)
-              \item retrieveSTInternship(String stId)
-              \item createComplaint(String stId, String internshipId, Complaint reason)
-              \item createInternshipAd(String companyId, InternshipAd internshipAd)
-          \end{itemize}
-  
-  \end{itemize}
+            \begin{itemize}
+                  \item LoginAtUniversity(String unId)
+                  \item sendInfo(STInfo stInfo)
+                  \item sendCredential(String username, String password)
+                  \item loadCV(File CV)
+                  \item initiateSearch(SearchParameters searchParams)
+                  \item compileQuestionnaire(String idInternshipAd)
+                  \item answerCOQuestionnaire(Answer answer)
+                  \item retrieveInternshipFeedbackForm(String idInternshipAd)
+                  \item submitInternshipFeedbackForm(String idInternshipAd, FeedbackData feedbackFormData)
+                  \item retrieveSTInternship(String stId)
+                  \item createComplaint(String stId, String internshipId, Complaint reason)
+                  \item createInternshipAd(String companyId, InternshipAd internshipAd)
+            \end{itemize}
+
+\end{itemize}
 
 \section{Selected Architectural Styles and Patterns}
 \label{sec:selected-architectural-styles-patterns}%
