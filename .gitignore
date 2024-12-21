@@ -45,6 +45,9 @@
 !DD/sources/Images/GUI/UN/Diagram.pdf
 !DD/sources/Images/Integ_*.pdf
 
+# Delivered files
+!DeliveryFolder/RASD*.pdf
+!DeliveryFolder/DD*.pdf
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
 *.bcf
