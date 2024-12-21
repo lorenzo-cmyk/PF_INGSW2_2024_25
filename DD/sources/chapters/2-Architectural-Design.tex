@@ -526,86 +526,85 @@ match the search criteria and sends it to the client. The UN can then select the
 \begin{itemize}
       \item \textbf{Login Manager}:
             \begin{itemize}
-                  \item LoginAtUniversity(String unId)
-                  \item sendInfo(STInfo stInfo)
-                  \item validateCredential(String username, String password)
+                  \item \texttt{loginAtUniversity(String unId)}
+                  \item \texttt{sendInfo(STInfo stInfo)}
+                  \item \texttt{validateCredential(String username, String password)}
             \end{itemize}
 
       \item \textbf{Internship Manager}
             \begin{itemize}
-                  \item requestSnipped(List<String> internIds)
-                  \item internshipSearch(SearchParameters searchParams)
-                  \item retrieveSTInternship(String stId)
-                  \item storeInternshipAd(String companyId, InternshipAd internshipAd)
+                  \item \texttt{requestSnipped(List<String> internIds)}
+                  \item \texttt{internshipSearch(SearchParameters searchParams)}
+                  \item \texttt{retrieveSTInternship(String stId)}
+                  \item \texttt{storeInternshipAd(String companyId, InternshipAd internshipAd)}
             \end{itemize}
 
       \item \textbf{Profile Manager}
             \begin{itemize}
-                  \item archiveCV(File CV)
+                  \item \texttt{archiveCV(File CV)}
             \end{itemize}
 
       \item \textbf{Questionnaire Manager}
             \begin{itemize}
-                  \item compileCOQuestionnaire(String idInternshipAd)
-                  \item answerCOQuestionnaire(Answer answer)
-                  \item retrieveInternshipFeedbackForm(String idInternshipAd)
-                  \item submitInternshipFeedbackForm(String idInternshipAd, FeedbackData feedbackFormData)
+                  \item \texttt{compileCOQuestionnaire(String idInternshipAd)}
+                  \item \texttt{answerCOQuestionnaire(Answer answer)}
+                  \item \texttt{retrieveInternshipFeedbackForm(String idInternshipAd)}
+                  \item \texttt{submitInternshipFeedbackForm(String idInternshipAd, \\FeedbackData feedbackFormData)}
             \end{itemize}
 
       \item \textbf{Complaint Manager}
             \begin{itemize}
-                  \item createAndNotifyComplaint(String stId, String internshipId, Complaint reason)
+                  \item \texttt{createAndNotifyComplaint(String stId, String internshipId, \\Complaint reason)}
             \end{itemize}
 
       \item \textbf{Notification Manager}
             \begin{itemize}
-                  \item newComplaintAdded(String universityId, String companyId)
+                  \item \texttt{newComplaintAdded(String universityId, String companyId)}
             \end{itemize}
 
       \item \textbf{Recommendation Manager}
             \begin{itemize}
-                  \item retrieveRecommendation(String stId, SearchParameters searchParams)
+                  \item \texttt{retrieveRecommendation(String stId, \\SearchParameters searchParams)}
             \end{itemize}
 
       \item \textbf{Suggestion Manager}
             \begin{itemize}
-                  \item feedCVToEngine(File CV)
-                  \item feedInternAdToEngine(InternshipAd internshipAd)
+                  \item \texttt{feedCVToEngine(File CV)}
+                  \item \texttt{feedInternAdToEngine(InternshipAd internshipAd)}
             \end{itemize}
 
       \item \textbf{Query Manager}
             \begin{itemize}
-                  \item retrieveInfo(String userId)
-                  \item linkInfoToId(String userId, STInfo stInfo)
-                  \item credentialStored(String username)
-                  \item archiveCV(File CV)
-                  \item requestSnipped(List<String> internIds)
-                  \item internshipSearch(SearchParameters searchParams)
-                  \item retrieveQuestionnaireData(String idInternshipAd)
-                  \item saveSTAnswer(Answer answer)
-                  \item retrieveInternshipFeedbackForm(String idInternshipAd)
-                  \item insertInternshipFeedbackFormData(String idInternshipAd,FeedbackData feedbackFormData)
-                  \item retrieveSTInternship(String stId)
-                  \item addComplaint(String stId, String idInternshipAd, Complaint reason)
-                  \item storeInternshipAd(String companyId, InternshipAd internshipAd)
+                  \item \texttt{retrieveInfo(String userId)}
+                  \item \texttt{linkInfoToId(String userId, STInfo stInfo)}
+                  \item \texttt{credentialStored(String username)}
+                  \item \texttt{archiveCV(File CV)}
+                  \item \texttt{requestSnipped(List<String> internIds)}
+                  \item \texttt{internshipSearch(SearchParameters searchParams)}
+                  \item \texttt{retrieveQuestionnaireData(String idInternshipAd)}
+                  \item \texttt{saveSTAnswer(Answer answer)}
+                  \item \texttt{retrieveInternshipFeedbackForm(String idInternshipAd)}
+                  \item \texttt{insertInternshipFeedbackFormData(String idInternshipAd, \\FeedbackData feedbackFormData)}
+                  \item \texttt{retrieveSTInternship(String stId)}
+                  \item \texttt{addComplaint(String stId, String idInternshipAd, \\Complaint reason)}
+                  \item \texttt{storeInternshipAd(String companyId, InternshipAd internshipAd)}
             \end{itemize}
 
       \item \textbf{Dashboard Manager}
             \begin{itemize}
-                  \item LoginAtUniversity(String unId)
-                  \item sendInfo(STInfo stInfo)
-                  \item sendCredential(String username, String password)
-                  \item loadCV(File CV)
-                  \item initiateSearch(SearchParameters searchParams)
-                  \item compileQuestionnaire(String idInternshipAd)
-                  \item answerCOQuestionnaire(Answer answer)
-                  \item retrieveInternshipFeedbackForm(String idInternshipAd)
-                  \item submitInternshipFeedbackForm(String idInternshipAd, FeedbackData feedbackFormData)
-                  \item retrieveSTInternship(String stId)
-                  \item createComplaint(String stId, String internshipId, Complaint reason)
-                  \item createInternshipAd(String companyId, InternshipAd internshipAd)
+                  \item \texttt{loginAtUniversity(String unId)}
+                  \item \texttt{sendInfo(STInfo stInfo)}
+                  \item \texttt{sendCredential(String username, String password)}
+                  \item \texttt{loadCV(File CV)}
+                  \item \texttt{initiateSearch(SearchParameters searchParams)}
+                  \item \texttt{compileQuestionnaire(String idInternshipAd)}
+                  \item \texttt{answerCOQuestionnaire(Answer answer)}
+                  \item \texttt{retrieveInternshipFeedbackForm(String idInternshipAd)}
+                  \item \texttt{submitInternshipFeedbackForm(String idInternshipAd, \\FeedbackData feedbackFormData)}
+                  \item \texttt{retrieveSTInternship(String stId)}
+                  \item \texttt{createComplaint(String stId, String internshipId, \\Complaint reason)}
+                  \item \texttt{createInternshipAd(String companyId, InternshipAd internshipAd)}
             \end{itemize}
-
 \end{itemize}
 
 \section{Selected Architectural Styles and Patterns}
