@@ -287,7 +287,7 @@ suggestions are sent back to the ST.
 \begin{figure}[H]
       \centering
       \includegraphics[width=0.85\textwidth]{Images/RV_03.pdf}
-      \caption{Runtime View - Student browser and search for internships}
+      \caption{Runtime View - Student Browser and Search for Internships}
       \label{fig:rv-student-browser-and-search-for-internships}
 \end{figure}
 
@@ -304,7 +304,7 @@ filter selection. The S\&C server retrieve the recommended internships from the 
 \begin{figure}[H]
       \centering
       \includegraphics[width=0.85\textwidth]{Images/RV_04a.pdf}
-      \caption{Runtime View - Student compiles Company Questionnaire}
+      \caption{Runtime View - Student Compiles Company Questionnaire}
       \label{fig:rv-student-compiles-company-questionnaire}
 \end{figure}
 
@@ -325,7 +325,7 @@ until the last one.
 \begin{figure}[H]
       \centering
       \includegraphics[width=0.85\textwidth]{Images/RV_04b.pdf}
-      \caption{Runtime View - Student compiles Feedback Questionnaire}
+      \caption{Runtime View - Student Compiles Feedback Questionnaire}
       \label{fig:rv-student-compiles-feedback-questionnaire}
 \end{figure}
 
@@ -342,7 +342,7 @@ the feedback form and sends it to the client. The ST then fills in the form with
 \begin{figure}[H]
       \centering
       \includegraphics[width=0.85\textwidth]{Images/RV_05.pdf}
-      \caption{Runtime View - Student creates a complaint}
+      \caption{Runtime View - Student Creates a Complaint}
       \label{fig:rv-student-creates-a-complaint}
 \end{figure}
 
@@ -358,7 +358,7 @@ saves the complaint and sends a notification to the CO and UN staff involved in 
 \begin{figure}[H]
       \centering
       \includegraphics[width=0.85\textwidth]{Images/RV_06.pdf}
-      \caption{Runtime View - Company creates an internship advertisement}
+      \caption{Runtime View - Company Creates an Internship Advertisement}
       \label{fig:rv-company-creates-an-internship-advertisement}
 \end{figure}
 
@@ -375,7 +375,7 @@ saved correctly then the S\&C server feeds the data to the Suggestion Engine to 
 \begin{figure}[H]
       \centering
       \includegraphics[width=1.0\textwidth]{Images/RV_07.pdf}
-      \caption{Runtime View - Company creates a questionnaire for selecting students}
+      \caption{Runtime View - Company Creates a Questionnaire for Selecting Students}
       \label{fig:rv-co-creates-questionnaire}
 \end{figure}
 
@@ -395,7 +395,7 @@ CO clicks on the "Submit" button. The S\&C server saves the form and sends a con
 \begin{figure}[H]
       \centering
       \includegraphics[width=1.0\textwidth]{Images/RV_08.pdf}
-      \caption{Runtime View - Company selects applicants to send questionnaire to}
+      \caption{Runtime View - Company Selects Applicants to Send Questionnaire to}
       \label{fig:rv-co-selects-applicants}
 \end{figure}
 
@@ -415,7 +415,7 @@ selected students via email - using the Email Server - that they have a question
 \begin{figure}[H]
       \centering
       \includegraphics[width=1.0\textwidth]{Images/RV_09.pdf}
-      \caption{Runtime View - Company edits its own profile}
+      \caption{Runtime View - Company Edits its Own Profile}
       \label{fig:rv-co-edits-profile}
 \end{figure}
 
@@ -432,7 +432,7 @@ CO.
 \begin{figure}[H]
       \centering
       \includegraphics[width=1.0\textwidth]{Images/RV_10.pdf}
-      \caption{Runtime View - Company compiles the post-internship feedback form}
+      \caption{Runtime View - Company Compiles the Post-internship Feedback Form}
       \label{fig:rv-co-compiles-feedback-form}
 \end{figure}
 
@@ -452,7 +452,7 @@ once without saving the answers one by one.
 \begin{figure}[H]
       \centering
       \includegraphics[width=1.0\textwidth]{Images/RV_11.pdf}
-      \caption{Runtime View - Company creates a complaint}
+      \caption{Runtime View - Company Creates a Complaint}
       \label{fig:rv-co-creates-complaint}
 \end{figure}
 
@@ -472,7 +472,7 @@ the UN staff and the ST involved in the work experience.
 \begin{figure}[H]
       \centering
       \includegraphics[width=1.0\textwidth]{Images/RV_12.pdf}
-      \caption{Runtime View - University monitors the status of the internships}
+      \caption{Runtime View - University Monitors the Status of the Internships}
       \label{fig:rv-un-monitors-internships}
 \end{figure}
 
@@ -489,7 +489,7 @@ can filter the list by status, company, or other criteria to find the desired in
 \begin{figure}[H]
       \centering
       \includegraphics[width=1.0\textwidth]{Images/RV_13.pdf}
-      \caption{Runtime View - University handles a complaint}
+      \caption{Runtime View - University Handles a Complaint}
       \label{fig:rv-un-handles-complaint}
 \end{figure}
 
@@ -510,7 +510,7 @@ to the UN after each action.
 \begin{figure}[H]
       \centering
       \includegraphics[width=1.0\textwidth]{Images/RV_14.pdf}
-      \caption{Runtime View - University blocks a malicious company}
+      \caption{Runtime View - University Blocks a Malicious Company}
       \label{fig:rv-un-blocks-company}
 \end{figure}
 
@@ -526,86 +526,85 @@ match the search criteria and sends it to the client. The UN can then select the
 \begin{itemize}
       \item \textbf{Login Manager}:
             \begin{itemize}
-                  \item LoginAtUniversity(String unId)
-                  \item sendInfo(STInfo stInfo)
-                  \item validateCredential(String username, String password)
+                  \item \texttt{loginAtUniversity(String unId)}
+                  \item \texttt{sendInfo(STInfo stInfo)}
+                  \item \texttt{validateCredential(String username, String password)}
             \end{itemize}
 
       \item \textbf{Internship Manager}
             \begin{itemize}
-                  \item requestSnipped(List<String> internIds)
-                  \item internshipSearch(SearchParameters searchParams)
-                  \item retrieveSTInternship(String stId)
-                  \item storeInternshipAd(String companyId, InternshipAd internshipAd)
+                  \item \texttt{requestSnipped(List<String> internIds)}
+                  \item \texttt{internshipSearch(SearchParameters searchParams)}
+                  \item \texttt{retrieveSTInternship(String stId)}
+                  \item \texttt{storeInternshipAd(String companyId, InternshipAd internshipAd)}
             \end{itemize}
 
       \item \textbf{Profile Manager}
             \begin{itemize}
-                  \item archiveCV(File CV)
+                  \item \texttt{archiveCV(File CV)}
             \end{itemize}
 
       \item \textbf{Questionnaire Manager}
             \begin{itemize}
-                  \item compileCOQuestionnaire(String idInternshipAd)
-                  \item answerCOQuestionnaire(Answer answer)
-                  \item retrieveInternshipFeedbackForm(String idInternshipAd)
-                  \item submitInternshipFeedbackForm(String idInternshipAd, FeedbackData feedbackFormData)
+                  \item \texttt{compileCOQuestionnaire(String idInternshipAd)}
+                  \item \texttt{answerCOQuestionnaire(Answer answer)}
+                  \item \texttt{retrieveInternshipFeedbackForm(String idInternshipAd)}
+                  \item \texttt{submitInternshipFeedbackForm(String idInternshipAd, \\FeedbackData feedbackFormData)}
             \end{itemize}
 
       \item \textbf{Complaint Manager}
             \begin{itemize}
-                  \item createAndNotifyComplaint(String stId, String internshipId, Complaint reason)
+                  \item \texttt{createAndNotifyComplaint(String stId, String internshipId, \\Complaint reason)}
             \end{itemize}
 
       \item \textbf{Notification Manager}
             \begin{itemize}
-                  \item newComplaintAdded(String universityId, String companyId)
+                  \item \texttt{newComplaintAdded(String universityId, String companyId)}
             \end{itemize}
 
       \item \textbf{Recommendation Manager}
             \begin{itemize}
-                  \item retrieveRecommendation(String stId, SearchParameters searchParams)
+                  \item \texttt{retrieveRecommendation(String stId, \\SearchParameters searchParams)}
             \end{itemize}
 
       \item \textbf{Suggestion Manager}
             \begin{itemize}
-                  \item feedCVToEngine(File CV)
-                  \item feedInternAdToEngine(InternshipAd internshipAd)
+                  \item \texttt{feedCVToEngine(File CV)}
+                  \item \texttt{feedInternAdToEngine(InternshipAd internshipAd)}
             \end{itemize}
 
       \item \textbf{Query Manager}
             \begin{itemize}
-                  \item retrieveInfo(String userId)
-                  \item linkInfoToId(String userId, STInfo stInfo)
-                  \item credentialStored(String username)
-                  \item archiveCV(File CV)
-                  \item requestSnipped(List<String> internIds)
-                  \item internshipSearch(SearchParameters searchParams)
-                  \item retrieveQuestionnaireData(String idInternshipAd)
-                  \item saveSTAnswer(Answer answer)
-                  \item retrieveInternshipFeedbackForm(String idInternshipAd)
-                  \item insertInternshipFeedbackFormData(String idInternshipAd,FeedbackData feedbackFormData)
-                  \item retrieveSTInternship(String stId)
-                  \item addComplaint(String stId, String idInternshipAd, Complaint reason)
-                  \item storeInternshipAd(String companyId, InternshipAd internshipAd)
+                  \item \texttt{retrieveInfo(String userId)}
+                  \item \texttt{linkInfoToId(String userId, STInfo stInfo)}
+                  \item \texttt{credentialStored(String username)}
+                  \item \texttt{archiveCV(File CV)}
+                  \item \texttt{requestSnipped(List<String> internIds)}
+                  \item \texttt{internshipSearch(SearchParameters searchParams)}
+                  \item \texttt{retrieveQuestionnaireData(String idInternshipAd)}
+                  \item \texttt{saveSTAnswer(Answer answer)}
+                  \item \texttt{retrieveInternshipFeedbackForm(String idInternshipAd)}
+                  \item \texttt{insertInternshipFeedbackFormData(String idInternshipAd, \\FeedbackData feedbackFormData)}
+                  \item \texttt{retrieveSTInternship(String stId)}
+                  \item \texttt{addComplaint(String stId, String idInternshipAd, \\Complaint reason)}
+                  \item \texttt{storeInternshipAd(String companyId, InternshipAd internshipAd)}
             \end{itemize}
 
       \item \textbf{Dashboard Manager}
             \begin{itemize}
-                  \item LoginAtUniversity(String unId)
-                  \item sendInfo(STInfo stInfo)
-                  \item sendCredential(String username, String password)
-                  \item loadCV(File CV)
-                  \item initiateSearch(SearchParameters searchParams)
-                  \item compileQuestionnaire(String idInternshipAd)
-                  \item answerCOQuestionnaire(Answer answer)
-                  \item retrieveInternshipFeedbackForm(String idInternshipAd)
-                  \item submitInternshipFeedbackForm(String idInternshipAd, FeedbackData feedbackFormData)
-                  \item retrieveSTInternship(String stId)
-                  \item createComplaint(String stId, String internshipId, Complaint reason)
-                  \item createInternshipAd(String companyId, InternshipAd internshipAd)
+                  \item \texttt{loginAtUniversity(String unId)}
+                  \item \texttt{sendInfo(STInfo stInfo)}
+                  \item \texttt{sendCredential(String username, String password)}
+                  \item \texttt{loadCV(File CV)}
+                  \item \texttt{initiateSearch(SearchParameters searchParams)}
+                  \item \texttt{compileQuestionnaire(String idInternshipAd)}
+                  \item \texttt{answerCOQuestionnaire(Answer answer)}
+                  \item \texttt{retrieveInternshipFeedbackForm(String idInternshipAd)}
+                  \item \texttt{submitInternshipFeedbackForm(String idInternshipAd, \\FeedbackData feedbackFormData)}
+                  \item \texttt{retrieveSTInternship(String stId)}
+                  \item \texttt{createComplaint(String stId, String internshipId, \\Complaint reason)}
+                  \item \texttt{createInternshipAd(String companyId, InternshipAd internshipAd)}
             \end{itemize}
-
 \end{itemize}
 
 \section{Selected Architectural Styles and Patterns}
