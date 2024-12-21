@@ -162,5 +162,77 @@ be used by the other modules. So the Query Manager module is containing and will
 part of the Model in the MVC architecture. The Query Manager module will be tested by using a proper Driver that will 
 simulate the behavior of the other modules that will use the Query Manager module.  
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\textwidth]{Images/Integ_0.pdf}
+    \caption{Integration Strategy - Step 0}
+    \label{fig:integration-strategy-step-0}
+\end{figure}
 
+\par The next module that will be implemented and tested will be the Login Manager module, that is the module that will
+allow the users to login into the Web Application. 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\textwidth]{Images/Integ_1.pdf}
+    \caption{Integration Strategy - Step 1}
+    \label{fig:integration-strategy-step-1}
+\end{figure}
+
+\par the next modules that can be implemented and tested are the Profile Manager module and the Notification Manager. 
+Both of these modules are independent of each other and can be implemented and tested simultaneously.
+The Notification Manager module is crucial, because a lot of other modules will use it to generate notifications that
+will be sent to the users.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Images/Integ_2.pdf}
+    \caption{Integration Strategy - Step 2}
+    \label{fig:integration-strategy-step-2}
+\end{figure}
+
+\par The next module that will be implemented and tested will be the Questionnaires Manager module.
+For the tidiness of the schemas, from here onward all the modules that will be added will not have the connection to the
+Query Manager module in the schema, but only have the connections of the dependencies between the modules.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Images/Integ_3.pdf}
+    \caption{Integration Strategy - Step 3}
+    \label{fig:integration-strategy-step-3}
+\end{figure}
+
+\par The next module that will be implemented and tested will be the Internship Manager module. This module and the previous
+one need to be implemented sequentially because the process of creating an internship advertisement will require the 
+COs to create a questionnaire that will be sent to the applicants that have applied to the internship.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Images/Integ_4.pdf}
+    \caption{Integration Strategy - Step 4}
+    \label{fig:integration-strategy-step-4}
+\end{figure}
+
+\par The next step of integration will be the implementation and testing of the Complaint Manager module, the Recommendation
+Manager module, and the Suggestion Manager module. These modules are independent of each other and can be implemented and
+tested simultaneously.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Images/Integ_5.pdf}
+    \caption{Integration Strategy - Step 5}
+    \label{fig:integration-strategy-step-5}
+\end{figure}
+
+\par The last step of integration will be the implementation and testing of the Dashboard Manager module that requires
+all the interfaces of all the other modules except the Query Manager module, to which it doesn't have a direct connection.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Images/Integ_6.pdf}
+    \caption{Integration Strategy - Step 6}
+    \label{fig:integration-strategy-step-6}
+\end{figure}
+
+\par The last driver that will be used to test the Dashboard Manager module will simulate the behavior of the Web server
+that will simulate the behavior of the Web Application that requires the data that the user needs to see.
