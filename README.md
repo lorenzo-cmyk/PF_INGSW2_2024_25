@@ -6,6 +6,9 @@
 
 # Students & Companies - RASD and DD
 
+- Deadline: 2024-12-22
+- Grade: 13.75/14
+
 ## About this repository
 
 This repository contains the RASD and DD documents for the project "Students & Companies" written for the "Software 
